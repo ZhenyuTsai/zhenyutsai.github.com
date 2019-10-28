@@ -1,7 +1,7 @@
 <html>
   <head>
 	  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <title>HTML</title>
+    <title>i5ting_ztree_toc:01-HTML</title>
 		<link href="toc/style/github-bf51422f4bb36427d391e4b75a1daa083c2d840e.css" media="all" rel="stylesheet" type="text/css"/>
 		<link href="toc/style/github2-d731afd4f624c99a4b19ad69f3083cd6d02b81d5.css" media="all" rel="stylesheet" type="text/css"/>
 		<link href="toc/css/zTreeStyle/zTreeStyle.css" media="all" rel="stylesheet" type="text/css"/>
@@ -238,7 +238,7 @@ p,h,a,b,u,i,s,em,del,ins,strong,img
 <pre><code>再页面中输入 以下2个单词
 1.  html: 5   
 2.  !
-在sublime里面然后按下tab键盘即可生成HTML骨架
+   在sublime里面然后按下tab键盘即可生成HTML骨架
 
 </code></pre><h1 id="-doctype">文档类型&lt;!DOCTYPE&gt;</h1>
 <pre><code class="lang-html">&lt;!DOCTYPE html&gt;
@@ -247,8 +247,7 @@ p,h,a,b,u,i,s,em,del,ins,strong,img
 <p>&lt;!DOCTYPE&gt; 标签位于文档的最前面，用于向浏览器说明当前文档使用哪种 HTML 或 XHTML 标准规范，必需在开头处使用&lt;!DOCTYPE&gt;标签为所有的XHTML文档指定XHTML版本和类型，只有这样浏览器才能按指定的文档类型进行解析。</p>
 <p>注意：  一些老网站可能用的还是老版本的文档类型比如 XHTML之类的，但是我们学的是HTML5,而且HTML5的文档类型兼容很好(向下兼容的原则)，所以大家放心的使用HTML5的文档类型就好了。</p>
 <h1 id="-">字符集</h1>
-<meta charset="UTF-8">
-
+<p><code>&lt;meta charset=&quot;UTF-8&quot;&gt;</code></p>
 <p>utf-8是目前最常用的字符集编码方式，常用的字符集编码方式还有gbk和gb2312。</p>
 <p>gb2312 简单中文  包括6763个汉字</p>
 <p>BIG5   繁体中文 港澳台等用</p>
@@ -278,7 +277,7 @@ p,h,a,b,u,i,s,em,del,ins,strong,img
 <h3 id="-">标题标签 (熟记)</h3>
 <p> 单词缩写：  head   头部. 标题 </p>
 <p>为了使网页更具有语义化，我们经常会在页面中用到标题标签，HTML提供了6个等级的标题，即</p>
-<p> &lt h1 &gt、&lt h2 &gt、&lt h3 &gt、&lt h4 &gt、&lt h5 &gt和 &lt h6 &gt</p>
+<p><code>&lt;h1&gt;、&lt;h2&gt;、&lt;h3&gt;、&lt;h4&gt;、&lt;h5&gt;和&lt;h6&gt;</code></p>
 <pre><code>标题标签语义：  作为标题使用，并且依据重要性递减
 </code></pre><p>其基本语法格式如下：</p>
 <pre><code class="lang-html">&lt;hn&gt;   标题文本   &lt;/hn&gt;
@@ -363,7 +362,7 @@ p,h,a,b,u,i,s,em,del,ins,strong,img
 </code></pre>
 <h3 id="base-">base 标签</h3>
 <p>base 可以设置整体链接的打开状态   </p>
-<p>base 写到  <head>  </head>  之间</p>
+<p>base 写到 <code>&lt;head&gt;  &lt;/head&gt;</code>  之间</p>
 <p> <img src="media/base.png" /></p>
 <h2 id="-">◀特殊字符标签 （理解）</h2>
 <p> <img src="media/zifu.png" /></p>
@@ -382,9 +381,9 @@ p,h,a,b,u,i,s,em,del,ins,strong,img
 <p>路径可以分为： 相对路径和绝对路径</p>
 <h2 id="-">相对路径</h2>
 <ol>
-<li>图像文件和HTML文件位于同一文件夹：只需输入图像文件的名称即可，如&lt;img src=&quot;logo.gif&quot; /&gt;。</li>
-<li>图像文件位于HTML文件的下一级文件夹：输入文件夹名和文件名，之间用“/”隔开，如&lt;img src=&quot;img/img01/logo.gif&quot; /&gt;。</li>
-<li>图像文件位于HTML文件的上一级文件夹：在文件名之前加入“../” ，如果是上两级，则需要使用 “../ ../”，以此类推，如&lt;img src=&quot;../logo.gif&quot; /&gt;。</li>
+<li>图像文件和HTML文件位于同一文件夹：只需输入图像文件的名称即可，如<code>&lt;img src=&quot;logo.gif&quot; /&gt;</code>。</li>
+<li>图像文件位于HTML文件的下一级文件夹：输入文件夹名和文件名，之间用“/”隔开，如<code>&lt;img src=&quot;img/img01/logo.gif&quot;&gt;</code>。</li>
+<li>图像文件位于HTML文件的上一级文件夹：在文件名之前加入“../” ，如果是上两级，则需要使用 “../ ../”，以此类推，如<code>&lt;img src=&quot;../logo.gif&quot; /&gt;</code>。</li>
 </ol>
 <h2 id="-">绝对路径</h2>
 <p>绝对路径</p>
@@ -408,8 +407,8 @@ p,h,a,b,u,i,s,em,del,ins,strong,img
 <p><img src="media/ul.png" /></p>
 <p>脚下留心：</p>
 <pre><code> 1. &lt;ul&gt;&lt;/ul&gt;中只能嵌套&lt;li&gt;&lt;/li&gt;，直接在&lt;ul&gt;&lt;/ul&gt;标签中输入其他标签或者文字的做法是不被允许的。
-2. &lt;li&gt;与&lt;/li&gt;之间相当于一个容器，可以容纳所有元素。
-3. 无序列表会带有自己样式属性，放下那个样式，一会让CSS来！
+ 2. &lt;li&gt;与&lt;/li&gt;之间相当于一个容器，可以容纳所有元素。
+ 3. 无序列表会带有自己样式属性，放下那个样式，一会让CSS来！
 </code></pre><h2 id="-ol-">有序列表 ol （了解）</h2>
 <p><img src="media/gold.png" /></p>
 <p>有序列表即为有排列顺序的列表，其各个列表项按照一定的顺序排列定义，有序列表的基本语法格式如下：</p>
@@ -588,41 +587,45 @@ p,h,a,b,u,i,s,em,del,ins,strong,img
 <table>
 <thead>
 <tr>
-<th><strong>属性<em>**</em></strong></th>
-<th><strong>用法<em>**</em></strong></th>
-<th><strong>含义<em>**</em></strong></th>
+<th><strong>属性</strong></th>
+<th><strong>用法</strong></th>
+<th><strong>含义</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>placeholder<em>**</em></strong></td>
-<td><input type="text" placeholder="请输入用户名"></td>
+<td><strong>placeholder</strong></td>
+<td><code>&lt;input type=&quot;text&quot; placeholder=&quot;请输入信息&quot;&gt;</code></td>
 <td>占位符提供可描述输入字段预期值的提示信息</td>
 </tr>
 <tr>
-<td><strong>autofocus<em>**</em></strong></td>
-<td><input type="text" autofocus></td>
+<td><strong>autofocus</strong></td>
+<td><code>&lt;input type=&quot;text&quot; autofocus&gt;</code></td>
 <td>规定当页面加载时 input 元素应该自动获得焦点</td>
 </tr>
 <tr>
-<td><strong>multiple<em>**</em></strong></td>
-<td><input type="file" multiple></td>
+<td><strong>multiple</strong></td>
+<td><code>&lt;input type=&quot;file&quot; multiple&gt;</code></td>
 <td>多文件上传</td>
 </tr>
 <tr>
-<td><strong>autocomplete<em>**</em></strong></td>
-<td><input type="text" autocomplete="off"></td>
+<td><strong>autocomplete</strong></td>
+<td><code>&lt;input type=&quot;text&quot; autocomplete=&quot;off&quot;&gt;</code></td>
 <td>规定表单是否应该启用自动完成功能</td>
 </tr>
 <tr>
-<td><strong>required<em>**</em></strong></td>
-<td><input type="text" required></td>
+<td><strong>required</strong></td>
+<td><code>&lt;input type=&quot;text&quot; required&gt;</code></td>
 <td>必填项</td>
 </tr>
 <tr>
-<td><strong>accesskey<em>**</em></strong></td>
-<td><input type="text" accesskey="s"></td>
+<td><strong>accesskey</strong></td>
+<td><code>&lt;input type=&quot;text&quot; accesskey=&quot;s&quot;&gt;</code></td>
 <td>规定激活（使元素获得焦点）元素的快捷键</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -630,68 +633,70 @@ p,h,a,b,u,i,s,em,del,ins,strong,img
 <table>
 <thead>
 <tr>
-<th><strong>类型<em>**</em></strong></th>
-<th><strong>使用示例<em>**</em></strong></th>
-<th><strong>含义<em>**</em></strong></th>
+<th><strong>类型</strong></th>
+<th><strong>使用示例</strong></th>
+<th><strong>含义</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>email<em>**</em></strong></td>
-<td><input type="email"></td>
+<td><strong>email</strong></td>
+<td><code>&lt;input type=&quot;email&quot;&gt;</code></td>
 <td>输入邮箱格式</td>
 </tr>
 <tr>
-<td><strong>tel<em>**</em></strong></td>
-<td><input type="tel"></td>
+<td><strong>tel</strong></td>
+<td><code>&lt;input type=&quot;tel&quot;&gt;</code></td>
 <td>输入手机号码格式</td>
 </tr>
 <tr>
-<td><strong>url<em>**</em></strong></td>
-<td><input type="url"></td>
+<td><strong>url</strong></td>
+<td><code>&lt;input type=&quot;url&quot;&gt;</code></td>
 <td>输入url格式</td>
 </tr>
 <tr>
-<td><strong>number<em>**</em></strong></td>
-<td><input type="number"></td>
+<td><strong>number</strong></td>
+<td><code>&lt;input type=&quot;number&quot;&gt;</code></td>
 <td>输入数字格式</td>
 </tr>
 <tr>
-<td><strong>search<em>**</em></strong></td>
-<td><input type="search"></td>
+<td><strong>search</strong></td>
+<td><code>&lt;input type=&quot;search&quot;&gt;</code></td>
 <td>搜索框（体现语义化）</td>
 </tr>
 <tr>
-<td><strong>range<em>**</em></strong></td>
-<td><input type="range"></td>
+<td><strong>range</strong></td>
+<td><code>&lt;input type=&quot;range&quot;&gt;</code></td>
 <td>自由拖动滑块</td>
 </tr>
 <tr>
-<td><strong>time<em>**</em></strong></td>
-<td><input type="time"></td>
-<td></td>
+<td><strong>time</strong></td>
+<td><code>&lt;input type=&quot;time&quot;&gt;</code></td>
+<td>定义日期字段的时、分、秒（带有 time 控件）</td>
 </tr>
 <tr>
-<td><strong>date<em>**</em></strong></td>
-<td><input type="date"></td>
-<td></td>
+<td><strong>date</strong></td>
+<td><code>&lt;input type=&quot;date&quot;&gt;</code></td>
+<td>定义日期字段（带有 calendar 控件）</td>
 </tr>
 <tr>
-<td><strong>datetime<em>**</em></strong></td>
-<td><input type="datetime"></td>
-<td></td>
+<td><strong>datetime</strong></td>
+<td><code>&lt;input type=&quot;datetime&quot;&gt;</code></td>
+<td>定义日期字段（带有 calendar 和 time 控件）</td>
 </tr>
 <tr>
-<td><strong>month<em>**</em></strong></td>
-<td><input type="month"></td>
-<td></td>
+<td><strong>month</strong></td>
+<td><code>&lt;input type=&quot;month&quot;&gt;</code></td>
+<td>定义日期字段的月（带有 calendar 控件）</td>
 </tr>
 <tr>
-<td><strong>week<em>**</em></strong></td>
-<td><input type="week"></td>
+<td><strong>week</strong></td>
+<td><code>&lt;input type=&quot;week&quot;&gt;</code></td>
+<td>定义日期字段的周（带有 calendar 控件）</td>
 </tr>
 </tbody>
 </table>
+<p> HTML 5 <code>&lt;input&gt;</code> 标签: <a href="https://www.w3school.com.cn/html5/tag_input.asp">https://www.w3school.com.cn/html5/tag_input.asp</a> </p>
 <h2 id="-">综合案例</h2>
 <pre><code class="lang-html">&lt;form action=&quot;&quot;&gt;
   &lt;fieldset&gt;
@@ -742,7 +747,7 @@ p,h,a,b,u,i,s,em,del,ins,strong,img
 <li>在分享</li>
 </ol>
 <h3 id="-audio">多媒体 audio</h3>
-<p>HTML5通过<audio>标签来解决音频播放的问题。</p>
+<p>HTML5通过<code>&lt;audio&gt;</code>标签来解决音频播放的问题。</p>
 <p>使用相当简单，如下图所示</p>
 <p><img src="media/1498468026526.png" alt="1498468026526"> </p>
 <p>并且可以通过附加属性可以更友好控制音频的播放，如：</p>
@@ -754,8 +759,8 @@ p,h,a,b,u,i,s,em,del,ins,strong,img
 <p>多浏览器支持的方案，如下图</p>
 <p><img src="media/1498468052965.png" alt="1498468052965"> </p>
 <h3 id="-video">多媒体 video</h3>
-<p>HTML5通过<video>标签来解决音频播放的问题。</p>
-<p>同音频播放一样，<video>使用也相当简单，如下图</p>
+<p>HTML5通过<code>&lt;video&gt;</code>标签来解决音频播放的问题。</p>
+<p>同音频播放一样，<code>&lt;video&gt;</code>使用也相当简单，如下图</p>
 <p><img src="media/1498468072194.png" alt="1498468072194"> </p>
 <p>同样，通过附加属性可以更友好的控制视频的播放</p>
 <p>autoplay 自动播放</p>
@@ -765,13 +770,13 @@ p,h,a,b,u,i,s,em,del,ins,strong,img
 <p>height 设置播放窗口的高度</p>
 <p>由于版权等原因，不同的浏览器可支持播放的格式是不一样的，如下图供参考</p>
 <p><img src="media/1498468086199.png" alt="1498468086199"> </p>
-<p><strong>多浏览器支持的方案，如下图<em>**</em></strong></p>
+<p><strong>多浏览器支持的方案，如下图</strong></p>
 <p><img src="media/1498468097509.png" alt="1498468097509"></p>
 <h1 id="-">总结</h1>
 <p> HTML 第二天的主题：</p>
 <p>  熟悉列表---  会使用表格  ---  掌握常用表单 </p>
 
-          </article>
+          	</article>
         </div>
 		</div>
   </body>
