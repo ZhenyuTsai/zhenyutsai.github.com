@@ -1,0 +1,827 @@
+<html>
+  <head>
+	  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>MoveWeb</title>
+		<link href="toc/style/github-bf51422f4bb36427d391e4b75a1daa083c2d840e.css" media="all" rel="stylesheet" type="text/css"/>
+		<link href="toc/style/github2-d731afd4f624c99a4b19ad69f3083cd6d02b81d5.css" media="all" rel="stylesheet" type="text/css"/>
+    <link href="toc/css/zTreeStyle/zTreeStyle.css" media="all" rel="stylesheet" type="text/css"/>
+    <link rel="shortcut icon" href="favicon.ico" />
+  <script src="../js/review.js"></script>
+
+	  <style>
+		pre {
+		    counter-reset: line-numbering;
+		    border: solid 1px #d9d9d9;
+		    border-radius: 0;
+		    background: #fff;
+		    padding: 0;
+		    line-height: 23px;
+		    margin-bottom: 30px;
+		    white-space: pre;
+		    overflow-x: auto;
+		    word-break: inherit;
+		    word-wrap: inherit;
+		}
+
+		pre a::before {
+		  content: counter(line-numbering);
+		  counter-increment: line-numbering;
+		  padding-right: 1em; /* space after numbers */
+		  width: 25px;
+		  text-align: right;
+		  opacity: 0.7;
+		  display: inline-block;
+		  color: #aaa;
+		  background: #eee;
+		  margin-right: 16px;
+		  padding: 2px 10px;
+		  font-size: 13px;
+		  -webkit-touch-callout: none;
+		  -webkit-user-select: none;
+		  -khtml-user-select: none;
+		  -moz-user-select: none;
+		  -ms-user-select: none;
+		  user-select: none;
+		}
+
+		pre a:first-of-type::before {
+		  padding-top: 10px;
+		}
+
+		pre a:last-of-type::before {
+		  padding-bottom: 10px;
+		}
+
+		pre a:only-of-type::before {
+		  padding: 10px;
+		}
+
+		.highlight { background-color: #ffffcc } /* RIGHT */
+		</style>
+  </head>
+  <body>
+	  <div>
+				<div style='width:25%;'>
+						<ul id="tree" class="ztree" style='width:100%'>
+
+						</ul>
+				</div>
+        <div id='readme' style='width:70%;margin-left:20%;'>
+          	<article class='markdown-body'>
+            	<h1 id="-web-">移动web基础</h1>
+<h2 id="-">移动端开发现状</h2>
+<ul>
+<li>移动web开发指的是需要适配移动设备的网页开发</li>
+<li>移动web开发与pc端web开发没有本质的区别，使用的还是HTML/CSS/JavaScript的技术</li>
+<li>移动web开发与pc端web开发的区别是什么？</li>
+</ul>
+<p>移动端的浏览器与pc端不同</p>
+<pre><code class="lang-javascript">谷歌浏览器 苹果浏览器、 UC浏览器 QQ浏览器 欧朋浏览器 百度手机浏览器  360安全浏览器  搜狗浏览器  猎豹浏览器等
+国内的手机浏览器都是根据webkit内核修改过来的，国内没有自主研发的内核，国内的操作系统也是基于Android系统修改的。
+
+因此在移动端，css3属性只需要加webkit前缀即可。
+</code></pre>
+<p>移动端设备尺寸不一样(尺寸非常多，碎片化很严重)</p>
+<pre><code class="lang-javascript">Android： 320*480 480*800  540*960 720*1280 1080*1920 2k屏 4k屏
+iphpne：  640*960 640*1136 750*1334 1242*2208
+</code></pre>
+<h2 id="-">移动端调试问题</h2>
+<ol>
+<li>模拟器调试</li>
+<li>真机调试：使用手机进行访问。</li>
+</ol>
+<p>手机设备五花八门，屏幕尺寸都大不一样，尤其是安卓端，给我们的页面预览带来了一些麻烦。在实际工作中，作为开发者不可能有足够的设备让我们去测试（<strong>除了测试部门</strong> ），即便有，效率也特别的低，因此开发者一般都是通过浏览器的手机模拟器来模拟不同的设备。</p>
+<h2 id="-viewport-">视口viewport（重要）</h2>
+<pre><code class="lang-javascript">问题：一个电脑上的网站，在手机端访问，效果是什么样的？
+
+iPhone5的设备宽度只有320px，一张宽度为640px的图片在手机端访问，显示的效果是什么？
+
+1. 在手机端，html的大小都是980px，为什么？
+这主要是历史原因导致的，因为在移动设备刚流行的时候，网站大多都是pc端的，pc端的页面宽度一般都比较大，移动设备的宽度比较小，如果pc端页面直接在移动端显示的话，页面就会错乱。为了解决这个问题，移动端html的大小直接就定死成了980px（因为早起的pc端网站版心就是980px居多）。
+
+2. 视口
+在pc端，html的大小默认是继承了浏览器的宽度，即浏览器多宽，html的大小就是多宽，但是在移动端，多出来了一个视口的概念（乔布斯）,视口说白了就是介于浏览器与html之间的一个东西，视口的宽度默认定死了980px，因此html的宽度默认就是980px，视口的特点是能够根据设备的宽度进行缩放。
+
+3. 视口设置。
+对于现在的移动端页面来说，视口默认为980px肯定不合适，因为设备宽度不够的话，视口会进行缩放，导致页面展示效果不好看。
+</code></pre>
+<p><strong>视口参数设置</strong></p>
+<pre><code class="lang-javascript">//width 设置视口的宽度
+//width=device-width   设置视口宽度为设备的宽度（常用）。
+
+//initial-scale 设置初始缩放比例
+//initial-scale=1.0  表示不缩放
+
+//user-scalable 设置是否允许用户缩放
+//user-scalable=no  不允许用户缩放
+
+//maximum-scale  设置允许的最大缩放比例
+//maximum-scale=1.0  可以不设置，因为都禁止用户缩放了。
+
+//minimum-scale 设置允许最小缩放比
+//minimum-scale=1.0  不设置，因为都禁用用户缩放了。
+
+
+//标准写法：
+//快捷键：  meta:vp + tab键
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, user-scalable=no, initial-scale=1.0&quot;&gt;
+</code></pre>
+<h1 id="-">流式布局</h1>
+<p><strong>移动端的特点</strong></p>
+<ul>
+<li>手机端的兼容性问题比PC端小很多，因为手机端的浏览器版本比较新</li>
+<li>手机端屏幕比较小，能够放的内容比较少。</li>
+<li>手机的分辨率比电脑的分辨率高很多,所以手机的设计图一般是2倍图或者3倍图</li>
+</ul>
+<p>问题：布局的时候怎么解决屏幕大小不一致的问题？</p>
+<ul>
+<li>PC端，固定版心，让所有分辨率的电脑的版心都是一样的，比如京东</li>
+<li>移动端：移动端无法设置版心，因为移动端的设备屏幕本身就小，设置版心不合适。因此移动端大多会采用流式布局（百分比布局）</li>
+</ul>
+<p><strong>流式布局</strong>，也叫百分比布局，是移动端开发中经常使用的布局方式之一。</p>
+<p>流式布局的特征：</p>
+<ul>
+<li>宽度自适应，高度写死，并不是百分百还原设计图</li>
+<li>图标都是固定死大小的，包括字体等也是固定死的。并不是所有的东西都是自适应的。</li>
+<li>一些大的图片，设置宽度为百分比自适应即可，随着屏幕大小进行变化</li>
+<li>设计图一般是2倍图或者3倍图 是为了在手机端显示更清晰</li>
+</ul>
+<p>经典的流式布局</p>
+<pre><code class="lang-javascript">//1. 左侧固定，右侧自适应
+//2. 右侧固定，左侧自适应
+//3. 两侧固定，中间自适应（圣杯布局，双飞翼布局）
+//4. 等分布局
+</code></pre>
+<h2 id="-">等分布局</h2>
+<h2 id="-">一侧固定一侧适应</h2>
+<p>左边盒子左浮动，</p>
+<p>右边盒子添加padding值把内容挤出来</p>
+<p>不需要盒子之间的空隙可以使用overflow：hidden</p>
+<p>需要盒子之间的空隙使用margin把盒子把盒子挤出来。</p>
+<p>注意：继承的宽度无法使用padding和margin</p>
+<p>需要先浮动元素占位置，否则无法排成一排</p>
+<h2 id="-">两侧固定中间适应</h2>
+<p>首先写左右浮动元素，中间元素使用overflow：hidden触发BFC和浮动区域不重叠 或者margin</p>
+<p>中间盒子不用写宽度</p>
+<h1 id="jdm-">JDM京东移动端开发</h1>
+<h2 id="-">两倍图</h2>
+<blockquote>
+<p>由于手机端的像素密度要比PC端高,很多手机的像素密度是电脑的2倍甚至3倍,所以为了在手机上显示的图片更加清晰,设计师给的图片都是2倍图甚至3倍图</p>
+</blockquote>
+<p><strong>问题:</strong> 如何使用2倍图片的精灵图或者3倍图片的精灵图呢</p>
+<pre><code>以2倍图为例:
+1. 利用PS将精灵图缩小一倍,去量取对应的宽高和位置坐标
+2. 利用background-size去缩放精灵图(缩放至原始图片的1/2)
+
+重点注意: 引用的图片还是原来的2倍图 
+
+利用ps缩放图片:
+1. 将图片选项卡拖拽出来或者选择菜单栏
+2. 图像 - 图像大小 - 将宽度缩放至1/2即可 只需要缩放一个就行 默认会保证等比例 
+</code></pre><h1 id="-">弹性布局(伸缩布局)</h1>
+<blockquote>
+<p>布局：其实就是调整元素在水平和垂直方向上的布局方式。</p>
+</blockquote>
+<p>CSS3在布局方面做了非常大的改进，使得我们对块级元素的布局排列变得十分灵活，适应性非常强，其强大的伸缩性，在响应式开中可以发挥极大的作用。</p>
+<p>​    <strong><em>display:flex;弹性布局的根本</em></strong></p>
+<p>【演示：01-伸缩布局初体验.html】</p>
+<p>当给一个盒子设置了display：flex之后，这个盒子就有了<strong><em>主轴</em></strong> 和<strong><em>侧轴</em></strong> 的概念。
+主轴：Flex容器的主轴主要用来配置Flex项目，默认是水平方向
+侧轴：与主轴垂直的轴称作侧轴，默认是垂直方向的
+方向：默认<strong><em>主轴从左向右</em></strong> ，默认<strong><em>侧轴从上到下</em></strong> </p>
+<h2 id="-">容器属性</h2>
+<h3 id="flex-direction-">flex-direction（主轴方向）</h3>
+<blockquote>
+<p>flex-diretion主要是用来调整主轴的方向的，默认是水平方向</p>
+<p>了解即可，一般来说，很少调整主轴的方向。</p>
+</blockquote>
+<p>可选值</p>
+<pre><code class="lang-css">row：主轴方向为水平向右
+row-reverse:主轴方向为水平向左
+column：主轴方向为竖直向下
+column-reverse:主轴方向是竖直向上。
+</code></pre>
+<p>注意：主轴变化后，侧轴更着改变</p>
+<h3 id="-justify-content-">★justify-content(主轴对齐方式)</h3>
+<blockquote>
+<p>方向：默认<strong><em>主轴从左向右</em></strong> ，类似X轴</p>
+<p>justify-content主要用来设置<strong><em>主轴方向的对齐方式</em></strong> ，可选的值有：</p>
+</blockquote>
+<p>可选值：</p>
+<pre><code class="lang-css">flex-start: 起点对齐，弹性盒子元素将向起始位置对齐
+flex-end: 终点对齐，弹性盒子元素将向结束位置对齐。
+center: 居中对齐，弹性盒子元素将向行中间位置对齐
+space-around:环绕分布，弹性盒子元素会平均地分布在行里
+space-between:两端分布，第一个贴左边，最后一个贴右边，其他盒子均分，保证每个盒子之间的空隙是相等的。
+space-evenly：均衡分布
+</code></pre>
+<h3 id="-align-items-">★align-items(单行侧轴对齐方式 )</h3>
+<blockquote>
+<p>默认<strong><em>侧轴从上到下</em></strong> ，类似Y轴</p>
+<p>align-items用于调整<strong><em>侧轴的对齐方式</em></strong> ，可选的值有：</p>
+</blockquote>
+<pre><code class="lang-css">flex-start： 元素在侧轴的起始位置对齐。 
+flex-end： 元素在侧轴的结束位置对齐。
+center： 元素在侧轴上居中对齐。
+stretch： 元素的高度会被拉伸到最大，不能给死高度。（默认值）
+</code></pre>
+<h3 id="flex-wrap-">flex-wrap（换行）</h3>
+<blockquote>
+<p>flex-wrap属性控制flex容器是单行或者多行,默认不换行</p>
+</blockquote>
+<pre><code class="lang-css">nowrap： 不换行（默认），会压缩子盒子的宽度。
+wrap： 当宽度不够的时候，会换行。
+wrap-reverse: 颠倒换行
+</code></pre>
+<h3 id="align-content-">align-content（多行侧轴对齐方式）</h3>
+<blockquote>
+<p>align-content用来设置多行的flex容器的排列方式。</p>
+</blockquote>
+<pre><code class="lang-css">flex-start： 起点对齐，各行向侧轴的起始位置堆叠。 
+flex-end： 终点对齐，各行向弹性盒容器的结束位置堆叠。
+center： 居中对齐，各行向弹性盒容器的中间位置堆叠。
+space-around： 环绕分布，各行在侧轴中平均分布。 
+space-between： 两端分布，第一行贴上边，最后一个行贴下边,其他行在弹性盒容器中平均分布。 
+space-evenly：均衡分布
+stretch：拉伸对齐，不设置高度的情况下。（默认值）
+</code></pre>
+<p>align-items与align-content的区别</p>
+<pre><code class="lang-css">align-items调整的是侧轴单行的对齐方式，不换行一般用align-items
+align-content:必须是多行才生效，如果单行，没有效果。换行了就用align-content。
+</code></pre>
+<h2 id="-">项目属性</h2>
+<h3 id="flex-">flex属性</h3>
+<blockquote>
+<p><strong><em>上述讲的属性都是给父盒子设置的，接下来的几个属性是给子盒子设置的。</em></strong> </p>
+<p> flex属性用来设置子盒子如何分配主轴空间</p>
+</blockquote>
+<pre><code class="lang-css">flex:1 剩余空间平均分占其中一份
+</code></pre>
+<p>注意：flex属性给谁就分配给谁</p>
+<h3 id="order-">order属性</h3>
+<blockquote>
+<p>order属性定义项目的排列顺序。数值越小，排列越靠前，默认为0。</p>
+</blockquote>
+<pre><code class="lang-css">order:1;
+</code></pre>
+<h3 id="align-self">align-self</h3>
+<p>align-self也是用于设置在侧轴的位置，但是align-self给子元素设置，优先级比align-items的优先级高。</p>
+<pre><code class="lang-css">取值与align-items的取值一样。
+</code></pre>
+<p>阮一峰的博客<a href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html">http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html</a></p>
+<p>【案例：6面神骰】</p>
+<p>【案例：携程】</p>
+<h1 id="-">响应式</h1>
+<h2 id="-">什么是响应式布局</h2>
+<blockquote>
+<p>响应式布局（respond layout）是Ethan Marcotte在2010年5月份提出的一个概念，简而言之，就是<strong>一个网站能够兼容多个终端（手机、平板、pc电脑）</strong> ——而不是为每个终端做一个特定的版本。这个概念是为解决移动互联网浏览而诞生的。</p>
+</blockquote>
+<p><strong>为什么要有响应式布局？</strong> </p>
+<ul>
+<li>在移动互联日益成熟的时候，在PC端开发的网页已经无法满足移动设备的要求。</li>
+<li>通常的做法是针对移动端单独做一套特定的版本。</li>
+<li>如果终端越来越多，那么需要开发的版本就会越来越多（大屏设备的普及）</li>
+<li><strong>响应式布局</strong> ：<strong>一个网站能够兼容多个终端（节约开发成本）</strong></li>
+</ul>
+<p><strong>优点：</strong> </p>
+<p>面对不同分辨率设备灵活性强</p>
+<p>能够快捷解决多设备显示适应问题</p>
+<p><strong>缺点： </strong></p>
+<p>兼容各种设备工作量大，效率低下</p>
+<p>代码累赘，会出现隐藏无用的元素，加载时间加长</p>
+<p>响应式开发现状：</p>
+<ul>
+<li>如果已经存在PC的网站了，那么一般不会使用响应式开发，而是针对移动端再开发一套系统（比如京东、淘宝）</li>
+<li>在<strong>新建站点</strong> 上采用响应式开发的越来越多。</li>
+<li>在国内，响应式开发还不是特别的流行。但响应式开发是大势所趋，会越来越流行。</li>
+</ul>
+<h2 id="-web-">响应式开发与移动web开发的比较</h2>
+<table>
+<thead>
+<tr>
+<th>开发方式</th>
+<th>移动web开发+pc开发</th>
+<th>响应式开发</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>引用场景</td>
+<td>一般已经有了PC端网站，只需要端独开发移动端网站即可</td>
+<td>针对一些新建网站，并且要求适配移动端</td>
+</tr>
+<tr>
+<td>开发</td>
+<td>针对性强，开发效率高</td>
+<td>兼容各种终端，效率低</td>
+</tr>
+<tr>
+<td>适配</td>
+<td>只能适配移动端或者PC端，pad上体验比较差</td>
+<td>可以适配各种终端</td>
+</tr>
+<tr>
+<td>效率</td>
+<td>代码简介，加载快</td>
+<td>代码相对复杂，加载慢</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-css">//思考：响应式开发的原理是什么？
+</code></pre>
+<h1 id="-">媒体查询</h1>
+<blockquote>
+<p>媒体查询（Media Query）是CSS3提出来的一个新的属性，通过媒体查询可以查询到screen的宽度，从而指定某个宽度区间的网页布局。</p>
+</blockquote>
+<h2 id="-">设备分类</h2>
+<table>
+<thead>
+<tr>
+<th>分类</th>
+<th>宽度范围</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>大屏设备</td>
+<td>&gt;1200px</td>
+</tr>
+<tr>
+<td>中屏设备</td>
+<td>992px~1200px</td>
+</tr>
+<tr>
+<td>小屏设备</td>
+<td>768px~992px</td>
+</tr>
+<tr>
+<td>超小屏设备</td>
+<td>&lt; 768px</td>
+</tr>
+</tbody>
+</table>
+<p><img src="image/1.png" alt=""></p>
+<h2 id="-">媒体查询的使用</h2>
+<p>需求：</p>
+<pre><code class="lang-html">&lt;!--
+需求：
+    大屏设备(&gt;1200px)   版心：1170px   背景色：红色
+    中屏设备(992-1200)  版心：970px    背景色：蓝色
+    小屏设备(768-992)   版心：750px    背景色：黄色
+    超小屏设备(&lt;768px)  版心：100%     背景色：绿色
+--&gt;
+</code></pre>
+<p><strong>响应式开发的原理：使用媒体查询实现不同终端的布局和样式的切换。</strong></p>
+<p>媒体查询语法：</p>
+<pre><code class="lang-css">/*查询屏幕*/
+@media screen and 条件 {
+}
+
+/*条件的写法*/
+/*min-width:只要屏幕宽度超过这个值的设备样式就能生效*/
+/*max-width:只要屏幕宽度小于这个值的设备样式就能生效*/
+@media screen and (min-width: 1200px) {
+  .container {
+    width: 1170px;
+    background-color: red;
+  }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1200px) {
+  .container {
+    width: 970px;
+    background-color: blue;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 992px) {
+  .container {
+    width: 750px;
+    background-color: yellow;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    width: 100%;
+    background-color: green;
+  }
+}
+</code></pre>
+<p><strong>弊端：现在只有一个div，要做一套响应式布局，就需要如此多的代码，非常的麻烦，因此我们会更多的借助一些响应式的框架，比如bootstrap。</strong></p>
+<h1 id="bootstrap-">bootstrap框架</h1>
+<blockquote>
+<p>Bootstrap，来自 Twitter，是目前很受欢迎的前端框架。Bootstrap 是基于 HTML、CSS、JAVASCRIPT 的，它简洁灵活，使得 Web 开发更加快捷。</p>
+</blockquote>
+<p><a href="http://www.bootcss.com/">bootstrap中文网</a></p>
+<p>特点：</p>
+<ul>
+<li>Bootstrap当下最流行的前端UI框架（有预制界面组件）。</li>
+<li>组件简洁大方、代码规范精简、界面自定义性强。</li>
+<li>Bootstrap是基于HTML5和CSS3开发的,  js功能效果依赖于 jQuery( 第三方库, 后面讲解  )。</li>
+<li>Bootstrap中包含了丰富的Web组件，根据这些组件，可以快速的搭建一个漂亮、功能完备的网站。  </li>
+</ul>
+<p>优点：</p>
+<ul>
+<li>有自己的生态圈，不断的更新迭代</li>
+<li>提供了一套简洁、直观、强悍的组件</li>
+<li>标准化的HTML+CSS编码规范</li>
+<li>让开发更简单，提高了开发效率。</li>
+<li>扩展性强，虽然界面组件样式已经定义好了，我们还可以自定义，修改默认样式。</li>
+</ul>
+<p>版本：</p>
+<ul>
+<li>2.x.x 停止维护<ul>
+<li>优点：兼容性好</li>
+<li>缺点：代码不够简洁、功能不够完善</li>
+</ul>
+</li>
+<li>3.x.x <strong>目前使用最多</strong><ul>
+<li>优点：稳定，偏向于开发响应式布局，移动设备优先的WEB项目</li>
+<li>缺点：放弃了IE67，对IE8支持但是界面效果不友好</li>
+</ul>
+</li>
+<li>4.x.x 阶段</li>
+</ul>
+<h2 id="-">基本模板</h2>
+<pre><code class="lang-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;zh-CN&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1,user-scalable=0&quot;&gt;
+    &lt;title&gt;Bootstrap 101 Template&lt;/title&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;lib/bootstrap/css/bootstrap.min.css&quot;&gt;  
+    &lt;!-- [if lt IE 9]&gt;
+      &lt;script src=&quot;lib/html5shiv/html5shiv.min.js&quot;&gt;&lt;/script&gt;
+      &lt;script src=&quot;lib/respond/respond.min.js&quot;&gt;&lt;/script&gt;
+    &lt;![endif] --&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;你好，世界！&lt;/h1&gt;
+
+    &lt;script src=&quot;lib/jquery/jquery.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;lib/bootstrap/css/bootstrap.min.css&quot;&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h2 id="-">全局样式</h2>
+<h3 id="container-">container容器</h3>
+<p>Bootstrap 需要为页面内容和栅格系统包裹一个 .container 容器。默认带了15px的padding值。</p>
+<p><code>.container</code> 类用于固定宽度并支持响应式布局的容器。</p>
+<pre><code class="lang-html">&lt;div class=&quot;container&quot;&gt;
+  ...
+&lt;/div&gt;
+</code></pre>
+<p><code>.container-fluid</code> 类用于 100% 宽度，占据全部视口（viewport）的容器，流式布局容器。</p>
+<pre><code class="lang-html">&lt;div class=&quot;container-fluid&quot;&gt;
+  ...
+&lt;/div&gt;
+</code></pre>
+<p>注意：<strong>这两种 容器类不能互相嵌套。</strong> </p>
+<h3 id="-">栅格系统</h3>
+<p>栅格系统，也叫网格系统</p>
+<ul>
+<li><code>.row</code>用于抵消<code>.container</code>容器的15px的padding值</li>
+<li>可以在<code>.row</code>中嵌套<code>column</code></li>
+</ul>
+<p>栅格系统常用类（总共12列）</p>
+<table>
+<thead>
+<tr>
+<th>类名</th>
+<th>例子</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.col-xs-xx</td>
+<td>.col-xs-6</td>
+<td>在超小屏幕（及以上）生效</td>
+</tr>
+<tr>
+<td>.col-sm-xx</td>
+<td>.col-sm-6</td>
+<td>在小屏幕（及以上）生效</td>
+</tr>
+<tr>
+<td>.col-md-xx</td>
+<td>.col-md-6</td>
+<td>在中屏幕（及以上）生效</td>
+</tr>
+<tr>
+<td>.col-lg-xx</td>
+<td>.col-lg-3</td>
+<td>在大屏幕及生效，占1/4</td>
+</tr>
+<tr>
+<td>.col-lg-xx</td>
+<td>.col-lg-4</td>
+<td>在大屏幕及生效，占1/3</td>
+</tr>
+<tr>
+<td>.col-lg-xx</td>
+<td>.col-lg-6</td>
+<td>在大屏幕及生效，占1/2</td>
+</tr>
+</tbody>
+</table>
+<pre><code>col-*-* 列 实例 col-md-4
+第一参数
+lg 大屏及以上
+md 中屏及以上
+sm 小屏及以上
+xm 超小屏及以上
+第二参数
+bootstrap默认把一行分成12等分，第二参数表示在12等分中占其中的几份
+</code></pre><p>【案例：响应式栅格系统】</p>
+<pre><code class="lang-html">&lt;!--
+需求：
+  1. 在大屏时显示6个等分的列2
+  2. 在中屏时显示4个等分的列3
+  3. 在小屏时显示3个等分的列4
+  4. 在超小屏时显示2个等分的列6
+--&gt;
+</code></pre>
+<h4 id="-">列嵌套</h4>
+<p>【案例：列嵌套.html】</p>
+<pre><code class="lang-html">&lt;div class=&quot;col-lg-4&quot;&gt;
+      &lt;!--栅格系统无处不在，只要父盒子有宽度，就可以使用栅格系统--&gt;
+      &lt;div class=&quot;row&quot;&gt;
+        &lt;div class=&quot;col-lg-6&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;col-lg-6&quot;&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+</code></pre>
+<h4 id="-">列偏移</h4>
+<p>【案例：列偏移.html】</p>
+<pre><code class="lang-html">&lt;!-- 使用 .col-md-offset-* 类可以将列向右侧偏移。--&gt;
+&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;col-lg-3&quot;&gt;&lt;/div&gt;
+  &lt;!--col-lg-offset-3:在大屏下，这个div将向右侧偏移3个单位--&gt;
+  &lt;div class=&quot;col-lg-6 col-lg-offset-3&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<h4 id="-">列排序</h4>
+<p>通过使用 <code>.col-md-push-*</code>（往后推） 和 <code>.col-md-pull-*</code>（往前拉） 类就可以很容易的改变列（column）的顺序。 </p>
+<pre><code>&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;col-md-9 col-md-push-3&quot;&gt;.col-md-9 .col-md-push-3&lt;/div&gt;
+  &lt;div class=&quot;col-md-3 col-md-pull-9&quot;&gt;.col-md-3 .col-md-pull-9&lt;/div&gt;
+&lt;/div&gt;
+</code></pre><h3 id="-">响应式工具</h3>
+<pre><code class="lang-javascript">//1. 大屏显示
+//2. 中屏不显示
+//3. 小屏显示
+//4. 超小屏不显示
+</code></pre>
+<p><img src="image/3.png" alt=""></p>
+<p><strong>推荐使用hidden相关的属性</strong></p>
+<h1 id="-">微金所</h1>
+<h2 id="-">目录结构</h2>
+<ul>
+<li>wjs.............项目文件夹<ul>
+<li>js...................js文件目录      </li>
+<li>lib..................第三方框架目录</li>
+<li>images...............图片文件目录</li>
+<li>css..................css文件目录</li>
+<li>fonts..............字体图标目录</li>
+<li>favicon.ico..........网站图标</li>
+<li>index.html...........站点入口</li>
+</ul>
+</li>
+</ul>
+<p>引入字体图标</p>
+<pre><code class="lang-html">&lt;link rel=&quot;icon&quot; href=&quot;favicon.ico&quot; /&gt;
+</code></pre>
+<h2 id="-">页面结构</h2>
+<pre><code class="lang-html">&lt;!--头部开始--&gt;
+&lt;div class=&quot;wjs_header&quot;&gt;&lt;/div&gt;
+&lt;!--头部结束--&gt;
+
+&lt;!--导航开始--&gt;
+&lt;div class=&quot;wjs_nav&quot;&gt;&lt;/div&gt;
+&lt;!--导航结束--&gt;
+
+&lt;!--轮播图开始--&gt;
+&lt;div class=&quot;wjs_banner&quot;&gt;&lt;/div&gt;
+&lt;!--轮播图结束--&gt;
+
+&lt;!--信息开始--&gt;
+&lt;div class=&quot;wjs_info&quot;&gt;&lt;/div&gt;
+&lt;!--信息结束--&gt;
+
+&lt;!--产品开始--&gt;
+&lt;div class=&quot;wjs_product&quot;&gt;&lt;/div&gt;
+&lt;!--产品结束--&gt;
+
+&lt;!--新闻开始--&gt;
+&lt;div class=&quot;wjs_news&quot;&gt;&lt;/div&gt;
+&lt;!--新闻结束--&gt;
+
+&lt;!--合作伙伴开始--&gt;
+&lt;div class=&quot;wjs_partner&quot;&gt;&lt;/div&gt;
+&lt;!--合作伙伴结束--&gt;
+</code></pre>
+<h1 id="less">LESS</h1>
+<h2 id="less-">Less简介</h2>
+<blockquote>
+<p><strong><em>Less</em> 是一门 CSS 预处理语言,它扩展了 CSS 语言,增加了变量、Mixin、函数等特性。</strong> </p>
+<p>浏览器不直接识别less文件，浏览器只识别css文件，所以我们写了less文件之后，我们需要预先把less文件转换成css文件。</p>
+<p>less  sass</p>
+</blockquote>
+<p>本质上，LESS 包含一套自定义的语法及一个解析器，用户根据这些语法定义自己的样式规则，这些规则最终会通过解析器，编译生成对应的 CSS 文件。LESS 并没有裁剪 CSS 原有的特性，更不是用来取代 CSS 的，而是在现有 CSS 语法的基础上，为 CSS 加入程序式语言的特性。</p>
+<p><strong>less仅仅是写css的另一种方式，写出来的less文件浏览器也不识别，所以啊，我们写完了less文件，还需要通过less解析器解析成css，最终浏览器引入的还是css文件。</strong></p>
+<p>学习网站：</p>
+<p><a href="http://lesscss.org/">官网http://lesscss.org/</a>
+<a href="http://lesscss.cn/">中文网http://lesscss.cn/</a></p>
+<h2 id="less-">less的编译</h2>
+<blockquote>
+<p>如何把less文件变成css文件</p>
+</blockquote>
+<p>安装easy less插件</p>
+<pre><code class="lang-js">和前面的内容需要使用 ,
+&quot;less.compile&quot;: {
+  &quot;out&quot;: &quot;../css/&quot;
+}
+</code></pre>
+<h2 id="less-">Less语法</h2>
+<h3 id="less-">less初体验</h3>
+<p>新建一个less文件，输入以下代码:</p>
+<pre><code class="lang-less">@color:red;
+p {
+  color:@color;
+}
+</code></pre>
+<h3 id="-">变量</h3>
+<p>可以变化的量</p>
+<p><strong>注释</strong></p>
+<pre><code class="lang-less">/*这个注释是CSS中的注释，因此会编译到css中*/
+//这个注释,CSS中用不了，因此不会编译出来。
+</code></pre>
+<p><strong>变量</strong></p>
+<pre><code class="lang-less">@wjs_color:#e92322;
+body {
+  background-color: @wjs_color;
+}
+
+div {
+  width: 400px;
+  height: 400px;
+  border: 1px solid @wjs_color;
+}
+</code></pre>
+<h3 id="-">嵌套</h3>
+<blockquote>
+<p>我们可以在一个选择器中嵌套另一个选择器来实现继承，这样很大程度减少了代码量，并且代码看起来更加的清晰。</p>
+</blockquote>
+<ul>
+<li>使用伪类的时候 可以使用<code>&amp;</code> 表示父选择器</li>
+</ul>
+<pre><code class="lang-less">@charset &quot;UTF-8&quot;;
+.wjs_header {
+  border-bottom: 1px solid #ccc;
+}
+.wjs_header .header_item {
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  border-left: 1px solid #ccc;
+}
+.wjs_header .header_item:first-child {
+  border-left: none;
+}
+</code></pre>
+<h3 id="less-">less数学运算</h3>
+<blockquote>
+<p>在我们的 CSS 中充斥着大量的数值型的 value，less可以直接支持运算，也提供了一系列的函数提供给我们使用。</p>
+</blockquote>
+<h3 id="less-">less函数的使用（了解）</h3>
+<p>函数：可以重复使用</p>
+<p>不带参数的函数</p>
+<pre><code class="lang-less">@charset &quot;UTF-8&quot;;
+
+//不会被编译
+.btn() {
+  width: 200px;
+  height: 200px;
+  background-color: #ccc;
+}
+.my_btn {
+  .btn();
+}
+</code></pre>
+<p>带参数的函数</p>
+<pre><code class="lang-less">.btn_border(@width) {
+  border: @width solid #000;
+}
+.my_btn {
+  //如果函数定义了参数，调用的时候必须传入参数，否则会报错
+  .btn_border();
+  //传入参数，就不会报错
+  .btn_border(10px);
+}
+</code></pre>
+<pre><code class="lang-less">.btn_border(@width:1px) {
+  border: @width solid #000;
+}
+.my_btn {
+  //因为有默认值，所以不会报错
+  .btn_border();
+  //传入参数，会覆盖1px，也不会报错
+  .btn_border(10px);
+}
+</code></pre>
+<h2 id="-less-">使用less重新实现京东首页的头部</h2>
+<h1 id="rem">rem</h1>
+<h2 id="rem-">rem是什么？</h2>
+<p><code>rem</code>（font size of the root element）是指相对于<code>根元素</code>的字体大小的单位。它就是一个相对单位。rem是相对于HTML便签的文字大小，默认大小font-size:16px。</p>
+<p><code>em</code>（font size of the element）是指相对于当前元素的字体大小的单位。它也是一个相对单位。</p>
+<p>它们之间其实很相似，只不过计算的规则一个是依赖根元素，一个是当前元素计算。</p>
+<p>注意：rem主要利用与移动端，由于兼容性问题</p>
+<pre><code class="lang-css">html{
+  font-size:16px;
+}
+body {
+  font-size:20px;
+}
+div.em {
+  /*em的计算方式参照的当前元素的font-size，如果不设置，默认继承自父盒子*/
+  width:2em;
+  height:2em;
+  background-color:red;
+}
+/*rem的计算方式参照的是html的font-size*/
+div.rem {
+  width:2rem;
+  height:2rem;
+  background-color:blue;
+}
+</code></pre>
+<h2 id="-rem-">为什么要用rem？</h2>
+<blockquote>
+<p>rem的主要目的就是解决用于不同屏幕的适配问题。rem能够等比例的适配所有的屏幕。</p>
+</blockquote>
+<p>由于市面上手机种类繁多，导致移动端的屏幕种类非常的混乱，比如有常见的<code>320px 360px 375px 384px 480px 640px</code>等。在开发中，美工一般只会提供750px或者是640px的设计稿，这就要求我们通过一张设计稿能够适配所有的屏幕。通常解决方案如下：</p>
+<ul>
+<li>流式布局：虽然可以让各种屏幕都适配，但是显示效果不是非常的友好，因为只有几个尺寸的手机能够完美的显示出来视觉设计师和交互最想要的效果。但是目前使用流式布局的公司非常多，比如 <a href="https://www.amazon.cn/">亚马逊</a> 、<a href="https://m.jd.com/">京东</a> 、<a href="https://m.ctrip.com/">携程</a></li>
+<li>响应式布局：响应式这种方式在国内很少有大型企业的复杂性的网站在移动端用这种方法去做，主要原因是<strong><em>工作大，维护性难</em></strong> 。所以一般都是中小型的门户或者博客类站点会采用响应式的方法从PC端页面到移动端页面以及web app直接一步到位，因为这样反而可以节约成本。</li>
+<li>rem布局：rem能够适配所有的屏幕，与less配合使用效果会更好。目前使用rem布局的有：<a href="https://m.taobao.com">淘宝</a> 、 <a href="https://m.suning.com/">苏宁</a></li>
+</ul>
+<p>##rem带来的宽高度自适应</p>
+<p>不同屏幕下对应不同的HTML下的font-size值</p>
+<h2 id="rem-">rem与响应式</h2>
+<p>因为rem的基准点是根元素html的字体大小，因此我们只需要设置不同屏幕的html的font-size大小不一样就可以达到不同屏幕的适配了。 </p>
+<h3 id="rem-">rem与媒体查询</h3>
+<p>媒体查询：根据不同的屏幕运行不同的CSS</p>
+<pre><code class="lang-css">@media screen and（条件）and (条件) {
+    当条件满足执行代码
+}
+条件：
+1、min-width:320px; 最小宽度320px以上
+2、max-width:640px; 最大宽度640px以下
+3、width:540px;        宽度等于540px;
+注意：and前后必须有空格
+</code></pre>
+<p>使用rem配合媒体查询可以适配多个终端</p>
+<pre><code class="lang-css">需求：750的设计图 里面得到的盒子的大小为100px 100px 改写成rem 可以实现在主流手机里面宽高自适应 
+主流手机机型：320 360 375 384 400 414 424 480 540 720 750
+
+px转换成rem的公式: px/html的font-size值 
+动态计算不同屏幕对应的html的font-size值公式:  当前屏幕/设计图的宽 / 基于这个设计图的html的fontsize
+</code></pre>
+<h1 id="-">苏宁易购</h1>
+<h2 id="-">适配主流浏览器</h2>
+<pre><code class="lang-less">//适配主流浏览器
+//320 360 375 384 400 414 424 480 540 720 750
+//把屏幕分成15rem
+.adapter(@width) {
+  @media (min-width: @width) {
+    html {
+      font-size: @width/15px;
+    }
+  }
+}
+</code></pre>
+
+          	</article>
+        </div>
+		</div>
+  </body>
+</html>
+<script type="text/javascript" src="toc/js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="toc/js/jquery.ztree.all-3.5.min.js"></script>
+<script type="text/javascript" src="toc/js/ztree_toc.js"></script>
+<script type="text/javascript" src="toc_conf.js"></script>
+
+<SCRIPT type="text/javascript" >
+<!--
+$(document).ready(function(){
+    var css_conf = eval(markdown_panel_style);
+    $('#readme').css(css_conf)
+    
+    var conf = eval(jquery_ztree_toc_opts);
+		$('#tree').ztree_toc(conf);
+});
+//-->
+</SCRIPT>

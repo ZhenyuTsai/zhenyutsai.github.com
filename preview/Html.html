@@ -1,0 +1,794 @@
+<html>
+  <head>
+	  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>HTML</title>
+		<link href="toc/style/github-bf51422f4bb36427d391e4b75a1daa083c2d840e.css" media="all" rel="stylesheet" type="text/css"/>
+		<link href="toc/style/github2-d731afd4f624c99a4b19ad69f3083cd6d02b81d5.css" media="all" rel="stylesheet" type="text/css"/>
+		<link href="toc/css/zTreeStyle/zTreeStyle.css" media="all" rel="stylesheet" type="text/css"/>
+	  <style>
+		pre {
+		    counter-reset: line-numbering;
+		    border: solid 1px #d9d9d9;
+		    border-radius: 0;
+		    background: #fff;
+		    padding: 0;
+		    line-height: 23px;
+		    margin-bottom: 30px;
+		    white-space: pre;
+		    overflow-x: auto;
+		    word-break: inherit;
+		    word-wrap: inherit;
+		}
+
+		pre a::before {
+		  content: counter(line-numbering);
+		  counter-increment: line-numbering;
+		  padding-right: 1em; /* space after numbers */
+		  width: 25px;
+		  text-align: right;
+		  opacity: 0.7;
+		  display: inline-block;
+		  color: #aaa;
+		  background: #eee;
+		  margin-right: 16px;
+		  padding: 2px 10px;
+		  font-size: 13px;
+		  -webkit-touch-callout: none;
+		  -webkit-user-select: none;
+		  -khtml-user-select: none;
+		  -moz-user-select: none;
+		  -ms-user-select: none;
+		  user-select: none;
+		}
+
+		pre a:first-of-type::before {
+		  padding-top: 10px;
+		}
+
+		pre a:last-of-type::before {
+		  padding-bottom: 10px;
+		}
+
+		pre a:only-of-type::before {
+		  padding: 10px;
+		}
+
+		.highlight { background-color: #ffffcc } /* RIGHT */
+		</style>
+  </head>
+  <body>
+	  <div>
+				<div style='width:25%;'>
+						<ul id="tree" class="ztree" style='width:100%'>
+
+						</ul>
+				</div>
+        <div id='readme' style='width:70%;margin-left:20%;'>
+          	<article class='markdown-body'>
+            	<hr>
+<p> 学习目标:</p>
+<ul>
+<li>了解常用浏览器</li>
+<li>掌握WEB标准</li>
+<li>理解标签语义化</li>
+<li>掌握常用的排版标签</li>
+<li>掌握常用的文本格式化图像链接等标签</li>
+<li>掌握三种列表标签</li>
+<li>掌握表格标签</li>
+<li>掌握表格标签</li>
+<li>掌握表单标签</li>
+<li>掌握H5新增表单和表单属性
+typora-copy-images-to: media</li>
+</ul>
+<hr>
+<h1 id="-">认识网页</h1>
+<pre><code>网页主要由文字、图像和超链接等元素构成。当然，除了这些元素，网页中还可以包含音频、视频以及Flash等。
+</code></pre><p><img src="C:\Users\Administrator\Desktop\笔记\01-HTML\media\mi.png" alt=""></p>
+<pre><code>思考：  网页是如何形成的呢?
+</code></pre><p><img src="media/web.png" /></p>
+<h1 id="-">常见浏览器介绍</h1>
+<pre><code>浏览器是网页运行的平台，常用的浏览器有IE、火狐（Firefox）、谷歌（Chrome）、Safari和Opera等。我们平时称为五大浏览器。
+</code></pre><p><img src="media/b.png" /></p>
+<h2 id="-">查看浏览器占有的市场份额（知晓）</h2>
+<p>查看网站： <a href="http://tongji.baidu.com/data/browser" target="_blank">http://tongji.baidu.com/data/browser</a></p>
+<p><img src="media/count.png" /></p>
+<h2 id="-">浏览器内核（理解）</h2>
+<p>浏览器内核又可以分成两部分：渲染引擎(layout engineer 或者 Rendering Engine)和 JS 引擎。
+渲染引擎 它负责取得网页的内容（HTML、XML、图像等等）、整理讯息（例如加入 CSS 等），以及计算网页的显示方式，然后会输出至显示器或打印机。浏览器的内核的不同对于网页的语法解释会有不同，所以渲染的效果也不相同。
+JS 引擎 则是解析 Javascript 语言，执行 javascript语言来实现网页的动态效果。</p>
+<p>最开始渲染引擎和 JS 引擎并没有区分的很明确，后来 JS 引擎越来越独立，内核就倾向于只指渲染引擎。有一个网页标准计划小组制作了一个 ACID 来测试引擎的兼容性和性能。内核的种类很多，如加上没什么人使用的非商业的免费内核，可能会有10多种，但是常见的浏览器内核可以分这四种：Trident、Gecko、Blink、Webkit。</p>
+<p>（1）Trident(IE内核) </p>
+<p>国内很多的双核浏览器的其中一核便是 Trident，美其名曰 &quot;兼容模式&quot;。</p>
+<p>代表： IE、傲游、世界之窗浏览器、Avant、腾讯TT、猎豹安全浏览器、360极速浏览器、百度浏览器等。</p>
+<p>Window10 发布后，IE 将其内置浏览器命名为 Edge，Edge 最显著的特点就是新内核 EdgeHTML。</p>
+<p>（2）Gecko(firefox) </p>
+<p>Gecko(Firefox 内核)： Mozilla FireFox(火狐浏览器) 采用该内核，Gecko 的特点是代码完全公开，因此，其可开发程度很高，全世界的程序员都可以为其编写代码，增加功能。 可惜这几年已经没落了， 比如 打开速度慢、升级频繁、猪一样的队友flash、神一样的对手chrome。</p>
+<p>（3） webkit(Safari)  </p>
+<p> Safari 是苹果公司开发的浏览器，所用浏览器内核的名称是大名鼎鼎的 WebKit。</p>
+<p> 现在很多人错误地把 webkit 叫做 chrome内核（即使 chrome内核已经是 blink 了），苹果感觉像被别人抢了媳妇，都哭晕再厕所里面了。</p>
+<p> 代表浏览器：傲游浏览器3、 Apple Safari (Win/Mac/iPhone/iPad)、Symbian手机浏览器、Android 默认浏览器，</p>
+<p>（4） Chromium/Bink(chrome) </p>
+<p>   在 Chromium 项目中研发 Blink 渲染引擎（即浏览器核心），内置于 Chrome 浏览器之中。Blink 其实是 WebKit 的分支。 </p>
+<p>​     大部分国产浏览器最新版都采用Blink内核。</p>
+<p>（5） Presto(Opera) </p>
+<p>  Presto 是挪威产浏览器 opera 的 &quot;前任&quot; 内核，为何说是 &quot;前任&quot;，因为最新的 opera 浏览器早已将之抛弃从而投入到了谷歌怀抱了。</p>
+<p>  <img src="media/s.jpg" /></p>
+<pre><code>了解一点：
+</code></pre><p>移动端的浏览器内核主要说的是系统内置浏览器的内核。</p>
+<p>目前移动设备浏览器上常用的内核有 Webkit，Blink，Trident，Gecko 等，其中 iPhone 和 iPad 等苹果 iOS 平台主要是 WebKit，Android 4.4 之前的 Android 系统浏览器内核是 WebKit，Android4.4 系统浏览器切换到了Chromium，内核是 Webkit 的分支 Blink，Windows Phone 8 系统浏览器内核是 Trident。</p>
+<h1 id="web-">Web标准（重点）</h1>
+<p>通过以上浏览器的内核不同，我们知道他们工作原理、解析肯定不同，显示就会有差别。</p>
+<pre><code>问：  哪个语言再全国基本都可以听得懂？ 
+</code></pre><p><img src="media/bz.png" /></p>
+<h2 id="web-">Web 标准的好处</h2>
+<p><em>1</em>、让Web的发展前景更广阔 
+<em>2</em>、内容能被更广泛的设备访问
+<em>3</em>、更容易被搜寻引擎搜索
+<em>4</em>、降低网站流量费用
+<em>5</em>、使网站更易于维护
+<em>6</em>、提高页面浏览速度</p>
+<h2 id="web-">Web 标准构成</h2>
+<p> Web标准不是某一个标准，而是由W3C和其他标准化组织制定的一系列标准的集合。主要包括结构（Structure）、表现（Presentation）和行为（Behavior）三个方面。</p>
+<pre><code>结构标准：结构用于对网页元素进行整理和分类，主要包括XML和XHTML两个部分。
+样式标准：表现用于设置网页元素的版式、颜色、大小等外观样式，主要指的是CSS。
+行为标准：行为是指网页模型的定义及交互的编写，主要包括DOM和ECMAScript两个部分
+</code></pre><p>理想状态我们的源码： .HTML    .css   .js </p>
+<pre><code>专业的人，写专业的代码
+</code></pre><p><img src="media/wk.png" /></p>
+<p>直观感受：</p>
+<p><img src="media/gx.png" /></p>
+<p>总结WEB标准：</p>
+<p>结构标准：   <img src="media/hb1.png" />  决定你是否有个好天然身体 </p>
+<p>样式标准：   <img src="media/hb2.png" />  决定你是否打扮的美丽外观</p>
+<p>行为标准：   <img src="media/hb3.jpg"  width="420"   />  决定你是否有吸引人的行为</p>
+<h1 id="html-">HTML 初识</h1>
+<p>一般先学习HTML+CSS， 这里我们先定一个小目标，先学HTML,后学习CSS。</p>
+<p>HTML（英文Hyper Text Markup Language的缩写）中文译为“超文本标签语言”，主要是通过HTML标签对网页中的文本、图片、声音等内容进行描述。</p>
+<pre><code class="lang-html">&lt;strong&gt; 我是加粗的字体 &lt;/strong&gt;
+</code></pre>
+<p>   注意：   体会 文本    标签    语言   几个词语  </p>
+<h2 id="html-">HTML骨架格式</h2>
+<p>日常生活的书信，我们要遵循共同的约定。 </p>
+<p><img src="media/mess.png" alt=""></p>
+<p>同理：HTML 有自己的语言语法骨架格式：</p>
+<pre><code class="lang-html">&lt;HTML&gt;   
+    &lt;head&gt;     
+        &lt;title&gt;&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+    &lt;/body&gt;
+&lt;/HTML&gt;
+</code></pre>
+<p>课堂练习1：    书写我们的第一个HTML 页面！</p>
+<ol>
+<li>新建一个demo 的 TXT 文件。</li>
+<li>里面写入刚才的HTML 骨架。</li>
+<li>把后缀名改为 .HTML。</li>
+<li>右击--谷歌浏览器打开。</li>
+</ol>
+<pre><code>1 HTML标签：
+
+作用所有HTML中标签的一个根节点。
+
+2 head标签：
+
+作用：用于存放：
+
+title,meta,base,style,script,link
+
+注意在head标签中我们必须要设置的标签是title
+
+3.title标签：
+
+作用：让页面拥有一个属于自己的标题。
+
+4.body标签：
+
+作用：页面在的主体部分，用于存放所有的HTML标签：
+
+p,h,a,b,u,i,s,em,del,ins,strong,img
+
+</code></pre><p>为了便于记忆，我们请出刚才要辞职回家养猪的二师兄来帮忙， 我称之为  猪八戒记忆法</p>
+<p><img src="media/pig.png" /></p>
+<h2 id="html-">HTML标签分类</h2>
+<p>  在HTML页面中，带有“&lt; &gt;”符号的元素被称为HTML标签，如上面提到的 &lt;HTML&gt;、&lt;head&gt;、&lt;body&gt;都是HTML标签。所谓标签就是放在“&lt; &gt;” 标签符中表示某个功能的编码命令，也称为HTML标签或 HTML元素</p>
+<p>1.双标签</p>
+<pre><code class="lang-html">&lt;标签名&gt; 内容 &lt;/标签名&gt;
+</code></pre>
+<p>该语法中“&lt;标签名&gt;”表示该标签的作用开始，一般称为“开始标签（start tag）”，“&lt;/标签名&gt;” 表示该标签的作用结束，一般称为“结束标签（end tag）”。和开始标签相比，结束标签只是在前面加了一个关闭符“/”。</p>
+<blockquote>
+<pre><code class="lang-html">比如 &lt;body&gt;我是文字  &lt;/body&gt;
+</code></pre>
+</blockquote>
+<p>2.单标签</p>
+<pre><code class="lang-html">&lt;标签名 /&gt;
+</code></pre>
+<p>  单标签也称空标签，是指用一个标签符号即可完整地描述某个功能的标签。</p>
+<blockquote>
+<pre><code class="lang-html">比如  &lt;br /&gt;
+</code></pre>
+</blockquote>
+<h2 id="html-">HTML标签关系</h2>
+<p>标签的相互关系就分为两种：</p>
+<p>1.嵌套关系</p>
+<pre><code class="lang-html">&lt;head&gt;  &lt;title&gt; &lt;/title&gt;  &lt;/head&gt;
+</code></pre>
+<p><img src="media/father.jpg"></p>
+<p>2.并列关系</p>
+<pre><code class="lang-html">&lt;head&gt;&lt;/head&gt;
+&lt;body&gt;&lt;/body&gt;
+</code></pre>
+<p><img src="media/xiong.jpg"></p>
+<p>测试题：</p>
+<pre><code>请问下列哪个标签是错误的？
+</code></pre><pre><code>A  &lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;/body&gt;
+</code></pre><pre><code>B  &lt;strong&gt;&lt;div&gt;&lt;/div&gt;&lt;/strong&gt;
+</code></pre><pre><code>C  &lt;head&gt;&lt;title&gt;&lt;/head&gt;&lt;/title&gt;
+</code></pre><pre><code>D  &lt;body&gt;&lt;div&gt;&lt;/div&gt;&lt;/body&gt;
+</code></pre><p> 倡议： 如果两个标签之间的关系是嵌套关系，子元素最好缩进一个tab键的身位。如果是并列关系，最好上下对齐。</p>
+<h1 id="-">开发工具</h1>
+<p> 这些工具你认识几个？</p>
+<p> <img src="media/s.png" /></p>
+<p>  普通青年    Dreamweaver</p>
+<p>  文艺青年    sublime</p>
+<p>  高手和傻子  用记事本</p>
+<p>  其实。。。。</p>
+<p>  <img src="media/node.png" /></p>
+<p>  <a href="key.HTML" target="_blank">sublime 一些常用快捷键  点我查看 </a></p>
+<pre><code>再页面中输入 以下2个单词
+1.  html: 5   
+2.  !
+在sublime里面然后按下tab键盘即可生成HTML骨架
+
+</code></pre><h1 id="-doctype">文档类型&lt;!DOCTYPE&gt;</h1>
+<pre><code class="lang-html">&lt;!DOCTYPE html&gt;
+</code></pre>
+<p>这句话就是告诉我们使用哪个html版本？  我们使用的是 html 5 的版本。  html有很多版本，那我们应该告诉用户和浏览器我们使用的版本号。</p>
+<p>&lt;!DOCTYPE&gt; 标签位于文档的最前面，用于向浏览器说明当前文档使用哪种 HTML 或 XHTML 标准规范，必需在开头处使用&lt;!DOCTYPE&gt;标签为所有的XHTML文档指定XHTML版本和类型，只有这样浏览器才能按指定的文档类型进行解析。</p>
+<p>注意：  一些老网站可能用的还是老版本的文档类型比如 XHTML之类的，但是我们学的是HTML5,而且HTML5的文档类型兼容很好(向下兼容的原则)，所以大家放心的使用HTML5的文档类型就好了。</p>
+<h1 id="-">字符集</h1>
+<meta charset="UTF-8">
+
+<p>utf-8是目前最常用的字符集编码方式，常用的字符集编码方式还有gbk和gb2312。</p>
+<p>gb2312 简单中文  包括6763个汉字</p>
+<p>BIG5   繁体中文 港澳台等用</p>
+<p>GBK包含全部中文字符    是GB2312的扩展，加入对繁体字的支持，兼容GB2312</p>
+<p>UTF-8则包含全世界所有国家需要用到的字符</p>
+<pre><code>记住一点，以后我们统统使用UTF-8 字符集, 这样就避免出现字符集不统一而引起乱码的情况了。
+</code></pre><h1 id="html-">HTML标签的语义化</h1>
+<p>白话： 所谓标签语义化，就是指标签的含义。</p>
+<h2 id="-">为什么要有语义化标签</h2>
+<ol>
+<li><p>方便代码的阅读和维护</p>
+</li>
+<li><p>同时让浏览器或是网络爬虫可以很好地解析，从而更好分析其中的内容 </p>
+</li>
+<li><p>使用语义化标签会具有更好地搜索引擎优化 </p>
+</li>
+</ol>
+<p>核心：合适的地方给一个最为合理的标签。</p>
+<p>语义是否良好： 当我们去掉CSS之后，网页结构依然组织有序，并且有良好的可读性。</p>
+<p>不管是谁都能看懂这块内容是什么。</p>
+<p>遵循的原则：先确定语义的HTML ，再选合适的CSS。</p>
+<h1 id="html-">HTML标签</h1>
+<p> 首先 HTML和CSS是两种完全不同的语言，我们学的是结构，就只写HTML标签，认识标签就可以了。 不会再给结构标签指定样式了。</p>
+<p> HTML标签有很多，这里我们学习最为常用的，后面有些较少用的，我们可以查下手册就可以了。 </p>
+<h2 id="-">排版标签</h2>
+<p>排版标签主要和css搭配使用，显示网页结构的标签，是网页布局最常用的标签。</p>
+<h3 id="-">标题标签 (熟记)</h3>
+<p> 单词缩写：  head   头部. 标题 </p>
+<p>为了使网页更具有语义化，我们经常会在页面中用到标题标签，HTML提供了6个等级的标题，即</p>
+<p> &lt h1 &gt、&lt h2 &gt、&lt h3 &gt、&lt h4 &gt、&lt h5 &gt和 &lt h6 &gt</p>
+<pre><code>标题标签语义：  作为标题使用，并且依据重要性递减
+</code></pre><p>其基本语法格式如下：</p>
+<pre><code class="lang-html">&lt;hn&gt;   标题文本   &lt;/hn&gt;
+</code></pre>
+<blockquote>
+<p>注意：  h1 标签因为重要，尽量少用，不要动不动就向你扔了一个h1。 一般h1 都是给logo使用。</p>
+</blockquote>
+<p>  <img src="media/dog.gif" /></p>
+<h3 id="-">段落标签( 熟记)</h3>
+<p>单词缩写：  paragraph  段落</p>
+<p> 在网页中要把文字有条理地显示出来，离不开段落标签，就如同我们平常写文章一样，整个网页也可以分为若干个段落，而段落的标签就是</p>
+<pre><code class="lang-html">&lt;p&gt;  文本内容  &lt;/p&gt;
+</code></pre>
+<p>是HTML文档中最常见的标签，默认情况下，文本在一个段落中会根据浏览器窗口的大小自动换行。</p>
+<h3 id="-">水平线标签(认识)</h3>
+<p>单词缩写：  horizontal  横线</p>
+<p>在网页中常常看到一些水平线将段落与段落之间隔开，使得文档结构清晰，层次分明。这些水平线可以通过插入图片实现，也可以简单地通过标签来完成，<hr />就是创建横跨网页水平线的标签。其基本语法格式如下：</p>
+<pre><code class="lang-html">&lt;hr /&gt;是单标签
+</code></pre>
+<p> 在网页中显示默认样式的水平线。</p>
+<p>课堂练习2：    新闻页面</p>
+<p><img src="media/sh.png" /> </p>
+<h3 id="-">换行标签(熟记)</h3>
+<p>单词缩写：  break   打断 ,换行</p>
+<p>在HTML中，一个段落中的文字会从左到右依次排列，直到浏览器窗口的右端，然后自动换行。如果希望某段文本强制换行显示，就需要使用换行标签</p>
+<pre><code class="lang-html">&lt;br /&gt;
+</code></pre>
+<p>这时如果还像在word中直接敲回车键换行就不起作用了。</p>
+<h3 id="div-span-">div span标签(重点)</h3>
+<p>div  span    是没有语义的     是我们网页布局主要的2个盒子</p>
+<p>div 就是  division  的缩写   分割， 分区的意思  其实有很多div 来组合网页。</p>
+<p>span, 跨度，跨距；范围    </p>
+<p>语法格式：</p>
+<pre><code class="lang-html">&lt;div&gt; 这是头部 &lt;/div&gt;    &lt;span&gt;今日价格&lt;/span&gt;
+</code></pre>
+<h2 id="-">文本格式化标签(熟记)</h2>
+<p>在网页中，有时需要为文字设置粗体、斜体或下划线效果，这时就需要用到HTML中的文本格式化标签，使文字以特殊的方式显示。</p>
+<p><img src="media/tab.png" /></p>
+<p>  b  i  s  u   只有使用 没有 强调的意思       strong   em  del   ins  语义更强烈</p>
+<h2 id="-">标签属性</h2>
+<p><img src="media/ttt.jpg" width="300"  /></p>
+<p>属性就是特性 比如 手机的颜色 手机的尺寸 ，总结就是手机的。。</p>
+<p>使用HTML制作网页时，如果想让HTML标签提供更多的信息，可以使用HTML标签的属性加以设置。其基本语法格式如下：</p>
+<pre><code class="lang-html">&lt;标签名 属性1=&quot;属性值1&quot; 属性2=&quot;属性值2&quot; …&gt; 内容 &lt;/标签名&gt;
+</code></pre>
+<p>在上面的语法中，</p>
+<p>1.标签可以拥有多个属性，必须写在开始标签中，位于标签名后面。</p>
+<p>2.属性之间不分先后顺序，标签名与属性、属性与属性之间均以空格分开。</p>
+<p>3.任何标签的属性都有默认值，省略该属性则取默认值。</p>
+<p>采取  键值对 的格式   key=&quot;value&quot;  的格式  </p>
+<p>比如:  </p>
+<pre><code class="lang-html">&lt;hr width=&quot;400&quot; /&gt;
+</code></pre>
+<p>属性  是 宽度  </p>
+<p>值    是 400 </p>
+<p>提倡：   尽量不使用 样式属性。   <img src="media/sm.jpg" /> </p>
+<h2 id="-img-">图像标签img (重点)</h2>
+<p>单词缩写：   image  图像</p>
+<p>HTML网页中任何元素的实现都要依靠HTML标签，要想在网页中显示图像就需要使用图像标签，接下来将详细介绍图像标签<img />以及和他相关的属性。其基本语法格式如下：</p>
+<p>该语法中src属性用于指定图像文件的路径和文件名，他是img标签的必需属性。</p>
+<pre><code class="lang-html">&lt;img src=&quot;图像URL&quot; /&gt;
+</code></pre>
+<p><img src="media/img.png" /></p>
+<h2 id="-">链接标签(重点)</h2>
+<p>单词缩写：  anchor 的缩写 。基本解释 锚, 铁锚 的</p>
+<p>在HTML中创建超链接非常简单，只需用标签环绕需要被链接的对象即可，其基本语法格式如下：</p>
+<pre><code class="lang-html">&lt;a href=&quot;跳转目标&quot; target=&quot;目标窗口的弹出方式&quot;&gt;文本或图像&lt;/a&gt;
+</code></pre>
+<p>href：用于指定链接目标的url地址，当为标签应用href属性时，它就具有了超链接的功能。  Hypertext Reference的缩写。意思是超文本引用</p>
+<p>target：用于指定链接页面的打开方式，其取值有_self和_blank两种，其中_self为默认值，_blank为在新窗口中打开方式。</p>
+<p>注意：</p>
+<p>1.外部链接 需要添加 http:// <a href="http://www.baidu.com">www.baidu.com</a></p>
+<p>2.内部链接 直接链接内部页面名称即可 比如 &lt; a href=&quot;index.html&quot;&gt; 首页 </a ></p>
+<p>3.如果当时没有确定链接目标时，通常将链接标签的href属性值定义为“#”(即href=&quot;#&quot;)，表示该链接暂时为一个空链接。</p>
+<p>4.不仅可以创建文本超链接，在网页中各种网页元素，如图像、表格、音频、视频等都可以添加超链接。</p>
+<h3 id="-">锚点定位 （难点）</h3>
+<p>通过创建锚点链接，用户能够快速定位到目标内容。
+创建锚点链接分为两步：</p>
+<pre><code class="lang-html">1.使用“a href=”#id名&gt;“链接文本&quot;&lt;/a&gt;创建链接文本。
+
+2.使用相应的id名标注跳转目标的位置。
+</code></pre>
+<h3 id="base-">base 标签</h3>
+<p>base 可以设置整体链接的打开状态   </p>
+<p>base 写到  <head>  </head>  之间</p>
+<p> <img src="media/base.png" /></p>
+<h2 id="-">◀特殊字符标签 （理解）</h2>
+<p> <img src="media/zifu.png" /></p>
+<h2 id="-">注释标签</h2>
+<p>在HTML中还有一种特殊的标签——注释标签。如果需要在HTML文档中添加一些便于阅读和理解但又不需要显示在页面中的注释文字，就需要使用注释标签。其基本语法格式如下：
+​        </p>
+<pre><code class="lang-html">    &lt;!-- 注释语句 --&gt;
+</code></pre>
+<p>注释内容不会显示在浏览器窗口中，但是作为HTML文档内容的一部分，也会被下载到用户的计算机上，查看源代码时就可以看到。</p>
+<p>注释重要性：</p>
+<p><img src="media/zs.png" /></p>
+<h1 id="-">路径(重点、难点)</h1>
+<p><img src="media/dt.png" /></p>
+<p><img src="media/lj.png" /></p>
+<p>实际工作中，通常新建一个文件夹专门用于存放图像文件，这时再插入图像，就需要采用“路径”的方式来指定图像文件的位置。</p>
+<p>路径可以分为： 相对路径和绝对路径</p>
+<h2 id="-">相对路径</h2>
+<ol>
+<li>图像文件和HTML文件位于同一文件夹：只需输入图像文件的名称即可，如&lt;img src=&quot;logo.gif&quot; /&gt;。</li>
+<li>图像文件位于HTML文件的下一级文件夹：输入文件夹名和文件名，之间用“/”隔开，如&lt;img src=&quot;img/img01/logo.gif&quot; /&gt;。</li>
+<li>图像文件位于HTML文件的上一级文件夹：在文件名之前加入“../” ，如果是上两级，则需要使用 “../ ../”，以此类推，如&lt;img src=&quot;../logo.gif&quot; /&gt;。</li>
+</ol>
+<h2 id="-">绝对路径</h2>
+<p>绝对路径</p>
+<p>“D:\web\img\logo.gif”，或完整的网络地址，例如“<a href="http://www.itcast.cn/images/logo.gif”。">http://www.itcast.cn/images/logo.gif”。</a></p>
+<h1 id="-">列表标签</h1>
+<p>什么是列表？</p>
+<p><img src="media/list.png" /></p>
+<p>把…制成表,以表显示</p>
+<p>容器里面装载着文字或图表的一种形式，叫列表。</p>
+<p>列表最大的特点就是  整齐 、整洁、 有序</p>
+<h2 id="-ul-">无序列表 ul （重点）</h2>
+<p>无序列表的各个列表项之间没有顺序级别之分，是并列的。其基本语法格式如下：</p>
+<pre><code class="lang-html">&lt;ul&gt;
+  &lt;li&gt;列表项1&lt;/li&gt;
+  &lt;li&gt;列表项2&lt;/li&gt;
+  &lt;li&gt;列表项3&lt;/li&gt;
+  ......
+&lt;/ul&gt;
+</code></pre>
+<p>比如下面这些，新闻是没有顺序的，不用排队，先到先得，后发布先显示。</p>
+<p><img src="media/ul.png" /></p>
+<p>脚下留心：</p>
+<pre><code> 1. &lt;ul&gt;&lt;/ul&gt;中只能嵌套&lt;li&gt;&lt;/li&gt;，直接在&lt;ul&gt;&lt;/ul&gt;标签中输入其他标签或者文字的做法是不被允许的。
+2. &lt;li&gt;与&lt;/li&gt;之间相当于一个容器，可以容纳所有元素。
+3. 无序列表会带有自己样式属性，放下那个样式，一会让CSS来！
+</code></pre><h2 id="-ol-">有序列表 ol （了解）</h2>
+<p><img src="media/gold.png" /></p>
+<p>有序列表即为有排列顺序的列表，其各个列表项按照一定的顺序排列定义，有序列表的基本语法格式如下：</p>
+<pre><code class="lang-html">&lt;ol&gt;
+  &lt;li&gt;列表项1&lt;/li&gt;
+  &lt;li&gt;列表项2&lt;/li&gt;
+  &lt;li&gt;列表项3&lt;/li&gt;
+  ......
+&lt;/ol&gt;
+</code></pre>
+<p>  所有特性基本与ul 一致。  </p>
+<p>  但是实际工作中， 较少用 ol ，因此我们用一句话来总结下 ol： </p>
+<p>  <img src="media/1.jpg" /></p>
+<h2 id="-">自定义列表（理解）</h2>
+<p>定义列表常用于对术语或名词进行解释和描述，定义列表的列表项前没有任何项目符号。其基本语法如下：</p>
+<pre><code class="lang-html">&lt;dl&gt;
+  &lt;dt&gt;名词1&lt;/dt&gt;
+  &lt;dd&gt;名词1解释1&lt;/dd&gt;
+  &lt;dd&gt;名词1解释2&lt;/dd&gt;
+  ...
+  &lt;dt&gt;名词2&lt;/dt&gt;
+  &lt;dd&gt;名词2解释1&lt;/dd&gt;
+  &lt;dd&gt;名词2解释2&lt;/dd&gt;
+  ...
+&lt;/dl&gt;
+</code></pre>
+<p> <img src="media/2.jpg" /> </p>
+<p>用的还可以：</p>
+<p><img src="media/mix.png" /></p>
+<h1 id="-">总结</h1>
+<p>  每一天都有一个主题 我们HTML第一天的主题就是 &lt;认识标签&gt;</p>
+<p>学HTML 之前 觉得 很神秘  </p>
+<p><img src="media/z.png" /></p>
+<p>等你学完之后忽然发现</p>
+<p><img src="media/rh.jpg" width="615" /></p>
+<p>总结今天的思路贯穿线：</p>
+<p><img src="media/a.png" width="1000" /></p>
+<h1 id="-table-">表格 table(会使用)</h1>
+<p>存在即是合理的。  表格的现在还是较为常用的一种标签，但不是用来布局，常见处理表格式数据。</p>
+<p><img src="media/table.png" /></p>
+<p>ps:  这些地方用表格，你会觉得生活还是那么美好。。。。忍不住想说  PPAP i hava a pen  </p>
+<h2 id="-">创建表格</h2>
+<p>在HTML网页中，要想创建表格，就需要使用表格相关的标签。创建表格的基本语法格式如下：</p>
+<pre><code class="lang-html">&lt;table&gt;
+  &lt;tr&gt;
+    &lt;td&gt;单元格内的文字&lt;/td&gt;
+    ...
+  &lt;/tr&gt;
+  ...
+&lt;/table&gt;
+</code></pre>
+<p>在上面的语法中包含三对HTML标签，分别为 &lt;table&gt;&lt;/table&gt;、&lt;tr&gt;&lt;/tr&gt;、&lt;td&gt;&lt;/td&gt;，他们是创建表格的基本标签，缺一不可，下面对他们进行具体地解释。</p>
+<pre><code>1.table用于定义一个表格。
+
+2.tr 用于定义表格中的一行，必须嵌套在 table /table标签中，在 table /table中包含几对 tr /tr，就有几行表格。
+
+3.td /td：用于定义表格中的单元格，必须嵌套在&lt;tr&gt;&lt;/tr&gt;标签中，一对 &lt;tr&gt; &lt;/tr&gt;中包含几对&lt;td&gt;&lt;/td&gt;，就表示该行中有多少列（或多少个单元格）。
+</code></pre><p>注意：</p>
+<pre><code>1. &lt;tr&gt;&lt;/tr&gt;中只能嵌套&lt;td&gt;&lt;/td&gt;
+</code></pre><pre><code>2. &lt;td&gt;&lt;/td&gt;标签，他就像一个容器，可以容纳所有的元素
+</code></pre><h2 id="-">表格属性</h2>
+<p><img src="media/tt.png" /></p>
+<h2 id="-">表头标签</h2>
+<p>表头一般位于表格的第一行或第一列，其文本加粗居中，如下图所示，即为设置了表头的表格。设置表头非常简单，只需用表头标签&lt;th&gt;&lt;/th&gt;替代相应的单元格标签&lt;td&gt;&lt;/td&gt;即可。</p>
+<p> <img src="media/th.png" /></p>
+<h2 id="-">表格结构（了解）</h2>
+<pre><code>在使用表格进行布局时，可以将表格划分为头部、主体和页脚（页脚因为有兼容性问题，我们不在赘述），具体 如下所示：
+
+&lt;thead&gt;&lt;/thead&gt;：用于定义表格的头部。
+
+必须位于&lt;table&gt;&lt;/table&gt; 标签中，一般包含网页的logo和导航等头部信息。
+
+
+&lt;tbody&gt;&lt;/tbody&gt;：用于定义表格的主体。
+
+位于&lt;table&gt;&lt;/table&gt;标签中，一般包含网页中除头部和底部之外的其他内容。
+</code></pre><p><img src="media/thead.png" /></p>
+<h2 id="-">合并单元格</h2>
+<p>跨行合并：rowspan    跨列合并：colspan</p>
+<p>合并单元格的思想：</p>
+<p>​     将多个内容合并的时候，就会有多余的东西，把它删除。    例如 把 3个 td 合并成一个， 那就多余了2个，需要删除。</p>
+<p>​     公式：  删除的个数  =  合并的个数  - 1   </p>
+<h2 id="-">总结表格</h2>
+<ol>
+<li>表格提供了HTML 中定义表格式数据的方法。</li>
+<li>表格中由行中的单元格组成。</li>
+<li>表格中没有列元素，列的个数取决于行的单元格个数。</li>
+<li>表格不要纠结于外观，那是CSS 的作用。</li>
+</ol>
+<h1 id="-">表单标签(掌握)</h1>
+<p>现实中的表单，类似我们去银行办理信用卡填写的单子。 如下图</p>
+<p><img src="media/car.jpg"  width="500" /></p>
+<p>目的是为了收集用户信息。</p>
+<p>在我们网页中， 我们也需要跟用户进行交互，收集用户资料，此时也需要表单。</p>
+<p>在HTML中，一个完整的表单通常由表单控件（也称为表单元素）、提示信息和表单域3个部分构成。</p>
+<p><img src="media/bd.png" /></p>
+<p>  表单控件：</p>
+<p>​       包含了具体的表单功能项，如单行文本输入框、密码输入框、复选框、提交按钮、重置按钮等。</p>
+<p>  提示信息：</p>
+<p>​        一个表单中通常还需要包含一些说明性的文字，提示用户进行填写和操作。</p>
+<p>  表单域：  </p>
+<p>​      他相当于一个容器，用来容纳所有的表单控件和提示信息，可以通过他定义处理表单数据所用程序的url地址，以及数据提交到服务器的方法。如果不定义表单域，表单中的数据就无法传送到后台服务器。</p>
+<h2 id="input-">input 控件(重点)</h2>
+<p>在上面的语法中，&lt;input /&gt;标签为单标签，type属性为其最基本的属性，其取值有多种，用于指定不同的控件类型。除了type属性之外，&lt;input /&gt;标签还可以定义很多其他的属性，其常用属性如下表所示。</p>
+<p><img src="media/input.png" /></p>
+<h2 id="label-">label标签(理解)</h2>
+<p>label 标签为 input 元素定义标注（标签）。</p>
+<p>作用：  用于绑定一个表单元素, 当点击label标签的时候, 被绑定的表单元素就会获得输入焦点</p>
+<p>如何绑定元素呢？</p>
+<p>for 属性规定 label 与哪个表单元素绑定。</p>
+<pre><code class="lang-html">&lt;label for=&quot;male&quot;&gt;Male&lt;/label&gt;
+&lt;input type=&quot;radio&quot; name=&quot;sex&quot; id=&quot;male&quot; value=&quot;male&quot;&gt;
+</code></pre>
+<h2 id="textarea-">textarea控件(文本域)</h2>
+<p>如果需要输入大量的信息，就需要用到&lt;textarea&gt;&lt;/textarea&gt;标签。通过textarea控件可以轻松地创建多行文本输入框，其基本语法格式如下：</p>
+<pre><code class="lang-html">&lt;textarea cols=&quot;每行中的字符数&quot; rows=&quot;显示的行数&quot;&gt;
+  文本内容
+&lt;/textarea&gt;
+</code></pre>
+<p><img src="media/textarea.png" /></p>
+<h2 id="-">下拉菜单</h2>
+<p>使用select控件定义下拉菜单的基本语法格式如下</p>
+<pre><code class="lang-html">&lt;select&gt;
+  &lt;option&gt;选项1&lt;/option&gt;
+  &lt;option&gt;选项2&lt;/option&gt;
+  &lt;option&gt;选项3&lt;/option&gt;
+  ...
+&lt;/select&gt;
+</code></pre>
+<p>注意：</p>
+<ol>
+<li>&lt;select&gt;&lt;/select&gt;中至少应包含一对&lt;option&gt;&lt;/option&gt;。</li>
+<li>在option 中定义selected =&quot; selected &quot;时，当前项即为默认选中项。</li>
+</ol>
+<h2 id="-">表单域</h2>
+<p>在HTML中，form标签被用于定义表单域，即创建一个表单，以实现用户信息的收集和传递，form中的所有内容都会被提交给服务器。创建表单的基本语法格式如下：</p>
+<pre><code class="lang-html">&lt;form action=&quot;url地址&quot; method=&quot;提交方式&quot; name=&quot;表单名称&quot;&gt;
+  各种表单控件
+&lt;/form&gt;
+</code></pre>
+<p>常用属性：</p>
+<ol>
+<li>Action
+在表单收集到信息后，需要将信息传递给服务器进行处理，action属性用于指定接收并处理表单数据的服务器程序的url地址。</li>
+<li>method
+用于设置表单数据的提交方式，其取值为get或post。</li>
+<li>name
+用于指定表单的名称，以区分同一个页面中的多个表单。</li>
+</ol>
+<p>注意：  每个表单都应该有自己表单域。</p>
+<h1 id="html5-">HTML5新标签与特性</h1>
+<h2 id="-">文档类型设定</h2>
+<ul>
+<li>document<ul>
+<li>HTML:</li>
+<li>XHTML:</li>
+<li>HTML5</li>
+</ul>
+</li>
+</ul>
+<h2 id="-">字符设定</h2>
+<ul>
+<li><meta http-equiv="charset" content="utf-8">：HTML与XHTML中建议这样去写</li>
+<li><meta charset="utf-8">：HTML5的标签中建议这样去写</li>
+</ul>
+<h2 id="-">常用新标签</h2>
+<ul>
+<li>header：定义文档的页眉</li>
+<li>nav：定义导航链接的部分</li>
+<li>footer：定义文档或节的页脚</li>
+<li>article：标签规定独立的自包含内容</li>
+<li>section：定义文档中的节（section、区段）</li>
+<li>aside：定义其所处内容之外的内容</li>
+</ul>
+<h2 id="-">常用新属性</h2>
+<table>
+<thead>
+<tr>
+<th><strong>属性<em>**</em></strong></th>
+<th><strong>用法<em>**</em></strong></th>
+<th><strong>含义<em>**</em></strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>placeholder<em>**</em></strong></td>
+<td><input type="text" placeholder="请输入用户名"></td>
+<td>占位符提供可描述输入字段预期值的提示信息</td>
+</tr>
+<tr>
+<td><strong>autofocus<em>**</em></strong></td>
+<td><input type="text" autofocus></td>
+<td>规定当页面加载时 input 元素应该自动获得焦点</td>
+</tr>
+<tr>
+<td><strong>multiple<em>**</em></strong></td>
+<td><input type="file" multiple></td>
+<td>多文件上传</td>
+</tr>
+<tr>
+<td><strong>autocomplete<em>**</em></strong></td>
+<td><input type="text" autocomplete="off"></td>
+<td>规定表单是否应该启用自动完成功能</td>
+</tr>
+<tr>
+<td><strong>required<em>**</em></strong></td>
+<td><input type="text" required></td>
+<td>必填项</td>
+</tr>
+<tr>
+<td><strong>accesskey<em>**</em></strong></td>
+<td><input type="text" accesskey="s"></td>
+<td>规定激活（使元素获得焦点）元素的快捷键</td>
+</tr>
+</tbody>
+</table>
+<h2 id="-type-">新增的type属性值：</h2>
+<table>
+<thead>
+<tr>
+<th><strong>类型<em>**</em></strong></th>
+<th><strong>使用示例<em>**</em></strong></th>
+<th><strong>含义<em>**</em></strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>email<em>**</em></strong></td>
+<td><input type="email"></td>
+<td>输入邮箱格式</td>
+</tr>
+<tr>
+<td><strong>tel<em>**</em></strong></td>
+<td><input type="tel"></td>
+<td>输入手机号码格式</td>
+</tr>
+<tr>
+<td><strong>url<em>**</em></strong></td>
+<td><input type="url"></td>
+<td>输入url格式</td>
+</tr>
+<tr>
+<td><strong>number<em>**</em></strong></td>
+<td><input type="number"></td>
+<td>输入数字格式</td>
+</tr>
+<tr>
+<td><strong>search<em>**</em></strong></td>
+<td><input type="search"></td>
+<td>搜索框（体现语义化）</td>
+</tr>
+<tr>
+<td><strong>range<em>**</em></strong></td>
+<td><input type="range"></td>
+<td>自由拖动滑块</td>
+</tr>
+<tr>
+<td><strong>time<em>**</em></strong></td>
+<td><input type="time"></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>date<em>**</em></strong></td>
+<td><input type="date"></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>datetime<em>**</em></strong></td>
+<td><input type="datetime"></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>month<em>**</em></strong></td>
+<td><input type="month"></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>week<em>**</em></strong></td>
+<td><input type="week"></td>
+</tr>
+</tbody>
+</table>
+<h2 id="-">综合案例</h2>
+<pre><code class="lang-html">&lt;form action=&quot;&quot;&gt;
+  &lt;fieldset&gt;
+    &lt;legend&gt;学生档案&lt;/legend&gt;
+    &lt;label for=&quot;userName&quot;&gt;姓名:&lt;/label&gt;
+    &lt;input type=&quot;text&quot; name=&quot;userName&quot; id=&quot;userName&quot; placeholder=&quot;请输入用户名&quot;&gt; &lt;br&gt;
+    &lt;label for=&quot;userPhone&quot;&gt;手机号码:&lt;/label&gt;
+    &lt;input type=&quot;tel&quot; name=&quot;userPhone&quot; id=&quot;userPhone&quot; pattern=&quot;^1\d{10}$&quot;&gt;&lt;br&gt;
+    &lt;label for=&quot;email&quot;&gt;邮箱地址:&lt;/label&gt;
+    &lt;input type=&quot;email&quot; required name=&quot;email&quot; id=&quot;email&quot;&gt;&lt;br&gt;
+    &lt;label for=&quot;collage&quot;&gt;所属学院:&lt;/label&gt;
+    &lt;input type=&quot;text&quot; name=&quot;collage&quot; id=&quot;collage&quot; list=&quot;cList&quot; placeholder=&quot;请选择&quot;&gt;&lt;br&gt;
+    &lt;datalist id=&quot;cList&quot;&gt;
+      &lt;option value=&quot;前端与移动开发学院&quot;&gt;&lt;/option&gt;
+      &lt;option value=&quot;java学院&quot;&gt;&lt;/option&gt;
+      &lt;option value=&quot;c++学院&quot;&gt;&lt;/option&gt;
+    &lt;/datalist&gt;&lt;br&gt;
+    &lt;label for=&quot;score&quot;&gt;入学成绩:&lt;/label&gt;
+    &lt;input type=&quot;number&quot; max=&quot;100&quot; min=&quot;0&quot; value=&quot;0&quot; id=&quot;score&quot;&gt;&lt;br&gt;
+    &lt;label for=&quot;level&quot;&gt;基础水平:&lt;/label&gt;
+    &lt;meter id=&quot;level&quot; max=&quot;100&quot; min=&quot;0&quot; low=&quot;59&quot; high=&quot;90&quot;&gt;&lt;/meter&gt;&lt;br&gt;
+    &lt;label for=&quot;inTime&quot;&gt;入学日期:&lt;/label&gt;
+    &lt;input type=&quot;date&quot; id=&quot;inTime&quot; name=&quot;inTime&quot;&gt;&lt;br&gt;
+    &lt;label for=&quot;leaveTime&quot;&gt;毕业日期:&lt;/label&gt;
+    &lt;input type=&quot;date&quot; id=&quot;leaveTime&quot; name=&quot;leaveTime&quot;&gt;&lt;br&gt;
+    &lt;input type=&quot;submit&quot;&gt;
+  &lt;/fieldset&gt;
+&lt;/form&gt;
+</code></pre>
+<h2 id="-">多媒体标签</h2>
+<ul>
+<li><p>embed：标签定义嵌入的内容</p>
+</li>
+<li><p>audio：播放音频</p>
+</li>
+<li><p>video：播放视频</p>
+</li>
+</ul>
+<h3 id="-embed-">多媒体 embed（会使用）</h3>
+<p>embed可以用来插入各种多媒体，格式可以是 Midi、Wav、AIFF、AU、MP3等等。url为音频或视频文件及其路径，可以是相对路径或绝对路径。</p>
+<p>因为兼容性问题，我们这里只讲解 插入网络视频， 后面H5会讲解 audio 和video 视频多媒体。 </p>
+<pre><code class="lang-html">&lt;embed src=&quot;http://player.youku.com/player.php/sid/XMTI4MzM2MDIwOA==/v.swf&quot; allowFullScreen=&quot;true&quot; quality=&quot;high&quot; width=&quot;480&quot; height=&quot;400&quot; align=&quot;middle&quot; allowScriptAccess=&quot;always&quot; type=&quot;application/x-shockwave-flash&quot;&gt;&lt;/embed&gt;
+</code></pre>
+<p> <img src="media/embed.png" /></p>
+<p> 优酷，土豆，爱奇艺，腾讯、乐视等等</p>
+<ol>
+<li>先上传   </li>
+<li>在分享</li>
+</ol>
+<h3 id="-audio">多媒体 audio</h3>
+<p>HTML5通过<audio>标签来解决音频播放的问题。</p>
+<p>使用相当简单，如下图所示</p>
+<p><img src="media/1498468026526.png" alt="1498468026526"> </p>
+<p>并且可以通过附加属性可以更友好控制音频的播放，如：</p>
+<p>autoplay 自动播放</p>
+<p>controls 是否显不默认播放控件</p>
+<p>loop 循环播放    loop=“-1”无限循环播放     loop=“2”播放两次</p>
+<p>由于版权等原因，不同的浏览器可支持播放的格式是不一样的，如下图供参考</p>
+<p><img src="media/1498468041058.png" alt="1498468041058"> </p>
+<p>多浏览器支持的方案，如下图</p>
+<p><img src="media/1498468052965.png" alt="1498468052965"> </p>
+<h3 id="-video">多媒体 video</h3>
+<p>HTML5通过<video>标签来解决音频播放的问题。</p>
+<p>同音频播放一样，<video>使用也相当简单，如下图</p>
+<p><img src="media/1498468072194.png" alt="1498468072194"> </p>
+<p>同样，通过附加属性可以更友好的控制视频的播放</p>
+<p>autoplay 自动播放</p>
+<p>controls 是否显示默认播放控件</p>
+<p>loop 循环播放</p>
+<p>width 设置播放窗口宽度</p>
+<p>height 设置播放窗口的高度</p>
+<p>由于版权等原因，不同的浏览器可支持播放的格式是不一样的，如下图供参考</p>
+<p><img src="media/1498468086199.png" alt="1498468086199"> </p>
+<p><strong>多浏览器支持的方案，如下图<em>**</em></strong></p>
+<p><img src="media/1498468097509.png" alt="1498468097509"></p>
+<h1 id="-">总结</h1>
+<p> HTML 第二天的主题：</p>
+<p>  熟悉列表---  会使用表格  ---  掌握常用表单 </p>
+
+          </article>
+        </div>
+		</div>
+  </body>
+</html>
+<script type="text/javascript" src="toc/js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="toc/js/jquery.ztree.all-3.5.min.js"></script>
+<script type="text/javascript" src="toc/js/ztree_toc.js"></script>
+<script type="text/javascript" src="toc_conf.js"></script>
+
+<SCRIPT type="text/javascript" >
+<!--
+$(document).ready(function(){
+    var css_conf = eval(markdown_panel_style);
+    $('#readme').css(css_conf)
+    
+    var conf = eval(jquery_ztree_toc_opts);
+		$('#tree').ztree_toc(conf);
+});
+//-->
+</SCRIPT>

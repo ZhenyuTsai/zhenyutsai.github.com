@@ -1,0 +1,1114 @@
+<html>
+  <head>
+	  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Ajax - 前后的交互技术</title>
+    <link rel="shortcut icon" href="favicon.ico" />
+		<link href="toc/style/github-bf51422f4bb36427d391e4b75a1daa083c2d840e.css" media="all" rel="stylesheet" type="text/css"/>
+		<link href="toc/style/github2-d731afd4f624c99a4b19ad69f3083cd6d02b81d5.css" media="all" rel="stylesheet" type="text/css"/>
+    <link href="toc/css/zTreeStyle/zTreeStyle.css" media="all" rel="stylesheet" type="text/css"/>
+  <script src="../js/review.js"></script>
+    
+	  <style>
+		pre {
+		    counter-reset: line-numbering;
+		    border: solid 1px #d9d9d9;
+		    border-radius: 0;
+		    background: #fff;
+		    padding: 0;
+		    line-height: 23px;
+		    margin-bottom: 30px;
+		    white-space: pre;
+		    overflow-x: auto;
+		    word-break: inherit;
+		    word-wrap: inherit;
+		}
+
+		pre a::before {
+		  content: counter(line-numbering);
+		  counter-increment: line-numbering;
+		  padding-right: 1em; /* space after numbers */
+		  width: 25px;
+		  text-align: right;
+		  opacity: 0.7;
+		  display: inline-block;
+		  color: #aaa;
+		  background: #eee;
+		  margin-right: 16px;
+		  padding: 2px 10px;
+		  font-size: 13px;
+		  -webkit-touch-callout: none;
+		  -webkit-user-select: none;
+		  -khtml-user-select: none;
+		  -moz-user-select: none;
+		  -ms-user-select: none;
+		  user-select: none;
+		}
+
+		pre a:first-of-type::before {
+		  padding-top: 10px;
+		}
+
+		pre a:last-of-type::before {
+		  padding-bottom: 10px;
+		}
+
+		pre a:only-of-type::before {
+		  padding: 10px;
+		}
+
+		.highlight { background-color: #ffffcc } /* RIGHT */
+		</style>
+  </head>
+  <body>
+	  <div>
+				<div style='width:25%;'>
+						<ul id="tree" class="ztree" style='width:100%'>
+
+						</ul>
+				</div>
+        <div id='readme' style='width:70%;margin-left:20%;'>
+          	<article class='markdown-body'>
+            	<h1 id="ajax-">Ajax  - 前后的交互技术</h1>
+<h1 id="-">服务器的概念</h1>
+<blockquote>
+<p>前言：通俗的讲，能够提供某种服务的机器（计算机）称为服务器 </p>
+</blockquote>
+<p><img src="img/server.png" alt=""></p>
+<h2 id="-">服务器软件</h2>
+<blockquote>
+<p>使计算机具备提供某种服务能力的应用软件，称为服务器软件，
+通过安装相应的服务软件，然后进行配置后就可以使计算具备了提供某种服务的能力。</p>
+</blockquote>
+<p>常见的服务器软件： <code>Apache服务器</code>、Nginx 服务器、IIS服务器、Tomcat服务器、 Node服务器等；</p>
+<h2 id="web-">web服务器</h2>
+<p>即(web服务器)网站服务器，主要提供文档(文本、图片、视频、音频)浏览服务，一般安装Apache、Nginx服务器软件。</p>
+<p>服务器可以结合某一编程语言处理业务逻辑，由此进行的开发，通常称之为<strong>服务端开发</strong>。 </p>
+<p>常见后台开发的编程语言有： <code>php</code>、java、.net、Python、Ruby、Perl。</p>
+<h1 id="-">客户端</h1>
+<blockquote>
+<p>具有向服务器<strong>索取服务</strong>能力的终端，叫做客户端。</p>
+</blockquote>
+<ul>
+<li>客户端：电脑、平板、手机安装了客户端软件，就可以称为客户端</li>
+<li>客户端：安装客户端软件，<strong>索取服务</strong>的计算机</li>
+<li>服务器：安装服务器软件，<strong>提供服务</strong>的计算机</li>
+</ul>
+<h2 id="-">客户端软件</h2>
+<p><img src="img/client.png" alt="test image size">{:width=&quot;200px&quot;}</p>
+<p>对于前端工程师而言，主要接触到的客户端软件就是<strong>浏览器</strong>。</p>
+<p>以浏览器为宿主环境，结合 HTML、CSS、Javascript等技术，而进行的一系列开发，通常称之为<strong>前端开发</strong>。</p>
+<h2 id="-">服务器与客户端的关系</h2>
+<p><img src="img/cs.png" alt=""></p>
+<p>问题：我们写的html页面存放在哪里？</p>
+<blockquote>
+<p>在浏览器中展示的所有的资源， 都是存放在服务器中的， 当客户端向服务器发送请求后，服务器会将资源返回给浏览器进行渲染；</p>
+</blockquote>
+<h1 id="-">动态网页与静态网页</h1>
+<ul>
+<li>静态网页：使用浏览器端语言进行编程，网站由静态代码（HTML.CSS,JS）组成。用户请求服务器上已经存在的页面，不需要进行业务逻辑的处理。 <img src="img/static.png" alt=""></li>
+</ul>
+<ul>
+<li>动态网站 ：网页通过服务器的程序动态生成。用户可以和服务器进行交互（可以根据用户输入的不同信息，返回不同的运行结果），可以处理复杂的业务逻辑。<img src="img/dong.png" alt=""></li>
+</ul>
+<p><strong>总结</strong></p>
+<pre><code> 动态网站的 `动`指的是网站`数据的动` 而不是 `视觉上的动`;
+</code></pre><h1 id="-">网络基础</h1>
+<pre><code class="lang-javascript">//思考：我的电脑如何去 访问京东淘宝网页的？
+</code></pre>
+<h2 id="ip-">ip地址</h2>
+<p>所谓IP地址就是给每个连接在互联网上的主机分配的一个32位地址。(就像每个人的身份证号码一样)</p>
+<p>通过ip就可以找到具体的某一台计算机。</p>
+<p>例 <code>192.168.1.110</code></p>
+<p>弊端：没有规律，不方便记忆和推广</p>
+<p>查看本机IP地址 <code>ping</code>、<code>ipconfig</code></p>
+<pre><code class="lang-javascript">ping 192.168.1.110  //查看和某个同学的电脑是否连通
+</code></pre>
+<p><strong>两种特殊的IP地址：</strong></p>
+<p><strong>127.0.0.1</strong>作为本地测试的IP地址。本机测试时，客户端与服务器都安装在本地计算机上，数据无需任何网络传输。</p>
+<p>192.168开头为局域网的地址。</p>
+<h2 id="-">域名</h2>
+<p>由于IP地址基于数字，不方便记忆，于是便用域名来代替IP地址，域名是一个IP地址的“好记的名字”</p>
+<p>查看域名对应的IP地址 <code>ping</code></p>
+<pre><code class="lang-javascript">ping jd.com  //可以获取到京东的ip
+</code></pre>
+<p><strong>特殊的域名</strong></p>
+<p>​    <code>localhost</code>，意思为本地主机。这是一个保留域名，主要用于本地测试，对应IP地址为<code>127.0.0.1</code>。</p>
+<h2 id="dns-">DNS服务器</h2>
+<p>DNS（Domain Name System）因特网上作为域名和IP地址相互映射的一个分布式数据库， 能够使用户更方便的访问互联网，而不用去记住能够被机器直接读取的IP数串。</p>
+<p>简单的说就是用于记录IP地址和域名之间的对应关系。</p>
+<p>查找优先级 本机hosts文件、DNS服务器</p>
+<p>ipconfig /flushdns 刷新DNS</p>
+<p><img src="img/dns.png" alt=""></p>
+<p>问题： 在浏览器输入<a href="http://www.jd.com">www.jd.com</a>  到 浏览器返回html页面的执行过程是什么样的？</p>
+<h2 id="-">端口</h2>
+<p>端口号是计算机与外界通讯交流的出入口，每个端口对应不同的服务。</p>
+<p>现实生活中，银行不同的窗口办理不同的业务。</p>
+<p>查看端口占用情况 netstat -an</p>
+<p>常见端口号 80：Web服务、3306：数据库、21：FTP  </p>
+<h2 id="-hosts">本地hosts</h2>
+<blockquote>
+<p>Hosts是一个没有扩展名的系统文件，可以用记事本等工具打开，其作用就是将一些常用的网址域名与其对应的IP地址建立一个关联“数据库”，当用户在浏览器中输入一个需要登录的网址时，系统会<strong>首先自动从Hosts文件中寻找对应的IP地址</strong>，一旦找到，系统会立即打开对应网页，如果没有找到，则系统会再将网址提交DNS域名解析服务器进行IP地址的解析。</p>
+</blockquote>
+<pre><code class="lang-javascript">//hosts文件的地址：C:\Windows\System32\drivers\etc
+//在浏览器中输入taobao.com的执行过程。
+</code></pre>
+<p><img src="img/host.png" alt=""></p>
+<pre><code class="lang-javascript">//hosts文件内容
+127.0.0.1 localhost
+127.0.0.1 localhost
+127.0.0.1  study.com
+127.0.0.1  www.study.com
+</code></pre>
+<p>谈资</p>
+<h1 id="-http-">搭建HTTP服务器</h1>
+<h2 id="phpstudy-">phpStudy介绍</h2>
+<blockquote>
+<p>phpStudy是一个PHP调试环境的程序集成包。
+该程序包集成最新的Apache+PHP+MySQL,安装非常的简单</p>
+</blockquote>
+<p><img src="img/phpStudy.png" alt=""></p>
+<h2 id="phpstudy-">phpStudy的安装</h2>
+<p>安装phpStudy，解压双击安装(<strong>非中文路径</strong>)，其它默认安装。</p>
+<p><strong>推荐就安装在默认的目录下，一定不能有中文，否则肯定启动不起来。</strong></p>
+<p><img src="img/phpStudy02.png" alt="">;</p>
+<h2 id="phpstudy-">phpStudy的错误解决</h2>
+<p>如果phpStudy启动发生错误，参数下列几点。</p>
+<ul>
+<li>一是防火墙拦截，</li>
+</ul>
+<ul>
+<li>二是 80端口已经被别的程序占用，如IIS，迅雷等；</li>
+</ul>
+<ul>
+<li><p>三是没有安装VC9运行库,php和apache都是VC9编译。</p>
+<p>解决以上三个问题，99%能一次性安装成功 </p>
+</li>
+</ul>
+<p>为了减少出错安装路径不得有<strong>汉字</strong>，如有防火墙开启，会提示是否信任httpd、mysqld运行，请选择全部允许。 </p>
+<h3 id="-iis-">关闭IIS服务器</h3>
+<p>如果发现服务器启动不成功，很大原因是端口被占用了，因为windows默认会有一个iis服务器，只需要把iis服务器给禁用了即可</p>
+<pre><code class="lang-javascript">//控制面板--&gt;程序--&gt;程序与功能--&gt;启用或关闭windows功能
+</code></pre>
+<p><img src="img/iis.png" alt=""></p>
+<h3 id="-vc9-">提示缺少vc9 库文件</h3>
+<p>在提供的资料库中找到<strong>phpStudy运行库</strong>， 根据自己电脑操作系统的位数安装对应的vc9运行库即可。</p>
+<p><img src="img/vc9.png" alt=""></p>
+<h3 id="-">关闭防火墙</h3>
+<p>如果希望系统自己的服务器能够被别人访问。需要关闭防火墙。</p>
+<pre><code class="lang-javascript">//控制面板---&gt;系统和安全---&gt;Windows 防火墙---&gt;启动或者关闭windows防火墙
+</code></pre>
+<h1 id="php-">PHP基础</h1>
+<p><strong>PHP简介</strong></p>
+<ul>
+<li>开源（open source）软件，跨平台，常用操作系统稳定执行。Windows / Linux。做WEB开发的经典组合 WAMP,LAMP基本都是开源软件。</li>
+</ul>
+<ul>
+<li>入门简单,用户只需要关注应用，开发成本低。</li>
+</ul>
+<ul>
+<li>支持的大多数主流数据库。MySQL，oracle,Redis等
+​</li>
+</ul>
+<blockquote>
+<p>文件以.php后缀结尾，所有程序包含在<code>&lt;?php 这里是代码 ?&gt;</code>
+避免使用中文目录和中文文件名 </p>
+<p>php页面无法直接打开需要运行在服务器环境当中</p>
+</blockquote>
+<p><strong><em>注意：学习php的目的是为了更好的学习前端技能，因为需要了解一些后台的知识，千万不要本末倒置，我们的课程重心在前端。</em></strong> </p>
+<h2 id="php-">php初体验</h2>
+<blockquote>
+<p>webstorm对于php的支持并不友好，没有高亮显示，但是也支持代码提示，功能比较微弱，如果需要专业的提示和高亮，建议使用vsCode。</p>
+</blockquote>
+<p><a href="https://code.visualstudio.com/">vsCode下载地址</a></p>
+<pre><code class="lang-php">&lt;?php
+      //echo 相当于document.write
+    echo &quot;hello world&quot;;
+?&gt;
+</code></pre>
+<p>输入中文乱码问题：如果使用echo输出中文，会乱码。</p>
+<p><strong><em>在php的语法中，末尾必须加分号，不然就报错了（最后一行可以不加分号）</em></strong></p>
+<pre><code class="lang-php">&lt;?php
+    //content-Type:text/html;返回内容是一个HTML文档，这样设置后，就能识别HTML标签了。
+    //charset=utf-8 设置编码集
+    header(&quot;content-Type:text/html;charset=utf-8&quot;);
+    echo &quot;hello world&quot;;
+    echo &quot;&lt;br/&gt;&quot;;
+    echo &quot;大家好，我是春哥&quot;;
+?&gt;
+</code></pre>
+<pre><code class="lang-javascript">//思考：浏览器访问php文件时，过程是怎么样的？
+</code></pre>
+<h2 id="-">变量</h2>
+<blockquote>
+<p>php是一门弱类型语法，变量的类型可以随意改变。
+变量其实就是存储数据的容器</p>
+</blockquote>
+<p><strong>变量的命名规则</strong></p>
+<pre><code class="lang-php">//1. 不需要关键字进行声明，变量在第一次赋值的时候被创建。
+//2. 必须以$符号开始
+//3. $后面的命名规则与js的变量命名规则一致。
+$name = &quot;春哥&quot;;
+echo $name;
+</code></pre>
+<h2 id="-">数据类型</h2>
+<h3 id="-">简单数据类型</h3>
+<p><strong>字符串</strong> </p>
+<pre><code class="lang-php">$str = &quot;春哥&quot;;
+echo $str;
+</code></pre>
+<p><strong>整数</strong> </p>
+<pre><code class="lang-php">$num = 100;
+echo $num;
+</code></pre>
+<p><strong>浮点型</strong> </p>
+<pre><code class="lang-php">$float = 11.11;
+echo $float;
+</code></pre>
+<p><strong>布尔类型</strong> </p>
+<pre><code class="lang-php">$flag = true;
+//当布尔类型值为true时，输出1
+echo $flag;
+$flag = false;
+//当布尔类型为false时，输出空字符串
+echo $flag;
+</code></pre>
+<p><strong>字符串连接符</strong> </p>
+<pre><code class="lang-php">//1. 在php中，+号只有算数的功能，并不能拼串
+//2. 在php中，拼串使用.
+$name = &quot;春哥&quot;;
+echo &quot;大家好，我是&quot; . $name . &quot;，今年18岁&quot;;
+</code></pre>
+<p><strong>php中的单引号与双引号</strong></p>
+<pre><code class="lang-php">//1. 字符串的定义可以使用单引号，也可以使用双引号
+$name = &quot;春哥&quot;;
+$desc = &#39;很帅&#39;;
+//2. 双引号可以解析变量
+//3. 单引号的性能会高于双引号（了解）
+
+$name = &quot;春哥&quot;;//春哥
+echo $name;
+$desc = &#39;很帅&#39;;
+echo $desc;//很帅
+
+$str = &#39;$name 很帅&#39;;//$name 很帅
+echo $str;
+
+$str = &quot;$name 很帅&quot;;//春哥 很帅
+echo $str;
+</code></pre>
+<h3 id="-">数组</h3>
+<blockquote>
+<p>在php中，数组分为两种，索引数组和关联数组</p>
+<p>计算数组长度的方法： count(数组名);</p>
+</blockquote>
+<p><strong>索引数组（类似与JS中的数组）</strong></p>
+<pre><code class="lang-php">$arr = array(&quot;张飞&quot;,&quot;赵云&quot;,&quot;马超&quot;);
+echo $arr;//echo只能打印基本数据类型
+echo $arr[0];//张飞
+</code></pre>
+<p><strong>关联数组（类似与JS中的对象）</strong> </p>
+<pre><code class="lang-php">//属性名必须用引号引起来
+$arr = array(&quot;name&quot;=&gt;&quot;zhangsan&quot;, &quot;age&quot;=&gt;18);
+echo $arr[&quot;name&quot;];
+</code></pre>
+<p><strong>输出语句</strong> </p>
+<pre><code class="lang-php">//1. echo 输出简单数据类型
+//2. print_r 输出数据结构，一般用于输出复杂类型。
+print_r($arr);//print_r是一个函数，不要忘记小括号
+//3. var_dump 输出完整的数据结构，包括类型，一般用于精准调试
+var_dump($arr);
+</code></pre>
+<h2 id="-">语句</h2>
+<h3 id="-">判断语句</h3>
+<p>基本上来说，所有语言的if..else语法都是一样</p>
+<pre><code class="lang-php">$age = 17;
+if ($age &gt;= 18) {
+  echo &quot;终于可以看电影了,嘿嘿嘿&quot;;
+} else {
+  echo &quot;哎，还是回家学习吧&quot;;
+}
+</code></pre>
+<h3 id="-">循环语句</h3>
+<p><strong>遍历索引数组</strong> </p>
+<pre><code class="lang-php">$arr = array(&quot;张三&quot;, &quot;李四&quot;, &quot;王五&quot;, &quot;赵六&quot;, &quot;田七&quot;, &quot;王八&quot;);
+//获取数组的长度： count($arr)
+for($i = 0; $i &lt; count($arr); $i++) {
+  echo $arr[$i];
+  echo &quot;&lt;br&gt;&quot;;
+}
+</code></pre>
+<p><strong>遍历关联数组</strong> </p>
+<pre><code class="lang-php">//遍历关联数组
+$arr = array(
+  &quot;name&quot;=&gt;&quot;zs&quot;,
+  &quot;age&quot;=&gt;18,
+  &quot;sex&quot;=&gt;20
+);
+foreach($arr as $key =&gt; $value) {
+  echo $key . &quot;=&quot; . $value . &quot;&lt;br&gt;&quot;;
+}
+</code></pre>
+<h1 id="-">表单提交</h1>
+<p><img src="img/form.png" alt=""></p>
+<blockquote>
+<p>表单（form）：表单用于收集用户输入信息，并将数据提交给服务器。是一种常见的与服务端数据交互的一种方式</p>
+</blockquote>
+<pre><code class="lang-javascript">//1. action：指定表单的提交地址
+//2. method:指定表单的提交方式，get/post，默认get
+//3. input的数据想要提交到后台，必须指定name属性，后台通过name属性获取值
+//4. 想要提交表单，不能使用input:button 必须使用input:submit
+</code></pre>
+<p><strong>php获取表单数据</strong> </p>
+<pre><code> //$_GET是PHP系统提供的一个超全局变量，是一个数组，里面存放了表单通过get方式提交的数据。
+ //$_POST是PHP系统提供的一个超全局变量，是一个数组，里面存放了表单通过post方式提交的数据。
+</code></pre><p><strong>get与post的区别</strong> </p>
+<pre><code class="lang-javascript">//1. get方式
+    //1.1 数据会拼接在url地址的后面?username=hcc&amp;password=123456
+    //1.2 地址栏有长度限制，因此get方式提交数据大小不会超过4k
+//2. post方式
+    //2.1 数据不会在url中显示，相比get方式，post更安全
+    //2.2 提交的数据没有大小限制
+//3. request方式
+    //以上两种方式的集合
+//根据HTTP规范，GET用于信息获取，POST表示可能修改变服务器上的资源的请求
+</code></pre>
+<h1 id="http-">http协议</h1>
+<blockquote>
+<p>协议是指计算机通信网络中两台计算机之间进行通信所必须共同遵守的规定或规则
+HTTP协议，即超文本传输协议(Hypertext transfer protocol)。是一种详细规定了浏览器和服务器之间互相通信的规则，HTTP协议分为<strong>请求</strong> 和<strong>响应</strong> 两个部分组成。</p>
+</blockquote>
+<h2 id="-">服务状态码</h2>
+<pre><code class="lang-javascript">//200 响应的状态
+//200表示成功
+//304表示读缓存
+//404表示找不到资源
+//500表示服务端错误
+</code></pre>
+<h2 id="-">请求与请求报文</h2>
+<p><strong>get请求的请求报文详解</strong> </p>
+<p><img src="img\get请求报文.png" alt="get请求报文"></p>
+<p><strong>POST请求的请求报文</strong> </p>
+<p><img src="img\post请求报文的格式.png" alt="post请求报文的格式"></p>
+<p><strong>GET请求与POST请求的对比</strong> </p>
+<ul>
+<li>GET请求没有请求体，因为GET请求的参数拼接到地址栏中了</li>
+<li>POST请求有请求体，就是传递的参数</li>
+<li>POST请求需要指定content-type属性。</li>
+</ul>
+<h2 id="-">响应与响应报文</h2>
+<p><img src="img\响应报文.png" alt="响应报文"></p>
+<p>通常来说，我们不会用抓包工具来查看请求和响应，太麻烦了，可以直接使用谷歌浏览器来查看请求报文和响应报文。</p>
+<p>谷歌浏览器会对报文进行一定的格式化，看起来虽然不是原生的报文，但是使用起来更加的方便简洁。</p>
+<p>注意：<code>name=zs&amp;sex=nan</code> 查询字符串</p>
+<h1 id="ajax">AJAX</h1>
+<blockquote>
+<p>即 Asynchronous [e&#39;sɪŋkrənəs] Javascript And XML， AJAX 不是一门的新的语言，而是对现有技术的综合利用。 本质是在HTTP协议的基础上以异步的方式与服务器进行通信。</p>
+</blockquote>
+<h2 id="-">同步与异步</h2>
+<p>同步和异步概念：</p>
+<p>同步: 指的就是事情要一件一件做。等做完前一件才能做后一件任务</p>
+<p>异步: 不受当前任务的影响，两件事情同时进行，做一件事情时，不影响另一件事情的进行。</p>
+<p>编程中：异步程序代码执行时不会阻塞其它程序代码执行,从而提升整体执行效率。</p>
+<p>ajax技术的应用：</p>
+<ol>
+<li>验证你的用户名是否已经存在（一边输入，一边获取你的信息，和后台比对）。</li>
+<li>百度搜索提示，及相关内容展示（一边输入，一边找出了你可能要的内容）。</li>
+</ol>
+<p>XMLHttpRequest可以以异步方式的处理程序。</p>
+<h2 id="xmlhttprequest">XMLHttpRequest</h2>
+<blockquote>
+<p>浏览器内建对象，用于与服务器通信(交换数据) ， 由此我们便可实现对网页的部分更新，而不是刷新整个页面。这个请求是异步，即在往服务器发送请求时，并不会阻碍程序的运行，浏览器会继续渲染后续的结构。</p>
+</blockquote>
+<h3 id="-get-">发送get请求</h3>
+<p>XMLHttpRequest以异步的方式发送HTTP请求，因此在发送请求时，一样需要遵循HTTP协议。</p>
+<pre><code class="lang-javascript">//使用XMLHttpRequest发送get请求的步骤
+//1. 创建一个XMLHttpRequest对象
+var xhr = new XMLHttpRequest（）;//构造函数没有参数的情况,括号可以省略
+//2. 设置请求行
+//第一个参数:请求方式  get/post
+//第二个参数:请求的地址 需要在url后面拼上参数列表
+//第三个参数：默认为true，是否异步处理数据
+xhr.open(&quot;get&quot;, &quot;08.php?name=hucc&quot;,true);
+//3. 设置请求头
+//浏览器会给我们默认添加基本的请求头,get请求时无需设置
+xhr.setRequestHeader(&#39;content-type&#39;,&#39;text/html&#39;);
+//4. 设置请求体
+//get请求的请求体为空,因为参数列表拼接到url后面了
+xhr.send(null);
+</code></pre>
+<ul>
+<li>get请求,设置请求行时,需要把参数列表拼接到url后面</li>
+<li>get请求不用设置请求头</li>
+<li>get请求的请求体为null</li>
+</ul>
+<h3 id="-post-">发送post请求</h3>
+<pre><code class="lang-javascript">var xhr = new XMLHttpRequest;
+//1. 设置请求行 post请求的参数列表在请求体中
+xhr.open(&quot;post&quot;, &quot;09.php&quot;);
+//2. 设置请求头, post请求必须设置content-type,不然后端无法获取到数据
+xhr.setRequestHeader(&quot;content-type&quot;, &quot;application/x-www-form-urlencoded&quot;);
+//3. 设置请求体
+xhr.send(&quot;name=hucc&amp;age=18&quot;);
+</code></pre>
+<ul>
+<li>post请求,设置请求行时,参数列表不能拼接到url后面</li>
+<li>post必须设置请求头中的content-type为application/x-www-form-urlencoded</li>
+<li>post请求需要将参数列表设置到请求体中.</li>
+</ul>
+<h3 id="-">获取响应</h3>
+<p>HTTP响应分为3个部分，状态行、响应头、响应体。</p>
+<pre><code class="lang-javascript">//给xhr注册一个onload事件，当xhr的状态发生状态发生改变时，会触发这个事件。
+xhr.onload = function () { 
+    //1. 获取状态行
+    //&quot;状态行:&quot;
+      xhr.status;
+    //2. 获取响应头
+    //所有的相应头
+    xhr.getAllResponseHeaders();
+    //指定相应头
+    xhr.getResponseHeader(&quot;content-type&quot;));
+    //3. 获取响应体
+   xhr.responseText;
+
+</code></pre>
+<p><strong>readyState</strong> </p>
+<blockquote>
+<p>readyState:记录了XMLHttpRequest对象的当前状态</p>
+</blockquote>
+<pre><code class="lang-javascript">//0：请求未初始化。
+//1：请求已经建立，但是还没有开始发送。
+//2：请求已发送，正在处理中
+//3：请求在处理中；通常响应中已有部分数据可用了，但是服务器还没有完成响应的生成。
+//4：响应已完成；您可以获取并使用服务器的响应了。(我们只需要关注状态4即可)
+</code></pre>
+<h2 id="-">数据交互</h2>
+<blockquote>
+<p>浏览器端只是负责用户的交互和数据的收集以及展示，真正的数据都是存储在服务器端的。我们现在通过ajax的确可以返回一些简单的数据（一个字符串），但是在实际开发过程中，肯定会会设计到大量的复杂类型的数据传输，比如数组、对象等，但是每个编程语言的语法都不一样。因此我们会采用通过的数据交换格式（XML、JSON）来进行数据的交互。</p>
+</blockquote>
+<h3 id="xml">XML</h3>
+<p><strong>什么是XML</strong></p>
+<ul>
+<li>XML 指可扩展标记语言（EXtensible Markup Language）</li>
+<li>XML 是一种标记语言，很类似 HTML</li>
+<li>XML 的设计宗旨是传输数据，而非显示数据</li>
+<li>XML 标签没有被预定义。您需要自行定义标签。</li>
+</ul>
+<p><strong>语法规范</strong></p>
+<ul>
+<li>第一行必须是版本信息</li>
+<li>必须有一个根元素（有且仅有一个）</li>
+<li>标签不可有空格、不可以数字或.开头、大小写敏感</li>
+<li>不可交叉嵌套，都是双标签，如果是单标签，必须闭合</li>
+<li>属性双引号（浏览器自动修正成双引号了）</li>
+<li>特殊符号要使用转义字符</li>
+<li>注释和HTML一样</li>
+</ul>
+<pre><code class="lang-xml">&lt;students&gt;
+    &lt;student&gt;
+        &lt;name&gt;张三&lt;/name&gt;
+        &lt;age&gt;18&lt;/age&gt;
+        &lt;gender&gt;男&lt;/gender&gt;
+        &lt;desc&gt;路人甲&lt;/desc&gt;
+    &lt;/student&gt;
+    &lt;student&gt;
+        &lt;name&gt;李四&lt;/name&gt;
+        &lt;age&gt;20&lt;/age&gt;
+        &lt;gender&gt;男&lt;/gender&gt;
+        &lt;desc&gt;路人乙&lt;/desc&gt;
+    &lt;/student&gt;
+&lt;/students&gt;
+</code></pre>
+<p><strong>php获取xml文件的内容</strong></p>
+<pre><code class="lang-php">//注意，如果需要返回xml数据，需要把content-type改成text/xml,不然浏览器以text/html进行解析。
+header(&#39;content-type:text/xml;charset=utf-8&#39;);
+//用于获取文件的内容
+//参数：文件的路径
+$result = file_get_contents(&quot;data.xml&quot;);
+echo $result;
+</code></pre>
+<p><strong>html解析xml</strong></p>
+<pre><code class="lang-javascript">//获取服务端返回的xml数据，需要使用xhr.responseXML，这是一个document对象，可以使用DOM中的方法查找元素。
+var data = xhr.responseXML;
+//获取所有的学生
+var students = data.querySelectorAll(&quot;student&quot;);
+</code></pre>
+<p>缺点：虽然可以描述和传输复杂数据，但是其解析过于复杂并且体积较大，所以实现开发已经很少使用了。</p>
+<h3 id="json-">JSON数据</h3>
+<p>JSON(JavaScript Object Notation, JS 对象标记) 是一种轻量级的数据交换格式。它基于 ECMAScript 规范的一个子集，采用完全独立于编程语言的文本格式来存储和表示数据。</p>
+<ul>
+<li>数据在键值对中</li>
+<li>数据由逗号分隔(最后一个健/值对不能带逗号)</li>
+<li>花括号保存对象，方括号保存数组</li>
+<li>键使用双引号</li>
+</ul>
+<pre><code class="lang-javascript"> var json1 = &#39;{&quot;a&quot;: &quot;Hello&quot;, &quot;b&quot;: &quot;World&quot;}&#39;; 
+ var json2 = &#39;[{&quot;a&quot;: &quot;Hello&quot;, &quot;b&quot;: &quot;World&quot;},{&quot;a&quot;: &quot;Hello&quot;, &quot;b&quot;: &quot;World&quot;}]&#39;; 
+//这是一个 JSON 字符串，本质是一个字符串
+</code></pre>
+<p><strong>JSON数据在不同语言进行传输时，类型为字符串，不同的语言各自也都对应有解析方法，需要解析完成后才能读取</strong></p>
+<h4 id="js-json">JS处理json</h4>
+<ul>
+<li>JS对象 ==&gt; JSON字符串 JSON.stringify(obj)</li>
+</ul>
+<pre><code class="lang-javascript">//obj是一个js对象
+var obj = {a: &#39;Hello&#39;, b: &#39;World&#39;}
+//result就变成了一个json字符串了
+var result = JSON.stringify(obj);
+// &#39;{&quot;a&quot;: &quot;Hello&quot;, &quot;b&quot;: &quot;World&quot;}&#39;
+</code></pre>
+<ul>
+<li>JSON字符串 ==&gt; JS对象  JSON.parse(obj)</li>
+</ul>
+<pre><code class="lang-javascript">//json是一个json字符串
+var json = &#39;{&quot;a&quot;: &quot;Hello&quot;, &quot;b&quot;: &quot;World&quot;}&#39;;
+//obj就变成了一个js对象
+var obj = JSON.parse(json);
+// {a: &#39;Hello&#39;, b: &#39;World&#39;}
+</code></pre>
+<h4 id="php-json">php处理json</h4>
+<ul>
+<li>php关联数组==&gt; json</li>
+</ul>
+<pre><code class="lang-php">// php的关联数组
+$obj = array(
+  &quot;a&quot;=&gt;&quot;hello&quot;,
+  &quot;b&quot;=&gt;&quot;world&quot;,
+  &quot;name&quot;=&gt;&quot;胡聪聪&quot;
+);
+//json字符串
+$json = json_encode($obj);
+echo $json;
+</code></pre>
+<ul>
+<li>json===&gt;php对象</li>
+</ul>
+<pre><code class="lang-php">$json = &#39;{&quot;a&quot;: &quot;Hello&quot;, &quot;b&quot;: &quot;World&quot;}&#39;;
+//json字符串
+//第一个参数：json字符串
+//第二个参数：
+    //false，将json转换成对象(默认)
+    //true：将对象转换成数组(推荐)
+$obj = json_decode($json,true);
+echo $obj[&#39;a&#39;];
+
+//通过json文件获取到的内容就是一个json字符串。
+$data = file_get_contents(&quot;data.json&quot;);
+//将json转换成数组
+$result = json_decode($data, true);
+print_r($result);
+</code></pre>
+<p>使用json进行数据传输</p>
+<p>思考：</p>
+<ol>
+<li>js有一个对象，如何发送到php后台</li>
+<li>php中有一个对象，如何发送到前台。</li>
+</ol>
+<p>【案例：获取表格数据.html】</p>
+<h2 id="-">兼容性处理</h2>
+<pre><code class="lang-javascript">var xhr = null;
+if(XMLHttpRequest){
+  //现代浏览器
+  xhr = new  XMLHttpRequest();
+}else{
+  //IE5.5支持
+  xmlHttp=new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);
+}
+</code></pre>
+<p><strong>前后端分离</strong></p>
+<p>​    我们使用php动态渲染页面时，有很多比较麻烦的地方。</p>
+<ul>
+<li>在前端写好页面以后，需要后台进行修改，意味这后端程序员也需要懂前端的知识，其实渲染的工作应该交给前端来做。</li>
+<li>前端没有写好页面的话，后端无法开始工作，需要等待前端的页面完成之后才能开始工作，拖延项目 的进度。</li>
+<li>在客户端设备多元化的情况下，后台渲染的页面无法满足所有用户的需求</li>
+<li>前后端代码混合在一个文件中，项目修改和维护成本高​</li>
+</ul>
+<h2 id="jquery-ajax-">jQuery中的ajax方法</h2>
+<blockquote>
+<p>jQuery为我们提供了更强大的Ajax封装</p>
+</blockquote>
+<h3 id="-ajax">$.ajax</h3>
+<p>参数列表</p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>描述</th>
+<th>取值</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>url</td>
+<td>接口地址</td>
+<td></td>
+<td>url:&quot;02.php&quot;</td>
+</tr>
+<tr>
+<td>type</td>
+<td>请求方式</td>
+<td>get/post</td>
+<td>type:&quot;get&quot;</td>
+</tr>
+<tr>
+<td>timeout</td>
+<td>超时时间</td>
+<td>单位毫秒</td>
+<td>timeout:5000</td>
+</tr>
+<tr>
+<td>dataType</td>
+<td>服务器返回的格式</td>
+<td>json/xml/text(默认)</td>
+<td>dataType:&quot;json&quot;</td>
+</tr>
+<tr>
+<td>data</td>
+<td>发送的请求数据</td>
+<td>对象</td>
+<td>data:{name:&quot;zs&quot;, age:18}</td>
+</tr>
+<tr>
+<td>beforeSend</td>
+<td>调用前的回调函数</td>
+<td>function(){}</td>
+<td>beforeSend:function(){ alert(1) }</td>
+</tr>
+<tr>
+<td>success</td>
+<td>成功的回调函数</td>
+<td>function (data) {}</td>
+<td>success:function (data) {}</td>
+</tr>
+<tr>
+<td>error</td>
+<td>失败的回调函数</td>
+<td>function (error) {}</td>
+<td>error:function(data) {}</td>
+</tr>
+<tr>
+<td>complete</td>
+<td>完成后的回调函数</td>
+<td>function () {}</td>
+<td>complete:function () {}</td>
+</tr>
+</tbody>
+</table>
+<p>使用示例：</p>
+<pre><code class="lang-javascript">$.ajax({
+  type:&quot;get&quot;,//请求方式，默认值get
+  url:&quot;02.php&quot;,//请求地址
+  data:{name:&quot;zs&quot;, age:18},//请求数据,是一个对象或者拼接字符串
+  dataType:&quot;json&quot;,//希望接受的数据类型，默认text；当设置为json时，$.ajax将返回的值自动解析（JSON.parse()）;
+  timeout:5000,//设置超时时间
+  beforeSend:function () {
+    //alert(&quot;发送前调用&quot;);
+  },
+  success:function (data) {
+    //alert(&quot;成功时调用&quot;);
+    console.log(data);
+      //data服务器返回的数据
+  },
+  error:function (error) {
+    //alert(&quot;失败时调用&quot;);
+    console.log(error);
+  },
+  complete:function () {
+    //alert(&quot;请求完成时调用&quot;);
+     //不论请求成功与否，请求结束后都会执行
+     //用于执行一些收尾的工作，复位/垃圾回收
+  }
+});
+</code></pre>
+<p>【案例：登录案例.html】</p>
+<h3 id="-api-">其他api(了解)</h3>
+<pre><code class="lang-javascript">//$.post(url, callback, [dataType]);只发送post请求
+//$.get(url, callback, [dataType]);
+//$.getJSON(url, callback);
+//$.getScript(url,callback);//载入服务器端的js文件
+//$(&quot;div&quot;).load(url);//载入一个服务器端的html页面。
+</code></pre>
+<h3 id="-">接口化开发</h3>
+<p>请求地址即所谓的接口，通常我们所说的接口化开发，其实是指一个接口对应一个功能， 并且严格约束了<strong>请求参数</strong> 和<strong>响应结果</strong> 的格式，这样前后端在开发过程中，可以减少不必要的讨论， 从而并行开发，可以极大的提升开发效率，另外一个好处，当网站进行改版后，服务端接口进行调整时，并不影响到前端的功能。</p>
+<h4 id="-">接口文档</h4>
+<p>数据接口文档案例网站：聚合数据网站<a href="https://www.juhe.cn/">https://www.juhe.cn/</a> </p>
+<pre><code class="lang-javascript">//前端有哪些地方依赖与后台
+$.ajax({
+    //以下都是后台决定的
+    url:&quot;&quot;,
+    type:&quot;&quot;,
+    data:&quot;&quot;,
+    dataType:&quot;&quot;
+});
+</code></pre>
+<h4 id="-">表单序列化</h4>
+<p>jquery提供了一个<code>serialize()</code>方法序列化表单，说白就是将表单中带有name属性的所有参数拼成一个格式为<code>name=value&amp;name1=value1</code>这样的字符串。方便我们获取表单的数据。</p>
+<pre><code class="lang-javascript">//serialize将表单参数序列化成一个字符串。必须指定name属性
+//name=hucc&amp;pass=123456&amp;repass=123456&amp;mobile=18511249258&amp;code=1234
+$(&#39;form&#39;).serialize();
+
+</code></pre>
+<p><strong>jquery的ajax方法，data参数能够直接识别表单序列化的数据<code>data:$(&#39;form&#39;).serialize()</code></strong></p>
+<pre><code class="lang-javascript">$.post({
+  url:&quot;register.php&quot;,
+  data:$(&#39;form&#39;).serialize(),
+  dataType:&#39;json&#39;,
+  success:function (info) {
+    console.log(info);
+  }
+});
+</code></pre>
+<p>注意：DOM中自带重置表单方法reset();</p>
+<p><strong>需求文档</strong></p>
+<pre><code class="lang-javascript">//注册功能
+//总需求：点击注册按钮，向服务端发送请求
+//需求1:表单校验
+  //1.1 用户名不能为空，否则提示&quot;请输入用户名&quot;
+  //1.2 密码不能为空，否则提示&quot;请输入密码&quot;
+  //1.3 确认密码必须与密码一直，否则提示&quot;确认密码与密码不一致&quot;
+  //1.4 手机号码不能为空，否则提示&quot;请输入手机号码&quot;;
+  //1.5 手机号码格式必须正确，否则提示&quot;手机号格式错误&quot;
+  //1.6 短信验证码必须是4位的数字，否则提示&quot;验证码格式错误&quot;
+//需求2：点击注册按钮时，按钮显示为&quot;注册中...&quot;,并且不能重复提交请求
+//需求3：根据不同响应结果，处理响应
+    //3.1显示注册结果
+</code></pre>
+<h1 id="-">模板引擎</h1>
+<blockquote>
+<p>是为了使用户界面与业务数据（内容）分离而产生的，它可以生成特定格式的文档，用于网站的模板引擎就会生成一个标准的HTML文档。</p>
+</blockquote>
+<h2 id="-">为什么要使用模板引擎</h2>
+<p>我们通过ajax获取到数据后，需要把数据渲染到页面，在学习模板引擎前，我们的做法是大量的拼接字符串，对于结构简单的页面，这么做还行，但是如果页面结构很复杂，使用拼串的话<strong>代码可阅读性非常的差，而且非常容易出错，后期代码维护也是相当的麻烦。</strong> </p>
+<p>【演示：使用拼串进行渲染的缺点.html】</p>
+<p>作用：代替前面渲染数据是拼接字符串操作</p>
+<p>实际工作渲染数据使用的模板引擎 </p>
+<h2 id="-">常见的模板引擎</h2>
+<p>BaiduTemplate：<a href="http://wangxiao.github.io/BaiduTemplate/">http://wangxiao.github.io/BaiduTemplate/</a></p>
+<p>VelocityTemplate：<a href="https://github.com/shepherdwind/velocity.js/">https://github.com/shepherdwind/velocity.js/</a></p>
+<p>ArtTemplate：<a href="https://github.com/aui/artTemplate">https://github.com/aui/artTemplate</a></p>
+<p>artTemplate是使用最广泛，效率最高的模板引擎，需要大家掌握由腾讯公司开源提供。</p>
+<h2 id="arttemplate-">artTemplate的使用</h2>
+<p><a href="https://github.com/aui/art-template">github地址</a></p>
+<p><a href="https://aui.github.io/art-template/docs/">中文api地址</a></p>
+<h3 id="arttemplate-">artTemplate入门</h3>
+<p><strong>1.引入模板引擎的js文件</strong> </p>
+<pre><code class="lang-javascript">&lt;script src=&quot;template-web.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<p><strong>2.准备模板</strong> </p>
+<pre><code class="lang-html">&lt;!--
+  指定了type为text/template后，这一段script标签并不会解析，也不会显示     //{{    }} 插值表达式
+--&gt;
+&lt;script type=&quot;text/template&quot; id=&quot;tmp&quot;&gt;
+  &lt;p&gt;姓名：{{ username }}&lt;/p&gt;  
+  &lt;p&gt;年龄：{{ age }}&lt;/p&gt;
+  &lt;p&gt;技能：{{ skill }}&lt;/p&gt;
+  &lt;p&gt;描述：{{desc }}&lt;/p&gt;
+&lt;/script&gt;
+</code></pre>
+<p><strong>3.准备数据</strong></p>
+<pre><code class="lang-javascript">//3. 准备数据,数据是后台获取的，可以随时变化
+var json = {
+  userName:&quot;隔壁老王&quot;,
+  age:18,
+  skill:&quot;查水表&quot;,
+  desc:&quot;年轻气壮&quot;
+}
+</code></pre>
+<p><strong>4.将模板与数据进行绑定</strong></p>
+<pre><code class="lang-javascript">//第一个参数：模板的id
+//第二个参数：数据
+//返回值：根据模板生成的字符串。
+var html = template(&quot;Tmp&quot;, json);
+console.log(html);
+</code></pre>
+<p><strong>5.将数据显示到页面</strong></p>
+<pre><code class="lang-javascript">var div = document.querySelector(&quot;div&quot;);
+div.innerHTML = html;
+</code></pre>
+<p><strong>注意：</strong></p>
+<ul>
+<li><p>传递给模板引擎的数据必须是对象，解决方案见下方</p>
+</li>
+<li><p>在模板中直接使用对象的属性名</p>
+</li>
+</ul>
+<pre><code class="lang-JavaScript">//数据包装成对象
+//
+var num = 10；
+var obj ={
+    num ：num
+}
+
+var res = [{},{},{},{}];
+var obj ={
+    list : res
+}
+//模板
+/*{{each list v i}}
+    &lt;li&gt; v.name &lt;li/&gt;
+  {{/each}}*/
+</code></pre>
+<h3 id="arttemplate-">artTemplate语法</h3>
+<pre><code class="lang-javascript">//模板基本语法  插值表达式
+{{    }}
+</code></pre>
+<p><strong>if语法</strong></p>
+<pre><code class="lang-html">{{if gender=&#39;男&#39;}}
+  &lt;div class=&quot;man&quot;&gt;
+{{else}}
+  &lt;div class=&quot;woman&quot;&gt;
+{{/if}}
+</code></pre>
+<p><strong>each语法</strong></p>
+<pre><code class="lang-html">&lt;!--
+  1. {{each data}}  可以通过$value 和 $index获取值和下标
+  2. {{each data v i}}  自己指定值为v，下标为i
+--&gt;
+{{each data v i}}
+&lt;li&gt;
+  &lt;a href=&quot;{{v.url}}&quot;&gt;
+    &lt;img src=&quot;{{v.src}}&quot; alt=&quot;&quot;&gt;
+    &lt;p&gt;{{v.content}}&lt;/p&gt;
+   &lt;/a&gt;
+ &lt;/li&gt;
+{{/each}}
+</code></pre>
+<pre><code class="lang-javascript">//如果返回的数据是个数组，必须使用对象进行包裹，因为在{{}}中只写书写对象的属性。
+var html = template(&quot;navTmp&quot;, {data:info});
+</code></pre>
+<h1 id="xmlhttprequest-2-0">XMLHttpRequest 2.0</h1>
+<blockquote>
+<p>XMLHttpRequest是一个javascript内置对象，使得Javascript可以进行异步的HTTP通信。2008年2月，就提出了XMLHttpRequest Level 2 草案。</p>
+</blockquote>
+<p>老版本的XMLHttpRequest的缺点：</p>
+<pre><code class="lang-javascript">//1. 仅支持传输文本数据，无法传说二进制文件，比如图片视频等。
+//2. 传输数据时，没有进度信息，只能提示完成与否。
+//3. 受到了&quot;同源策略&quot;的限制
+</code></pre>
+<p>新版本的功能：</p>
+<pre><code class="lang-javascript">//1. 可以设置timeout 超时时间
+//2. 可以使用formData对象管理表单数据
+//3. 可以获取数据传输的进度信息
+</code></pre>
+<p><strong>注意：我们现在使用new XMLHttpRequest创建的对象就是2.0对象了，我们之前学的是1.0的语法，  现在学习一些2.0的新特性即可。</strong>  </p>
+<h2 id="timeout-">timeout设置超时</h2>
+<pre><code class="lang-javascript">xhr.timeout = 3000;//设置超时时间
+xhr.ontimeout = function(){
+  alert(&quot;请求超时&quot;);
+}
+</code></pre>
+<h2 id="formdata-">formData管理表单数据</h2>
+<blockquote>
+<p>formData对象类似于jquery的serialize方法，用于管理表单数据和文件</p>
+</blockquote>
+<pre><code class="lang-javascript">//使用特点： 
+//1. 实例化一个formData对象， new formData(form); form就是表单元素
+//4. formData对象可以直接作为 xhr.send(formData)的参数。注意此时数据是以二进制的形式进行传输。
+//5. formData有一个append方法，可以添加参数。formData.append(&quot;id&quot;, &quot;1111&quot;);
+//6. 这种方式只能以post形式传递，不需要设置请求头，浏览器会自动为我们设置一个合适的请求头。
+</code></pre>
+<p>注意：使用formData，请求方式必须使用post，不需要手动设置请求头</p>
+<p>代码示例：</p>
+<pre><code class="lang-javascript">//1. 使用formData必须发送post请求
+    xhr.open(&quot;post&quot;, &quot;02-formData.php&quot;);
+
+//2. 获取表单元素
+var form = document.querySelector(&quot;#myForm&quot;);
+//3. 创建form对象，可以直接作为send的参数。
+var formData = new FormData(form);
+
+//4. formData可以使用append方法添加参数
+formData.append(&quot;id&quot;, &quot;1111&quot;);
+
+//5. 发送，不需要指定请求头，浏览器会自动选择合适的请求头
+xhr.send(formData);
+</code></pre>
+<h2 id="-">文件上传</h2>
+<blockquote>
+<p>以前，文件上传需要借助表单进行上传，但是表单上传是同步的，也就是说文件上传时，页面需要提交和刷新，用户体验不友好，xhr2.0中的formData对象支持文件的异步上传。</p>
+</blockquote>
+<pre><code class="lang-javascript">var formData = new FormData();
+//获取上传的文件，传递到后端
+var file=document.getElementById(&quot;file&quot;).files[0];
+formData.append(&quot;file&quot;, file);
+xhr.send(formData);
+
+//阻止提交按钮的默认行为
+btn.onclick = function(){
+    e.preventDefault();//阻止浏览器的默认行为
+}
+</code></pre>
+<h2 id="-">显示文件进度信息</h2>
+<blockquote>
+<p>xhr2.0还支持获取上传文件的进度信息，因此我们可以根据进度信息可以实时的显示文件的上传进度。</p>
+</blockquote>
+<pre><code class="lang-javascript">1. 需要注册 xhr.upload.onprogress = function(e){} 事件，用于监听文件上传的进度.
+注意：需要在send之前注册。
+2. 上传的进度信息会存储事件对象e中
+3. e.loaded表示已上传的大小   e.total表示整个文件的大小
+公式：文件上传进度=已经上传大小/文件总大小
+</code></pre>
+<p>代码参考：</p>
+<pre><code class="lang-javascript">xhr.upload.onprogress = function (e) {
+
+  inner.style.width = (e.loaded/e.total*100).toFixed(2)+&quot;%&quot;;
+  span.innerHTML = (e.loaded/e.total*100).toFixed(2)+&quot;%&quot;;
+}
+
+xhr.send(formData);
+</code></pre>
+<p>如果上传文件超过8M，php会报错，需要进行设置，允许php上传大文件。</p>
+<p><img src="img\upload01.png" alt=""></p>
+<p><img src="img\upload02.png" alt=""></p>
+<h1 id="-">同源与跨域</h1>
+<h2 id="-">同源</h2>
+<p>不同源 则跨域 </p>
+<h3 id="-">同源策略的基本概念</h3>
+<blockquote>
+<p>1995年，同源政策由 Netscape 公司引入浏览器。目前，所有浏览器都实行这个政策。
+同源策略：最初，它的含义是指，A网页设置的 Cookie，B网页不能打开，除非这两个网页&quot;同源&quot;。现在浏览器的所谓&quot;同源&quot;指的是&quot;三个相同&quot;:协议相同、域名相同、端口相同</p>
+</blockquote>
+<pre><code class="lang-javascript">协议相同 http/https
+域名相同 www.baidu.com
+端口相同 80/8080
+</code></pre>
+<p>举例来说，<code>http://www.example.com/dir/page.html</code>这个网址，协议是<code>http://</code>，域名是<code>www.example.com</code>，端口是<code>80</code>（默认端口可以省略）。它的同源情况如下。</p>
+<pre><code class="lang-javascript">//http://www.example.com/dir2/other.html：同源
+//http://example.com/dir/other.html：不同源（域名不同）
+//http://v2.www.example.com/dir/other.html：不同源（域名不同）
+//http://www.example.com:81/dir/other.html：不同源（端口不同）
+</code></pre>
+<h3 id="-">同源策略的目的</h3>
+<blockquote>
+<p>同源政策的目的，是为了保证用户信息的安全，防止恶意的网站窃取数据。</p>
+</blockquote>
+<h3 id="-">同源策略的限制范围</h3>
+<blockquote>
+<p>随着互联网的发展，“同源策略”越来越严格，目前，如果非同源，以下三种行为都将收到限制。</p>
+</blockquote>
+<pre><code class="lang-javascript">//1. Cookie、LocalStorage 无法读取。
+//2. DOM 无法获得。
+//3. AJAX 请求不能发送。
+</code></pre>
+<p>虽然这些限制是很有必要的，但是也给我们日常开发带来不好的影响。比如实际开发过程中，往往都会把服务器端架设到一台甚至是一个集群的服务器中，把客户端页面放到另外一个单独的服务器。那么这时候就会出现不同源的情况，如果我们知道两个网站都是安全的话，我们是希望两个不同源的网站之间可以相互请求数据的。这就需要使用到<strong>跨域</strong> 。</p>
+<h2 id="-">跨域</h2>
+<p>【演示跨域问题.html】</p>
+<h3 id="jsonp">jsonp</h3>
+<blockquote>
+<p>JSONP(JSON with Padding)、可用于解决主流浏览器的跨域数据访问的问题。原理：服务端返回一个预先定义好的javascript函数的调用，并且将服务器的数据以该函数参数的形式传递过来，这个方法需要前后端配合。</p>
+</blockquote>
+<p><code>script</code> 标签是不受同源策略的限制的，它可以载入任意地方的 JavaScript 文件，而并不要求同源。类似的还有<code>img</code>和<code>link</code>标签</p>
+<pre><code class="lang-html">&lt;!--不受同源策略的标签--&gt;
+&lt;img src=&quot;http://www.api.com/1.jpg&quot; alt=&quot;&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;http://www.api.com/1.css&quot;&gt;
+&lt;script src=&quot;http://www.api.com/1.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<h4 id="jsonp-">jsonp原理</h4>
+<ul>
+<li>实现本质</li>
+</ul>
+<p>在跨域情况下XMLHTTPRequest对象会被浏览器限制，无法发送请求。</p>
+<p>$.ajax设置datatype:json时，使用的是其它方法请求服务器。</p>
+<p>在跨域情况下有些标签是不受同源策略限制，例如：img、link、script。</p>
+<p>黑客发现以上标签中 src和href属性具有跨域请求资源的能力。</p>
+<p>可以使用script标签的src属性请求跨域服务器</p>
+<ul>
+<li>具体实现细节</li>
+</ul>
+<p>用script标签的src属性向后台传递数据只能使用get方式传递数据</p>
+<ol>
+<li>前端需要定义一个方法，然后把方法名传递给后台</li>
+<li>后台获取传输过去的方法，在方法名后拼接()，同时在括号内填写需要的数据</li>
+<li><p>前端收到返回的结果会立即调用，该方法取出了后台返回的数据（注：用script标签包裹的会立即调用）</p>
+</li>
+<li><p>实现过程</p>
+</li>
+</ol>
+<p>前端：</p>
+<pre><code class="lang-javascript">function say(){
+}
+&lt;script src=&quot;....?callback=say&quot;&gt;&lt;/script&gt;
+</code></pre>
+<p>后台：</p>
+<pre><code class="lang-php">echo $_GET[&quot;?callback&quot;].(&quot;.$info.&quot;)
+</code></pre>
+<p>注意：</p>
+<ol>
+<li>jsonp只能发生get请求</li>
+<li>jsonp需要后台配合</li>
+</ol>
+<h4 id="jsonp-">jsonp演化过程</h4>
+<p>jsonp原理大家知道即可，不用太过于去纠结这个原理，因此jquery已经帮我们封装好了，我们使用起来非常的方便。</p>
+<h3 id="jquery-jsonp-">jquery对于jsonp的封装</h3>
+<pre><code class="lang-javascript">//使用起来相当的简单，跟普通的get请求没有任何的区别，只需要把dataType固定成jsonp即可。
+$.ajax({
+  type:&quot;get&quot;,
+  url:&quot;http://www.api.com/testjs.php&quot;,
+  dataType:&quot;jsonp&quot;,
+  data:{
+    uname:&quot;hucc&quot;,
+    upass:&quot;123456&quot;
+  },
+  success:function (info) {
+    console.log(info);
+  }
+});
+</code></pre>
+<p>【案例：查询天气.html】</p>
+<p>百度天气实例：天气API无法提供超过5000次的天气服务免费支持 </p>
+<p><a href="http://lbsyun.baidu.com/index.php?title=car/api/weather">http://lbsyun.baidu.com/index.php?title=car/api/weather</a></p>
+<pre><code class="lang-javascript">//接口示例
+url : &quot;http://api.map.baidu.com/telematics/v3/weather?location=%E5%8C%97%E4%BA%AC&amp;output=json&amp;ak=E4805d16520de693a3fe707cdc962045&quot;,
+</code></pre>
+<p><img src="C:/Users/Administrator/Desktop/%E7%AC%94%E8%AE%B0/08-ajax/img/%E7%99%BE%E5%BA%A6%E5%A4%A9%E6%B0%94%E6%8E%A5%E5%8F%A3%E8%AF%B4%E6%98%8E.png" alt=""></p>
+<p>极速数据天气实例</p>
+<p><a href="https://www.jisuapi.com/api/weather/">天气查询api地址</a></p>
+<p>秘钥：zVo5SStav7IUiVON0kuCogecm87lonOj</p>
+<p>图灵机器人：<a href="http://www.tuling123.com/">http://www.tuling123.com/</a></p>
+<h2 id="-cors-">跨域资源共享(CORS)</h2>
+<h3 id="cors-">cors的使用</h3>
+<blockquote>
+<p>新版本的XMLHttpRequest对象，可以向不同域名的服务器发出HTTP请求。这叫做<a href="http://en.wikipedia.org/wiki/Cross-Origin_Resource_Sharing">&quot;跨域资源共享&quot;</a>（Cross-origin resource sharing，简称CORS）。</p>
+</blockquote>
+<p>跨域资源共享（CORS）的前提</p>
+<ul>
+<li>浏览器支持这个功能</li>
+<li>服务器必须允许这种跨域。</li>
+</ul>
+<p>服务器允许跨域的代码：</p>
+<pre><code class="lang-php">//允许所有的域名访问这个接口
+header(&quot;Access-Control-Allow-Origin:*&quot;);
+//允许www.study.com这个域名访问这个接口
+header(&quot;Access-Control-Allow-Origin:http://www.study.com&quot;);
+</code></pre>
+<h3 id="cors-">CORS的具体流程（了解）</h3>
+<ol>
+<li>浏览器会根据<strong>同源策略</strong> 查看是否是跨域请求，如果同源，直接发送ajax请求。</li>
+<li>如果非同源，说明是跨域请求，浏览器会自动发送一条请求（<strong>预检请求</strong> ），并不会携带数据，服务器接受到请求之后，会返回请求头信息，浏览器查看返回的响应头信息中是否设置了<code>header(&#39;Access-Control-Allow-Origin:请求源域名或者*&#39;);</code></li>
+<li>如果没有设置，说明服务器不允许使用cors跨域，那么浏览器不会发送真正的ajax请求。</li>
+<li>如果返回的响应头中设置了<code>header(&#39;Access-Control-Allow-Origin:请求源域名或者*&#39;);</code>,浏览器会跟请求头中的<code>Origin: http://www.study.com</code>进行对比，如果满足要求，则发送真正的ajax请求，否则不发送。</li>
+<li>结论：<strong>跨域行为是浏览器行为，是浏览器阻止了ajax行为。服务器与服务器之间是不存在跨域的问题的</strong></li>
+</ol>
+<p>【案例：图灵机器人】 </p>
+
+          	</article>
+        </div>
+		</div>
+  </body>
+</html>
+<script type="text/javascript" src="toc/js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="toc/js/jquery.ztree.all-3.5.min.js"></script>
+<script type="text/javascript" src="toc/js/ztree_toc.js"></script>
+<script type="text/javascript" src="toc_conf.js"></script>
+
+<SCRIPT type="text/javascript" >
+<!--
+$(document).ready(function(){
+    var css_conf = eval(markdown_panel_style);
+    $('#readme').css(css_conf)
+    
+    var conf = eval(jquery_ztree_toc_opts);
+		$('#tree').ztree_toc(conf);
+});
+//-->
+</SCRIPT>

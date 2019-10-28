@@ -1,0 +1,49 @@
+* {
+    margin: 0;
+    padding: 0
+}
+
+ul {
+    list-style: none
+}
+
+body {
+    font-size: 13px;
+    background-color: #333
+}
+
+.nav {
+    width: 168px;
+    height: 42px;
+    margin: 10px 0 0;
+    background: #fff ;
+    border-radius: 10px;
+    position: relative
+}
+
+.nav li {
+    width: 83px;
+    height: 42px;
+    text-align: center;
+    line-height: 42px;
+    float: left;
+    cursor: pointer
+}
+
+.nav li:hover {
+    color: red;
+    font-weight: 700
+}
+
+ul {
+    position: relative
+}
+
+.nav span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 83px;
+    height: 42px;
+    background: url(../images/cloud.png) no-repeat
+}
