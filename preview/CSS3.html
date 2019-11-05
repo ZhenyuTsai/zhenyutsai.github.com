@@ -92,26 +92,26 @@
 <h1 id="css-">CSS 网页的美容师</h1>
 <p>CSS的出现，拯救了混乱的HTML，当让更加拯救了我们web开发者。 让我们的网页更加丰富多彩。   </p>
 <p>CSS的最大贡献就是：  让 HTML 从样式中解脱苦海，  实现了 HTML 专注去做 结构呈现。 而样式交给 CSS 后，你完全可以放心的早点洗洗睡了！</p>
-<p><img src="../01-HTML5/images/x.jpg" width="250" /></p>
+<p><img src="media/x.jpg" width="250" /></p>
 <p>而且。。。。。 CSS 做的很出色，如果JavaScript是网页的魔法师，那么CSS它是我们网页的美容师，不信，你看:</p>
-<p><img src="../01-HTML5/images/baby.jpeg" /></p>
+<p><img src="media/baby.jpeg" /></p>
 <p>ps:  你跟Angelababy只差了一个妆容的距离</p>
 <p>来个更直观的认识吧： </p>
-<p><img src="../01-HTML5/images/db.png" /></p>
+<p><img src="media/db.png" /></p>
 <p>有人说， 没有不漂亮的女人，只有不会打扮的女人。</p>
 <p>我想说， 没有不好看的网页，只有不会CSS的前端。</p>
 <p>网页添加 CSS和不添加CSS 的对比：</p>
 <p>带有CSS的页面</p>
-<p><img src="../01-HTML5/images/Cc.png" /></p>
+<p><img src="media/Cc.png" /></p>
 <p>没有CSS的页面</p>
-<p><img src="../01-HTML5/images/fff.png" /></p>
+<p><img src="media/fff.png" /></p>
 <h1 id="css-">CSS初识</h1>
 <p>CSS(Cascading Style Sheets)</p>
 <p>CSS通常称为CSS样式表或层叠样式表（级联样式表），主要用于设置HTML页面中的文本内容（字体、大小、对齐方式等）、图片的外形（宽高、边框样式、边距等）以及版面的布局等外观显示样式。</p>
 <p>CSS以HTML为基础，提供了丰富的功能，如字体、颜色、背景的控制及整体排版等，而且还可以针对不同的浏览器设置不同的样式。</p>
 <h1 id="css-">CSS样式规则</h1>
 <p>使用HTML时，需要遵从一定的规范。CSS亦如此，要想熟练地使用CSS对网页进行修饰，首先需要了解CSS样式规则，具体格式如下：                                          </p>
-<p><img src="../01-HTML5/images/gz.png" /></p>
+<p><img src="media/gz.png" /></p>
 <pre><code>在上面的样式规则中:
 
 1.选择器用于指定CSS样式作用的HTML对象，花括号内是对该对象设置的具体样式。
@@ -123,13 +123,13 @@
 </code></pre><h1 id="css-">CSS字体样式属性</h1>
 <h2 id="font-size-">font-size:字号大小</h2>
 <p>font-size属性用于设置字号，该属性的值可以使用相对长度单位，也可以使用绝对长度单位。其中，相对长度单位比较常用，推荐使用像素单位px，绝对长度单位使用较少。系统默认取值“16px”。具体如下：</p>
-<p><img src="../01-HTML5/images/dd.png" /></p>
+<p><img src="media/dd.png" /></p>
 <h2 id="font-family-">font-family:字体</h2>
 <p>font-family属性用于设置字体。网页中常用的字体有宋体、微软雅黑、黑体等，例如将网页中所有段落文本的字体设置为微软雅黑，可以使用如下CSS样式代码：</p>
 <p>p{ font-family:&quot;微软雅黑&quot;;}</p>
 <p>可以同时指定多个字体，中间以逗号隔开，表示如果浏览器不支持第一个字体，则会尝试下一个，直到找到合适的字体。</p>
 <blockquote>
-<p><img src="../01-HTML5/images/good.png" />常用技巧：</p>
+<p><img src="media/good.png" />常用技巧：</p>
 </blockquote>
 <pre><code>1. 现在网页中普遍使用14px+。
 2. 尽量使用偶数的数字字号。ie6等老式浏览器支持奇数会有bug。
@@ -142,7 +142,7 @@
 <p>方案一： 你可以使用英文来替代。 比如 font-family:&quot;Microsoft Yahei&quot;。</p>
 <p>方案二： 在 CSS 直接使用 Unicode 编码来写字体名称可以避免这些错误。使用 Unicode 写中文字体名称，浏览器是可以正确的解析的。
 font-family: &quot;\5FAE\8F6F\96C5\9ED1&quot;，表示设置字体为“微软雅黑”。</p>
-<p><img src="../01-HTML5/images/shs.png" /></p>
+<p><img src="media/shs.png" /></p>
 <p>可以通过escape()  来测试属于什么字体。</p>
 <table>
 <thead>
@@ -210,7 +210,7 @@ font-family: &quot;\5FAE\8F6F\96C5\9ED1&quot;，表示设置字体为“微软�
 <p>字体加粗除了用 b  和 strong 标签之外，可以使用CSS 来实现，但是CSS 是没有语义的。</p>
 <pre><code class="lang-html">font-weight属性用于定义字体的粗细，其可用属性值：normal、bold、bolder、lighter、100~900（100的整数倍）。
 </code></pre>
-<p><img src="../01-HTML5/images/good.png" />小技巧： </p>
+<p><img src="media/good.png" />小技巧： </p>
 <pre><code class="lang-css">数字 400 等价于 normal，而 700 等价于 bold。  但是我们更喜欢用数字来表示。  
 </code></pre>
 <h2 id="font-style-">font-style:字体风格</h2>
@@ -219,7 +219,7 @@ font-family: &quot;\5FAE\8F6F\96C5\9ED1&quot;，表示设置字体为“微软�
 <p>normal：默认值，浏览器会显示标准的字体样式。</p>
 <p>italic：浏览器会显示斜体的字体样式。</p>
 <p>oblique：浏览器会显示倾斜的字体样式。</p>
-<p><img src="../01-HTML5/images/good.png" />小技巧： </p>
+<p><img src="media/good.png" />小技巧： </p>
 <pre><code>平时我们很少给文字加斜体，反而喜欢给斜体标签（em，i）改为普通模式。
 </code></pre><h2 id="font-">font:综合设置字体样式 (重点)</h2>
 <p>font属性用于对字体样式进行综合设置，其基本语法格式如下：</p>
@@ -233,8 +233,8 @@ font-family: &quot;\5FAE\8F6F\96C5\9ED1&quot;，表示设置字体为“微软�
 <p>此工具是我们的必备工具，以后代码出了问题，我们首先第一反应就是：</p>
 <p>“按F12”或者是 “shift+ctrl+i”   打开 开发者工具。</p>
 <p>菜单：   右击网页空白出---查看 </p>
-<p><img src="../01-HTML5/images/chrome.png" /></p>
-<p><img src="../01-HTML5/images/good.png" />小技巧：</p>
+<p><img src="media/chrome.png" /></p>
+<p><img src="media/good.png" />小技巧：</p>
 <ol>
 <li>ctrl+滚轮 可以 放大开发者工具代码大小。</li>
 <li>左边是HTML元素结构   右边是CSS样式。</li>
@@ -242,7 +242,7 @@ font-family: &quot;\5FAE\8F6F\96C5\9ED1&quot;，表示设置字体为“微软�
 </ol>
 <h1 id="-">选择器（重点）</h1>
 <p>要想将CSS样式应用于特定的HTML元素，首先需要找到该目标元素。在CSS中，执行这一任务的样式规则部分被称为选择器（选择符）。</p>
-<p><img src="../01-HTML5/images/ax.png" /></p>
+<p><img src="media/ax.png" /></p>
 <p>如上图所以，要把里面的小黄人分为2组，最快的方法怎办？  </p>
 <p>很多， 比如 一只眼睛的一组，剩下的一组  </p>
 <p>这就用到基础选择器组：</p>
@@ -258,7 +258,7 @@ font-family: &quot;\5FAE\8F6F\96C5\9ED1&quot;，表示设置字体为“微软�
 <pre><code>.类名{属性1:属性值1; 属性2:属性值2; 属性3:属性值3; }
 </code></pre><pre><code> 标签调用的时候用 class=“类名”  即可。
 </code></pre><p>类选择器最大的优势是可以为元素对象定义单独或相同的样式。</p>
-<p><img src="../01-HTML5/images/good.png" />小技巧：</p>
+<p><img src="media/good.png" />小技巧：</p>
 <pre><code>1.长名称或词组可以使用中横线来为选择器命名。
 2.不建议使用“_”下划线来命名CSS选择器。
 </code></pre><p>​    输入的时候少按一个shift键;
@@ -266,11 +266,11 @@ font-family: &quot;\5FAE\8F6F\96C5\9ED1&quot;，表示设置字体为“微软�
 　能良好区分JavaScript变量命名(JS变量命名是用“</em>”)</p>
 <pre><code>3.不要纯数字、中文等命名， 尽量使用英文字母来表示。
 </code></pre><p>猜谜底游戏：</p>
-<p><img src="../01-HTML5/images/midi.png" width="450" />   你猜？</p>
+<p><img src="media/midi.png" width="450" />   你猜？</p>
 <p>命名规范：  见附件（Web前端开发规范手册.doc）</p>
 <p>命名是我们通俗约定的，但是没有规定必须用这些常用的命名。</p>
 <p>课堂案例：</p>
-<p> <img src="../01-HTML5/images/go.png" /></p>
+<p> <img src="media/go.png" /></p>
 <pre><code class="lang-html">&lt;head&gt;
         &lt;meta charset=&quot;utf-8&quot;&gt;
         &lt;style&gt;
@@ -302,7 +302,7 @@ font-family: &quot;\5FAE\8F6F\96C5\9ED1&quot;，表示设置字体为“微软�
 </code></pre>
 <h2 id="-">多类名选择器</h2>
 <p>我们可以给标签指定多个类名，从而达到更多的选择目的。</p>
-<p><img src="../01-HTML5/images/lei.png" /></p>
+<p><img src="media/lei.png" /></p>
 <p>注意：</p>
 <pre><code>1. 样式显示效果跟HTML元素中的类名先后顺序没有关系,受CSS样式书写的上下顺序有关。
 2. 各个类名中间用空格隔开。
@@ -322,7 +322,7 @@ font-family: &quot;\5FAE\8F6F\96C5\9ED1&quot;，表示设置字体为“微软�
 <p>类选择器（class） 好比人的名字，  是可以多次重复使用的， 比如  张伟  王伟  李伟  李娜</p>
 <p>id选择器     好比人的身份证号码，  全中国是唯一的， <strong>不得重复。 只能使用一次。</strong></p>
 <p><strong><em>id选择器和类选择器最大的不同在于 使用次数上。</em></strong></p>
-<p><img src="../01-HTML5/images/zfb.jpg" /></p>
+<p><img src="media/zfb.jpg" /></p>
 <h2 id="-">通配符选择器</h2>
 <p>通配符选择器用“*”号表示，他是所有选择器中作用范围最广的，能匹配页面中所有的元素。其基本语法格式如下：</p>
 <pre><code>* { 属性1:属性值1; 属性2:属性值2; 属性3:属性值3; }
@@ -424,11 +424,11 @@ li:nth-child(4) {   /* 选择第4个孩子  n  代表 第几个的意思 */
 <p>以后我们可以给我们的文字添加阴影效果了  Shadow  影子  </p>
 <pre><code class="lang-css">text-shadow:水平位置 垂直位置 模糊距离 阴影颜色;
 </code></pre>
-<p><img src="../01-HTML5/images/1498467502625.png" alt="1498467502625"> </p>
+<p><img src="media/1498467502625.png" alt="1498467502625"> </p>
 <ol>
 <li>前两项是必须写的。  后两项可以选写。</li>
 </ol>
-<p><img src="../01-HTML5/images/1498467519665.png" alt="1498467519665">    </p>
+<p><img src="media/1498467519665.png" alt="1498467519665">    </p>
 <h1 id="sublime-">sublime快捷方式</h1>
 <p>sublime可以快速提高我们代码的书写方式</p>
 <ol>
@@ -505,10 +505,10 @@ rel：定义当前文档与被链接文档之间的关系，在这里需要指�
 </tbody>
 </table>
 <h1 id="-display-">★标签显示模式（display）</h1>
-<p><img src="../01-HTML5/images/people.png" /></p>
+<p><img src="media/people.png" /></p>
 <p>非洲黑人：  皮肤内黑色素含量高，以吸收阳光中的紫外线，保护皮肤内部结构免遭损害，头发象羊毛一样卷曲，使每根卷发周围都有许多空隙，空隙充满空气，卷发有隔热作用。</p>
 <p>欧洲白人： 生活寒带或着是说常年温度较低的地缘,加上年日照时间少，身体的黑色素沉淀比较少<code></code>所以出现皮肤、发色、瞳晕都呈现浅色</p>
-<p>传智黄人：  我中间的。。。  <img src="../01-HTML5/images/h.jpg" alt="" /></p>
+<p>传智黄人：  我中间的。。。  <img src="media/h.jpg" alt="" /></p>
 <p>最重要的总结：  是为了更好的适应环境而完成的自然选择。 </p>
 <p>同理，我们网页的标签非常多，再不同地方会用到不同类型的标签，以便更好的完成我们的网页。</p>
 <p>标签的类型(显示模式)</p>
@@ -516,7 +516,7 @@ rel：定义当前文档与被链接文档之间的关系，在这里需要指�
 <h2 id="-block-level-">块级元素(block-level)</h2>
 <p>每个块元素通常都会独自占据一整行或多整行，可以对其设置宽度、高度、对齐等属性，常用于网页布局和网页结构的搭建。</p>
 <pre><code>常见的块元素有&lt;h1&gt;~&lt;h6&gt;、&lt;p&gt;、&lt;div&gt;、&lt;ul&gt;、&lt;ol&gt;、&lt;li&gt;等，其中&lt;div&gt;标签是最典型的块元素。
-</code></pre><p>  <img src="../01-HTML5/images/xtf.jpg" /></p>
+</code></pre><p>  <img src="media/xtf.jpg" /></p>
 <p>块级元素的特点：</p>
 <p>（1）总是从新行开始</p>
 <p>（2）高度，行高、外边距以及内边距都可以控制。</p>
@@ -526,13 +526,13 @@ rel：定义当前文档与被链接文档之间的关系，在这里需要指�
 <h2 id="-inline-level-">行内元素(inline-level)</h2>
 <p>行内元素（内联元素）不占有独立的区域，仅仅靠自身的字体大小和图像尺寸来支撑结构，一般不可以设置宽度、高度、对齐等属性，常用于控制页面中文本的样式。</p>
 <pre><code>常见的行内元素有&lt;a&gt;、&lt;strong&gt;、&lt;b&gt;、&lt;em&gt;、&lt;i&gt;、&lt;del&gt;、&lt;s&gt;、&lt;ins&gt;、&lt;u&gt;、&lt;span&gt;等，其中&lt;span&gt;标签最典型的行内元素。
-</code></pre><p>  <img src="../01-HTML5/images/wf.jpg" />  我一样重要</p>
+</code></pre><p>  <img src="media/wf.jpg" />  我一样重要</p>
 <p>行内元素的特点：</p>
 <p>（1）和相邻行内元素在一行上。</p>
 <p>（2）高、宽无效，但水平方向的padding和margin可以设置，垂直方向的无效。</p>
 <p>（3）默认宽度就是它本身内容的宽度。</p>
 <p>（4）行内元素只能容纳文本或则其他行内元素。（a特殊）</p>
-<p>  <img src="../01-HTML5/images/w.jpg" />    注意：</p>
+<p>  <img src="media/w.jpg" />    注意：</p>
 <ol>
 <li>行内元素里面不能放其他块级元素。</li>
 <li>a标签里是可以放块级元素的，用户来做超链，需要转换成块级元素，方法display：block。</li>
@@ -575,17 +575,17 @@ rel：定义当前文档与被链接文档之间的关系，在这里需要指�
 <tr>
 <td>块级元素</td>
 <td>面包</td>
-<td><img src="../01-HTML5/images/b.png" alt="img"></td>
+<td><img src="media/b.png" alt="img"></td>
 </tr>
 <tr>
 <td>行内元素</td>
 <td>牛奶</td>
-<td><img src="../01-HTML5/images/m.png" width="250" /></td>
+<td><img src="media/m.png" width="250" /></td>
 </tr>
 <tr>
 <td>行内块元素</td>
 <td>果冻</td>
-<td><img src="../01-HTML5/images/g.png" alt="img"></td>
+<td><img src="media/g.png" alt="img"></td>
 </tr>
 </tbody>
 </table>
@@ -598,29 +598,29 @@ rel：定义当前文档与被链接文档之间的关系，在这里需要指�
 <p>复合选择器是由两个或多个基础选择器，通过不同的方式组合而成的,目的是为了可以选择更准确更精细的目标元素标签。</p>
 <h2 id="-">交集选择器</h2>
 <p>交集选择器由两个选择器构成，其中第一个为标签选择器，第二个为class选择器，两个选择器之间不能有空格，如h3.special。</p>
-<p><img src="../01-HTML5/images/jiao.png" /></p>
+<p><img src="media/jiao.png" /></p>
 <p><strong>记忆技巧：</strong></p>
 <p>交集选择器 是 并且的意思。  即...又...的意思</p>
 <pre><code>比如：   p.one   选择的是： 类名为 .one  的 段落标签。  
 </code></pre><p>用的相对来说比较少，不太建议使用。</p>
 <h2 id="-">并集选择器</h2>
 <p>并集选择器（CSS选择器分组）是各个选择器通过<strong style="color:#f00">逗号</strong>连接而成的，任何形式的选择器（包括标签选择器、class类选择器id选择器等），都可以作为并集选择器的一部分。如果某些选择器定义的样式完全相同，或部分相同，就可以利用并集选择器为它们定义相同的CSS样式。</p>
-<p><img src="../01-HTML5/images/bing.png" /></p>
+<p><img src="media/bing.png" /></p>
 <p>记忆技巧：</p>
 <p>并集选择器  和 的意思，  就是说，只要逗号隔开的，所有选择器都会执行后面样式。</p>
 <pre><code>比如  .one, p , #test {color: #F00;}  表示   .one 和 p  和 #test 这三个选择器都会执行颜色为红色。  通常用于集体声明。
-</code></pre><p><img src="../01-HTML5/images/hu.gif" />  他和他，在一起， 在一起    一起的意思</p>
+</code></pre><p><img src="media/hu.gif" />  他和他，在一起， 在一起    一起的意思</p>
 <h2 id="-">后代选择器</h2>
 <p>后代选择器又称为包含选择器，用来选择元素或元素组的后代，其写法就是把外层标签写在前面，内层标签写在后面，中间用空格分隔。当标签发生嵌套时，内层标签就成为外层标签的后代。</p>
-<p><img src="../01-HTML5/images/hou.png" /></p>
+<p><img src="media/hou.png" /></p>
 <p>子孙后代都可以这么选择。 或者说，它能选择任何包含在内 的标签。 </p>
-<p><img src="../01-HTML5/images/li.png" /></p>
+<p><img src="media/li.png" /></p>
 <h2 id="-">子元素选择器</h2>
 <p>子元素选择器只能选择作为某元素子元素的元素。其写法就是把父级标签写在前面，子级标签写在后面，中间跟一个 &gt; 进行连接，注意，符号左右两侧各保留一个空格。</p>
-<p><img src="../01-HTML5/images/zi1.png" /></p>
+<p><img src="media/zi1.png" /></p>
 <p>白话：  这里的子 指的是 亲儿子  不包含孙子 重孙子之类。</p>
 <pre><code> 比如：  .demo &gt; h3 {color: red;}   说明  h3 一定是demo 亲儿子。  demo 元素包含着h3。
-</code></pre><p><img src="../01-HTML5/images/san.jpg" /></p>
+</code></pre><p><img src="media/san.jpg" /></p>
 <h2 id="-">测试题</h2>
 <pre><code class="lang-html">&lt;div class=&quot;nav&quot;&gt;    &lt;!-- 主导航栏 --&gt;
   &lt;ul&gt;
@@ -816,11 +816,11 @@ url : 　使用绝对或相对地址指定背景图像 </p>
 <p>repeat-y : 　背景图像在纵向平铺 </p>
 <p>设置背景图片时，默认把图片在水平和垂直方向平铺以铺满整个元素。</p>
 <p>repeat-x : 　背景图像在横向上平铺  </p>
-<p><img src="../01-HTML5/images/x.png" width="600" /></p>
+<p><img src="media/x.png" width="600" /></p>
 <p>repeat-y : 　背景图像在纵向平铺 </p>
-<p><img src="../01-HTML5/images/y.png" width="600"/></p>
+<p><img src="media/y.png" width="600"/></p>
 <p>设置背景图片时，默认把图片在水平和垂直方向平铺以铺满整个元素。</p>
-<p><img src="../01-HTML5/images/q.png" width="600"/></p>
+<p><img src="media/q.png" width="600"/></p>
 <h2 id="-position-">★背景位置(position)</h2>
 <p>语法： 常使用与精灵图</p>
 <pre><code class="lang-css">background-position : length || length
@@ -871,7 +871,7 @@ border: 1px solid rgba(0,0,0,0.3);
 <p>a) 可以设置长度单位(px)或百分比（设置百分比时，参照盒子的宽高）</p>
 <p>b) 设置为cover时，会自动调整缩放比例，保证图片始终填充满背景区域，如有溢出部分则会被隐藏。</p>
 <p>c) 设置为contain会自动调整缩放比例，保证图片始终完整显示在背景区域。</p>
-<pre><code class="lang-css">background-image: url(&#39;../01-HTML5/images/gyt.jpg&#39;);
+<pre><code class="lang-css">background-image: url(&#39;media/gyt.jpg&#39;);
             background-size: 300px 100px;
             /* background-size: contain; */
             /* background-size: cover; */
@@ -880,9 +880,9 @@ border: 1px solid rgba(0,0,0,0.3);
 <blockquote>
 <p>在CSS3中，可以做到给一个盒子设置多个背景图片, 通过逗号分隔不同的背景图片即可。</p>
 </blockquote>
-<pre><code>background: url(../01-HTML5/images/d1.jpg) no-repeat right bottom,
-           url(../01-HTML5/images/dd.jpg) no-repeat left bottom,
-           pink url(../01-HTML5/images/d3.png) no-repeat center center; 
+<pre><code>background: url(media/d1.jpg) no-repeat right bottom,
+           url(media/dd.jpg) no-repeat left bottom,
+           pink url(media/d3.png) no-repeat center center; 
 </code></pre><p><strong>注意点：</strong></p>
 <ul>
 <li>每组背景属性之间需要通过逗号隔开</li>
@@ -890,7 +890,7 @@ border: 1px solid rgba(0,0,0,0.3);
 <li>如果需要设置背景颜色，则背景颜色需要设置到最后一组中。</li>
 </ul>
 <p>以逗号分隔可以设置多背景，可用于自适应布局</p>
-<pre><code class="lang-css">background-image: url(&#39;../01-HTML5/images/gyt.jpg&#39;),url(&#39;../01-HTML5/images/robot.png&#39;);
+<pre><code class="lang-css">background-image: url(&#39;media/gyt.jpg&#39;),url(&#39;media/robot.png&#39;);
 </code></pre>
 <h1 id="css-">CSS 三大特性</h1>
 <p>层叠 继承  优先级 是我们学习CSS 必须掌握的三个特性。</p>
@@ -901,12 +901,12 @@ border: 1px solid rgba(0,0,0,0.3);
 <p>一般情况下，如果出现样式冲突，则会按照CSS书写的顺序，以最后的样式为准。</p>
 <p>注：权重相同情况下，则会<strong>按照CSS书写的顺序，以最后的样式为准。</strong></p>
 <pre><code>CSS最后的执行口诀：  长江后浪推前浪，前浪死在沙滩上。
-</code></pre><p><img src="../01-HTML5/images/hai.gif"  width="600" height="400" /></p>
+</code></pre><p><img src="media/hai.gif"  width="600" height="400" /></p>
 <h2 id="css-">CSS继承性</h2>
 <p>所谓继承性是指书写CSS样式表时，子标签会继承父标签的某些样式，如文本颜色和字号。想要设置一个可继承的属性，只需将它应用于父元素即可。</p>
 <p>简单的理解就是：  子承父业。</p>
 <pre><code>CSS最后的执行口诀：  龙生龙，凤生凤，老鼠生的孩子会打洞。
-</code></pre><p><img src="../01-HTML5/images/shu.gif" /></p>
+</code></pre><p><img src="media/shu.gif" /></p>
 <p>注意：text-，font-，line-，color 这些元素开头的都可以继承； 如果元素自身有的属性是不会继承的。a链接color不能用继承修改。</p>
 <pre><code>恰当地使用继承可以简化代码，降低CSS样式的复杂性。子元素可以继承父元素的样式（text-，font-，line-这些元素开头的都可以继承，以及color属性）
 </code></pre><h2 id="css-">CSS优先级</h2>
@@ -965,7 +965,7 @@ a:hover      -----—&gt;      0,0,1,1
 
 #nav p       -----&gt;       0,1,0,1
 </code></pre><p>​          </p>
-<p> <img src="../01-HTML5/images/w.jpg" /> 注意： 数位之间没有进制 比如说： 0,0,0,5 + 0,0,0,5 =0,0,0,10 而不是 0,0, 1, 0， 所以不会存在10个div能赶上一个类选择器的情况。</p>
+<p> <img src="media/w.jpg" /> 注意： 数位之间没有进制 比如说： 0,0,0,5 + 0,0,0,5 =0,0,0,10 而不是 0,0, 1, 0， 所以不会存在10个div能赶上一个类选择器的情况。</p>
 <p>总结优先级：</p>
 <ol>
 <li>使用了 !important声明的规则。</li>
@@ -981,22 +981,22 @@ a:hover      -----—&gt;      0,0,1,1
 <p>所谓盒子模型就是把HTML页面中的元素看作是一个矩形的盒子，也就是一个盛装内容的容器。每个矩形都由元素的内容、内边距（padding）、边框（border）和外边距（margin）组成。</p>
 <h2 id="-">看透网页布局的本质</h2>
 <p>网页布局中，我们是如何把里面的文字，图片，按照美工给我们的效果图排列的整齐有序呢？</p>
-<p><img src="../01-HTML5/images/t.png" /></p>
+<p><img src="media/t.png" /></p>
 <p>牛奶是怎样运输，让消费者购买的呢？</p>
-<p><img src="../01-HTML5/images/m.jpg" /></p>
+<p><img src="media/m.jpg" /></p>
 <p>我们说过，行内元素比如 文字 类似牛奶，也需要一个盒子把他们装起来，我们前面学过的双标签都是一个盒子。有了盒子，我们就可以随意的，自由的，摆放位置了。</p>
 <p>看透网页布局的本质：  把网页元素比如文字图片等等，放入盒子里面，然后利用CSS摆放盒子的过程，就是网页布局。</p>
-<p><img src="../01-HTML5/images/t1.png" /></p>
+<p><img src="media/t1.png" /></p>
 <p>CSS 其实没有太多逻辑可言 ， 类似我们小时候玩的积木,我们可以自由的，随意的摆放出我们想要的效果。</p>
-<p><img src="../01-HTML5/images/j.jpg" width="300" /></p>
+<p><img src="media/j.jpg" width="300" /></p>
 <h2 id="-box-model-">盒子模型（Box Model）</h2>
 <p>这里略过 老旧的ie盒子模型（IE6以下），对不起，我都没见过IE5的浏览器。 </p>
-<p><img src="../01-HTML5/images/d.jpg" /></p>
+<p><img src="media/d.jpg" /></p>
 <p>CSS3的 盒子模型 我们后面会讲。</p>
 <p>首先，我们来看一张图，来体会下什么是盒子模型。</p>
-<p><img src="../01-HTML5/images/box.png"  width="700" /></p>
+<p><img src="media/box.png"  width="700" /></p>
 <p>所有的文档元素（标签）都会生成一个矩形框，我们成为元素框（element box），它描述了一个文档元素再网页布局汇总所占的位置大小。因此，<strong style="color: #f00;">每个盒子除了有自己大小和位置外，还影响着其他盒子的大小和位置。</strong></p>
-<p><img src="../01-HTML5/images/boxs.png"  width="700" /></p>
+<p><img src="media/boxs.png"  width="700" /></p>
 <h2 id="-border-">盒子边框（border）</h2>
 <p>边框就是那层皮。  橘子皮。。柚子皮。。橙子皮。。。</p>
 <p>语法： </p>
@@ -1134,12 +1134,12 @@ border-radius: 左上角  右上角  右下角  左下角;
 </code></pre>
 <h2 id="-padding-">内边距（padding）</h2>
 <p>padding属性用于设置内边距。  是指 边框与内容之间的距离。</p>
-<p><img src="../01-HTML5/images/pa.png" />   panda</p>
+<p><img src="media/pa.png" />   panda</p>
 <p>padding-top:上内边距</p>
 <p>padding-right:右内边距</p>
 <p>padding-bottom:下内边距</p>
 <p>padding-left:左内边距</p>
-<p> <img src="../01-HTML5/images/w.jpg"/>注意：  后面跟几个数值表示的意思是不一样的。行内元素不用写上下padding，块级元素继承父级的内容宽度。</p>
+<p> <img src="media/w.jpg"/>注意：  后面跟几个数值表示的意思是不一样的。行内元素不用写上下padding，块级元素继承父级的内容宽度。</p>
 <table>
 <thead>
 <tr>
@@ -1167,7 +1167,7 @@ border-radius: 左上角  右上角  右下角  左下角;
 </tbody>
 </table>
 <p>课堂案例：  新浪导航</p>
-<p><img src="../01-HTML5/images/al.gif" /></p>
+<p><img src="media/al.gif" /></p>
 <h3 id="-">内边距自动内减</h3>
 <p>内边距自动内减：盒子宽度继承至父级时，添加内边距和边框，盒子的宽度会自动内减的</p>
 <h2 id="-margin-">外边距（margin）</h2>
@@ -1204,11 +1204,11 @@ border-radius: 左上角  右上角  右下角  左下角;
 <p>使用margin定义块元素的垂直外边距时，可能会出现外边距的合并。</p>
 <h4 id="-">相邻块元素垂直（上下）外边距的合并</h4>
 <p>当上下相邻的两个块元素相遇时，如果上面的元素有下外边距margin-bottom，下面的元素有上外边距margin-top，则他们之间的垂直间距不是margin-bottom与margin-top之和，而是两者中的较大者。这种现象被称为相邻块元素垂直外边距的合并（也称外边距塌陷）。</p>
-<p>​                                 <img src="../01-HTML5/images/www.png"> </p>
+<p>​                                 <img src="media/www.png"> </p>
 <p>解决方案：  避免就好了。</p>
 <h4 id="-">嵌套块元素垂直外边距的合并</h4>
 <p>对于两个嵌套关系的块元素，如果父元素没有上内边距及边框，则父元素的上外边距会与子元素的上外边距发生合并，合并后的外边距为两者中的较大者，即使父元素的上外边距为0，也会发生合并。</p>
-<p><img src="../01-HTML5/images/n.png" /></p>
+<p><img src="media/n.png" /></p>
 <p>解决方案：</p>
 <ol>
 <li>可以为父元素定义1像素的上边框(transport透明)或上内边距。注：border-top(transport透明)/padding-top</li>
@@ -1274,7 +1274,7 @@ border-radius: 左上角  右上角  右下角  左下角;
 <p>语法格式：</p>
 <pre><code class="lang-css">box-shadow:水平阴影 垂直阴影 模糊距离 阴影尺寸 阴影颜色  内/外阴影；
 </code></pre>
-<p><img src="../01-HTML5/images/1498467567011.png" alt="1498467567011"></p>
+<p><img src="media/1498467567011.png" alt="1498467567011"></p>
 <ol>
 <li>前两个属性是必须写的。其余的可以省略。</li>
 <li>外阴影 (outset) 但是不能写    默认      想要内阴影  inset </li>
@@ -1291,12 +1291,12 @@ border-radius: 左上角  右上角  右下角  左下角;
 <p>前面我们说过，网页布局的核心，就是用CSS来摆放盒子位置。如何把盒子摆放到合适的位置？  </p>
 <p>CSS的定位机制有3种：普通流（标准流）、浮动和定位。</p>
 <p>html语言当中另外一个相当重要的概念----------标准流！或者普通流。普通流实际上就是一个网页内标签元素正常从上到下，从左到右排列顺序的意思，比如块级元素会独占一行，行内元素会按顺序依次前后排列；按照这种大前提的布局排列之下绝对不会出现例外的情况叫做普通流布局。</p>
-<p><img src="../01-HTML5/images/t.jpg" /></p>
+<p><img src="media/t.jpg" /></p>
 <h2 id="-float-">浮动(float)</h2>
 <p>浮动最早是用来控制图片，以便达到其他元素（特别是文字）实现“环绕”图片的效果。</p>
-<p><img src="../01-HTML5/images/l.png" style="width: 600px; border: 2px solid #000;"/></p>
+<p><img src="media/l.png" style="width: 600px; border: 2px solid #000;"/></p>
 <p>后来，我们发现浮动有个很有意思的事情：就是让任何盒子可以一行排列,因此我们就慢慢的偏离主题，用浮动的特性来布局了。（CSS3已经我们真正意义上的网页布局，具体CSS3我们会详细解释）</p>
-<p><img src="../01-HTML5/images/d.png" /></p>
+<p><img src="media/d.png" /></p>
 <h2 id="-">什么是浮动？</h2>
 <p>元素的浮动是指设置了浮动属性的元素会脱离标准普通流的控制，移动到其父元素中指定位置的过程。</p>
 <p>★可以看作一个全新的显示模式</p>
@@ -1332,9 +1332,9 @@ border-radius: 左上角  右上角  右下角  左下角;
 </ol>
 <h2 id="-">浮动详细内幕特性</h2>
 <pre><code>浮动首先创建包含块的概念（包裹）。就是说， 浮动的元素总是找理它最近的父级元素对齐。但是不会超出内边距的范围。 
-</code></pre><p>   <img src="../01-HTML5/images/one.jpg" width="500" /> </p>
+</code></pre><p>   <img src="media/one.jpg" width="500" /> </p>
 <pre><code>浮动的元素排列位置，跟上一个元素（块级）有关系。如果上一个元素有浮动，则A元素顶部会和上一个元素的顶部对齐；如果上一个元素是标准流，则A元素的顶部会和上一个元素的底部对齐。
-</code></pre><p>  <img src="../01-HTML5/images/two.jpg" width="400" /></p>
+</code></pre><p>  <img src="media/two.jpg" width="400" /></p>
 <pre><code>由2可以推断出，一个父盒子里面的子盒子，如果其中一个子级有浮动的，则其他子级都需要浮动。这样才能一行对齐显示。
 </code></pre><pre><code>浮动脱离标准流，不占位置，会影响标准流。浮动只有左右浮动。
 </code></pre><pre><code>元素添加浮动后，元素会具有行内块元素的特性。元素的大小完全取决于定义的大小或者默认的内容多少
@@ -1344,18 +1344,18 @@ border-radius: 左上角  右上角  右下角  左下角;
 漏：    加了浮动的盒子，不占位置的，它浮起来了，它原来的位置漏 给了标准流的盒子。
 特：    特别注意，这是特殊的使用，有很多的不好处，使用要谨慎。</p>
 <h1 id="-">清除浮动</h1>
-<p><img src="../01-HTML5/images/dt.png" /></p>
+<p><img src="media/dt.png" /></p>
 <p>人生就像乘坐北京地铁一号线：</p>
 <p>途经国贸，羡慕繁华；途经天安门，幻想权力；途经金融街，梦想发财；经过公主坟，遥想华丽家族；经过玉泉路，依然雄心勃勃…这时，有个声音飘然入耳:乘客你好,八宝山马上就要到了！顿时醒悟：人生苦短，有始有终。 好比我们的浮动，有浮动开始，则就应该有浮动结束。</p>
 <h2 id="-">为什么要清除浮动</h2>
-<p>我们前面说过，浮动本质是用来做一些文字混排效果的，但是被我们拿来做布局用，则会有很多的问题出现， 但是，你不能说浮动不好 <img src="../01-HTML5/images/wq.jpg" height="100" />。 </p>
+<p>我们前面说过，浮动本质是用来做一些文字混排效果的，但是被我们拿来做布局用，则会有很多的问题出现， 但是，你不能说浮动不好 <img src="media/wq.jpg" height="100" />。 </p>
 <p>由于浮动元素不再占用原文档流的位置，所以它会对后面的元素排版产生影响，为了解决这些问题，此时就需要在该元素中清除浮动。</p>
 <p>如果浮动一开始就是一个美丽的错误，那么请用正确的方法挽救它。</p>
 <h2 id="-">清除浮动本质</h2>
 <p>清除浮动主要为了解决父级元素因为子级浮动引起内部高度为0 的问题。</p>
-<p><img src="../01-HTML5/images/n.jpg" /></p>
-<p><img src="../01-HTML5/images/no.jpg" /></p>
-<p><img src="../01-HTML5/images/kc.jpg" /></p>
+<p><img src="media/n.jpg" /></p>
+<p><img src="media/no.jpg" /></p>
+<p><img src="media/kc.jpg" /></p>
 <h2 id="-">清除浮动的方法</h2>
 <p>其实本质叫做闭合浮动更好一些, 记住，清除浮动就是把浮动的盒子圈到里面，让父盒子闭合出口和入口不让他们出来影响其他元素。</p>
 <h3 id="-">额外标签法</h3>
@@ -1408,7 +1408,7 @@ border-radius: 左上角  右上角  右下角  左下角;
 <p>优点： 符合闭合浮动思想  结构语义化正确</p>
 <p>缺点： 由于IE6-7不支持:after，使用 zoom:1触发 hasLayout。</p>
 <p>代表网站： 百度、淘宝网、网易等</p>
-<p><img src="../01-HTML5/images/163.png" style="border: 1px dashed #3c3c3c;"/></p>
+<p><img src="media/163.png" style="border: 1px dashed #3c3c3c;"/></p>
 <p>注意： content:&quot;.&quot;  里面尽量跟一个小点，或者其他，尽量不要为空，否则再firefox 7.0前的版本会有生成空格。</p>
 <h3 id="-before-after-">使用before和after双伪元素清除浮动</h3>
 <p>使用方法：</p>
@@ -1426,7 +1426,7 @@ border-radius: 左上角  右上角  右下角  左下角;
 <p>优点：  代码更简洁</p>
 <p>缺点：  由于IE6-7不支持:after，使用 zoom:1触发 hasLayout。</p>
 <p>代表网站： 小米、腾讯等</p>
-<p><img src="../01-HTML5/images/mi.png" style="border: 1px dashed #3c3c3c;"/> </p>
+<p><img src="media/mi.png" style="border: 1px dashed #3c3c3c;"/> </p>
 <h1 id="-">版心和布局流程</h1>
 <p>阅读报纸时容易发现，虽然报纸中的内容很多，但是经过合理地排版，版面依然清晰、易读。同样，在制作网页时，要想使页面结构清晰、有条理，也需要对网页进行“排版”。</p>
 <p>“版心”是指网页中主体内容所在的区域。一般在浏览器窗口中水平居中显示，常见的宽度值为960px、980px、1000px、1200px等。</p>
@@ -1460,16 +1460,16 @@ border-radius: 左上角  右上角  右下角  左下角;
 <p>3、制作HTML页面，CSS文件。</p>
 <p>4、CSS初始化，然后开始运用盒子模型的原理，通过DIV+CSS布局来控制网页的各个模块。</p>
 <h2 id="-">一列固定宽度且居中</h2>
-<p><img src="../01-HTML5/images/yl.jpg" width="400" /></p>
+<p><img src="media/yl.jpg" width="400" /></p>
 <p>最普通的，最为常用的结构</p>
 <h2 id="-">两列左窄右宽型</h2>
-<p><img src="../01-HTML5/images/ll.jpg" width="400" /></p>
+<p><img src="media/ll.jpg" width="400" /></p>
 <p>比如小米    <a href="http://www.mi.com" target="_blank"> 小米官网 </a></p>
 <h2 id="-">通栏平均分布型</h2>
-<p><img src="../01-HTML5/images/tl.jpg" width="600" /></p>
+<p><img src="media/tl.jpg" width="600" /></p>
 <p>比如锤子    <a href="http://www.smartisan.com/" target="_blank"> 锤子官网 </a></p>
 <h1 id="photoshop">Photoshop</h1>
-<p><img src="../01-HTML5/images/1498465020015.png" alt="1498465020015"></p>
+<p><img src="media/1498465020015.png" alt="1498465020015"></p>
 <h2 id="photoshop-">Photoshop基本使用</h2>
 <h2 id="ps-">PS界面组成：</h2>
 <p>菜单栏、选项栏、工具栏、浮动面板（拖拽名称，可单独操作面板）、绘图窗口
@@ -1515,7 +1515,7 @@ border-radius: 左上角  右上角  右下角  左下角;
 <p>双击图层名称可重新命名</p>
 <p>双击组名称，可命名组</p>
 <p>  移动工具V选择组或图层时，需设置选项栏</p>
-<p><img src="../01-HTML5/images/1498465862231.png" alt="1498465862231"></p>
+<p><img src="media/1498465862231.png" alt="1498465862231"></p>
 <h2 id="-">图层上下位置移动</h2>
 <p>1、选中目标图层，在图层面拖拽</p>
 <p>2、CTRL+]    向上移动图层
@@ -1528,7 +1528,7 @@ border-radius: 左上角  右上角  右下角  左下角;
 <p>不透明度：设置图层的不透明程度    0%完全透明，不可见</p>
 <p>​                                  100%完全不透明，真实可见</p>
 <p>填充：与不透明度效果类似</p>
-<p><img src="../01-HTML5/images/1498465905203.png" alt="1498465905203">)</p>
+<p><img src="media/1498465905203.png" alt="1498465905203">)</p>
 <p>键盘数字键，可快速设置透明度数值     </p>
 <h2 id="-l">套索工具 L</h2>
 <p>1、套索工具      L  在屏幕上拖拽鼠标左键，释放后生成选区</p>
@@ -1540,14 +1540,14 @@ border-radius: 左上角  右上角  右下角  左下角;
 <p>L   在颜色交界的位置单击后拖动。单击起始点后，生成选区。      大小写键：CAPSLOCK   可控制光标精确状态。</p>
 <h2 id="-w">魔棒工具   W</h2>
 <p>以单击位置为选择色，选择相似颜色生成选区。</p>
-<p><img src="../01-HTML5/images/1498465928343.png" alt="1498465928343"> </p>
+<p><img src="media/1498465928343.png" alt="1498465928343"> </p>
 <p>容差：选择颜色的范围     容差小，颜色选择精确。    0-255</p>
 <p>连续：勾选连续时，相连颜色生成选区。</p>
 <p>​     不勾选，画面中所有相似颜色被选中生成选区。</p>
 <p>按SHIFT在未生成选区位置单击，可选区相加。</p>
 <p>选区反选：CTRL+SHIFT+I </p>
 <h2 id="-">选区布尔运算</h2>
-<p><img src="../01-HTML5/images/1498465944087.png" alt="1498465944087"></p>
+<p><img src="media/1498465944087.png" alt="1498465944087"></p>
 <p>选区面积大小的变化。</p>
 <p>新选区：保持选中状态</p>
 <p>添加到选区：相加运算（按住SHIFT再绘制选区）</p>
@@ -1563,29 +1563,29 @@ border-radius: 左上角  右上角  右下角  左下角;
 <h2 id="photoshop-">Photoshop 切图</h2>
 <p>PS切图 可以 分为 手动 利用切片切图 以及 利用PS的插件快速切图</p>
 <h3 id="-">切片工具</h3>
-<p><img src="../01-HTML5/images/1498466173246.png" alt="1498466173246"></p>
+<p><img src="media/1498466173246.png" alt="1498466173246"></p>
 <ol>
 <li><p>利用切片工具手动划出</p>
 <p>2.图层---新建基于图层的切片</p>
 </li>
 <li><p>利用标尺   基础参考线的切片</p>
-<p><img src="../01-HTML5/images/1498466734205.png" alt="1498466734205"></p>
+<p><img src="media/1498466734205.png" alt="1498466734205"></p>
 </li>
 </ol>
 <h3 id="-">切图插件</h3>
 <p>Cutterman是一款运行在photoshop中的插件，能够自动将你需要的图层进行输出， 以替代传统的手工 &quot;导出web所用格式&quot; 以及使用切片工具进行挨个切图的繁琐流程。 它支持各种各样的图片尺寸、格式、形态输出，方便你在pc、ios、Android等端上使用。 它不需要你记住一堆的语法、规则，纯点击操作，方便、快捷，易于上手。</p>
-<p><img src="../01-HTML5/images/sample1.gif" /></p>
+<p><img src="media/sample1.gif" /></p>
 <h1 id="-position-">定位(position)</h1>
 <p>如果，说浮动， 关键在一个 “浮” 字上面， 那么 我们的定位，关键在于一个 “位” 上。</p>
 <p>PS: 定位是我们CSS算是数一数二难点的了，但是，你务必要学好它，我们CSS离不开定位，特别是后面的js特效，天天和定位打交道。不要抵触它，反而要爱上它，它可以让我们工作更加轻松哦！</p>
 <h2 id="-">为什么要用定位？</h2>
 <p>那么定位，最长运用的场景再那里呢？   来看几幅图片，你一定会有感悟！</p>
 <p>第一幅图， 小黄色块可以再图片上移动：</p>
-<p><img src="../01-HTML5/images/1.gif" style="border: 1px dashed #3c3c3c;"/></p>
+<p><img src="media/1.gif" style="border: 1px dashed #3c3c3c;"/></p>
 <p>第二幅图， 左右箭头压住图片：</p>
-<p><img src="../01-HTML5/images/2.gif" style="border: 1px dashed #3c3c3c;"/></p>
+<p><img src="media/2.gif" style="border: 1px dashed #3c3c3c;"/></p>
 <p>第三幅图,  hot 再盒子外面多出一块，更加突出：</p>
-<p><img src="../01-HTML5/images/it.png" style="border: 1px dashed #3c3c3c;"/></p>
+<p><img src="media/it.png" style="border: 1px dashed #3c3c3c;"/></p>
 <p>以上三个小地方，如果用标准流或者浮动，实现会比较复杂或者难以实现，此时我们用定位来做，just soso！</p>
 <h2 id="-">元素的定位属性</h2>
 <p>元素的定位属性主要包括定位模式和边偏移两部分。</p>
@@ -1655,10 +1655,10 @@ border-radius: 左上角  右上角  右下角  左下角;
 <h2 id="-relative-">相对定位relative(自恋型)</h2>
 <pre><code>小笑话： 
 刚刚看到一个超级超级帅的帅哥，看得我都忍不住想和他搞基了。世间怎会有如此之完美的男人。我和他就这样一动不动的对视着，就仿佛一见钟情。时间也在这一瞬间停止了。直到我的手麻了。才恋恋不舍的放下镜子。。。。
-</code></pre><p><img src="../01-HTML5/images/smail.gif" width="100"/></p>
+</code></pre><p><img src="media/smail.gif" width="100"/></p>
 <p>相对定位是将元素相对于它在标准流中的位置进行定位，当position属性的取值为relative时，可以将元素定位于相对位置。</p>
 <p>对元素设置相对定位后，可以通过边偏移属性改变元素的位置，但是它在文档流中的位置仍然保留。如下图所示，即是一个相对定位的效果展示：</p>
-<p><img src="../01-HTML5/images/r.png"  /></p>
+<p><img src="media/r.png"  /></p>
 <p>注意：    相对定位最重要的一点是，它可以通过边偏移移动位置，但是原来的所占的位置，继续占有。</p>
 <p>就是说，相对定位的盒子仍在标准流中，它后面的盒子仍以标准流方式对待它。</p>
 <h2 id="-absolute-">绝对定位absolute (拼爹型)</h2>
@@ -1670,7 +1670,7 @@ border-radius: 左上角  右上角  右下角  左下角;
 
 儿子接着说：“以后全靠你让我拼爹了！”
 
-</code></pre><p><img src="../01-HTML5/images/smail.gif" width="100"/></p>
+</code></pre><p><img src="media/smail.gif" width="100"/></p>
 <p>　[注意] 如果文档可滚动，绝对定位元素会随着它滚动，因为元素最终会相对于正常流的某一部分定位。</p>
 <p>当position属性的取值为absolute时，可以将元素的定位模式设置为绝对定位。</p>
 <p>注意：    绝对定位最重要的一点是，它可以通过边偏移移动位置，但是它完全脱标，完全不占位置。</p>
@@ -1690,22 +1690,22 @@ top: 50%;
 transform: translate(-50%, -50%);
 </code></pre><h3 id="-">父级没有定位</h3>
 <p>若所有父元素都没有定位，以浏览器为准对齐(document文档)。</p>
-<p><img src="../01-HTML5/images/ab.png" /></p>
+<p><img src="media/ab.png" /></p>
 <h3 id="-">父级有定位</h3>
 <p>绝对定位是将元素依据最近的已经定位（绝对、固定或相对定位）的父元素（祖先）进行定位。 </p>
-<p><img src="../01-HTML5/images/ab1.png" /></p>
+<p><img src="media/ab1.png" /></p>
 <h3 id="-">绝对定位的盒子没有边偏移</h3>
 <p>如果只是给盒子指定了 定位，但是没有给与边偏移，则改盒子以标准流来显示排序，和上一个盒子的底边对齐，但是不占有位置。</p>
-<p><img src="../01-HTML5/images/ab2.png" /></p>
+<p><img src="media/ab2.png" /></p>
 <h3 id="-">子绝父相</h3>
 <p>这个“子绝父相”太重要了，是我们学习定位的口诀，时时刻刻记住的。</p>
 <p>这句话的意思是 子级是绝对定位的话， 父级要用相对定位。</p>
 <p>首先， 我们说下， 绝对定位是将元素依据最近的已经定位绝对、固定或相对定位）的父元素（祖先）进行定位。</p>
 <p>就是说， 子级是绝对定位，父亲只要是定位即可（不管父亲是绝对定位还是相对定位，甚至是固定定位都可以），就是说， 子绝父绝，子绝父相都是正确的。</p>
 <p>但是，在我们网页布局的时候， 最常说的 子绝父相是怎么来的呢？ 请看如下图：</p>
-<p><img src="../01-HTML5/images/zi.png"  style="border: 1px dashed #3c3c3c;"/></p>
+<p><img src="media/zi.png"  style="border: 1px dashed #3c3c3c;"/></p>
 <p>草图就是如下：</p>
-<p><img src="../01-HTML5/images/zifu.png"  style="border: 1px dashed #3c3c3c;"/></p>
+<p><img src="media/zifu.png"  style="border: 1px dashed #3c3c3c;"/></p>
 <p>所以，我们可以得出如下结论：</p>
 <p>因为子级是绝对定位，不会占有位置， 可以放到父盒子里面的任何一个地方。</p>
 <p>父盒子布局时，需要占有位置，因此父亲只能是 相对定位. </p>
@@ -1719,11 +1719,11 @@ transform: translate(-50%, -50%);
 <li>固定定位完全脱标，不占有位置，不随着滚动条滚动。</li>
 </ol>
 <p>记忆法：  就类似于孙猴子， 无父无母，好不容易找到一个可靠的师傅（浏览器），就听的师傅的，别的都不听。</p>
-<p><img src="../01-HTML5/images/sun.jpg" width="100"></p>
+<p><img src="media/sun.jpg" width="100"></p>
 <p>ie6等低版本浏览器不支持固定定位。</p>
 <h1 id="-z-index-">★叠放次序（z-index）</h1>
 <p>当对多个元素同时设置定位时，定位元素之间有可能会发生重叠。</p>
-<p><img src="../01-HTML5/images/z.png" /></p>
+<p><img src="media/z.png" /></p>
 <p>在CSS中，要想调整重叠定位元素的堆叠顺序，可以对定位元素应用z-index层叠等级属性，其取值可为正整数、负整数和0。</p>
 <p>比如：  z-index: 2;</p>
 <p>注意：</p>
@@ -1842,7 +1842,7 @@ position的取值为fixed或者absolute
 <p>以前我们还讲过让文字居中对齐，是 text-align: center;</p>
 <p>但是我们从来没有讲过有垂直居中的属性， 我们的妈妈一直很担心我们的垂直居中怎么做。</p>
 <p>vertical-align 垂直对齐， 这个看上去很美好的一个属性， 实际有着不可捉摸的脾气，否则我们也不会这么晚来讲解。</p>
-<p><img src="../01-HTML5/images/1.jpg" /></p>
+<p><img src="media/1.jpg" /></p>
 <pre><code class="lang-css">vertical-align : baseline |top |middle |bottom 
 </code></pre>
 <p>设置或检索对象内容的垂直对其方式。 </p>
@@ -1858,7 +1858,7 @@ middle 图片的中线和文字的中线对齐
 （不要让图片以基线对齐即可 或者将图片转成块元素）
 可以设置图片（行内块）垂直居中
 可以设置多行文字居中显示
-</code></pre><p><img src="../01-HTML5/images/1498467742995.png" alt="1498467742995"></p>
+</code></pre><p><img src="media/1498467742995.png" alt="1498467742995"></p>
 <p>vertical-align 不影响块级元素中的内容对齐，它只针对于 行内元素或者行内块元素，特别是行内块元素， 通常用来控制图片和表单等。</p>
 <h3 id="-">图片和文字对齐</h3>
 <p>所以我们知道，我们可以通过vertical-align 控制图片和文字的垂直关系了。 默认的图片会和文字基线对齐。</p>
@@ -1881,13 +1881,13 @@ middle 图片的中线和文字的中线对齐
 </ol>
 <h3 id="-">去除图片底侧空白缝隙</h3>
 <p>有个很重要特性你要记住： 如果一个元素没有基线，比如图片或者表单等行内块元素，则他的底线会和父级盒子的基线对齐。</strong> 这样会造成一个问题，就是图片底侧会有一个空白缝隙。</p>
-<p><img src="../01-HTML5/images/3.jpg" /></p>
+<p><img src="media/3.jpg" /></p>
 <p>解决的方法就是：  </p>
 <ol>
-<li>给img vertical-align:middle | top等等。  让图片不要和基线对齐。<img src="../01-HTML5/images/1633.png"  width="500"  style="border: 1px dashed #ccc;" /></li>
+<li>给img vertical-align:middle | top等等。  让图片不要和基线对齐。<img src="media/1633.png"  width="500"  style="border: 1px dashed #ccc;" /></li>
 </ol>
 <ol>
-<li>给img 添加 display：block; 转换为块级元素就不会存在问题了。<img src="../01-HTML5/images/sina1.png" width="500" style="border: 1px dashed #ccc;"/></li>
+<li>给img 添加 display：block; 转换为块级元素就不会存在问题了。<img src="media/sina1.png" width="500" style="border: 1px dashed #ccc;"/></li>
 </ol>
 <h2 id="-">溢出文字以省略号形式显示</h2>
 <pre><code>.类名{
@@ -1902,7 +1902,7 @@ middle 图片的中线和文字的中线对齐
 <p>然而，一个网页中往往会应用很多小的背景图像作为修饰，当网页中的图像过多时，服务器就会频繁地接受和发送请求，这将大大降低页面的加载速度。为了有效地减少服务器接受和发送请求的次数，提高页面的加载速度，出现了CSS精灵技术（也称CSS Sprites、CSS雪碧）。</p>
 <p>精灵技术本质</p>
 <p>简单地说，CSS精灵是一种处理网页背景图像的方式。它将一个页面涉及到的所有零星背景图像都集中到一张大图中去，然后将大图应用于网页，这样，当用户访问该页面时，只需向服务发送一次请求，网页中的背景图像即可全部展示出来。通常情况下，这个由很多小的背景图像合成的大图被称为精灵图，如下图所示为京东网站中的一个精灵图。</p>
-<p><img src="../01-HTML5/images/jd.png"  style="border: 1px dashed #ccc;" /></p>
+<p><img src="media/jd.png"  style="border: 1px dashed #ccc;" /></p>
 <h3 id="-">精灵技术的使用</h3>
 <p>CSS 精灵其实是将网页中的一些背景图像整合到一张大图中（精灵图），然而，各个网页元素通常只需要精灵图中不同位置的某个小图，要想精确定位到精灵图中的某个小图，就需要使用CSS的background-image、background-repeat和background-position属性进行背景定位，其中最关键的是使用background-position属性精确地定位。</p>
 <p>使用方式：</p>
@@ -1918,10 +1918,10 @@ middle 图片的中线和文字的中线对齐
 移动端设备必备良药...
 </code></pre><h3 id="-">字体图标使用流程</h3>
 <p>总体来说，字体图标按照如下流程：</p>
-<p><img src="../01-HTML5/images/fontt.png" /></p>
+<p><img src="media/fontt.png" /></p>
 <h4 id="-">设计字体图标</h4>
 <p>假如图标是我们公司单独设计，那就需要第一步了，这个属于UI设计人员的工作， 他们在 illustrator 或 Sketch 这类矢量图形软件里创建 icon图标， 比如下图：</p>
-<p><img src="../01-HTML5/images/03.jpg" /></p>
+<p><img src="media/03.jpg" /></p>
 <p>  之后保存为svg格式，然后给我们前端人员就好了。 </p>
 <p>  其实第一步，我们不需要关心，只需要给我们这些图标就可以了，如果图标是大众的，网上本来就有的，可以直接跳过第一步，进入第三步。</p>
 <h4 id="-">上传生成字体包</h4>
@@ -1948,13 +1948,13 @@ middle 图片的中线和文字的中线对齐
 <h4 id="-">下载兼容字体包</h4>
 <p>刚才上传完毕， 网站会给我们把UI做的svg图片转换为我们的字体格式， 然后下载下来就好了</p>
 <p>当然，我们不需要自己专门的图标，是想网上找几个图标使用，以上2步可以直接省略了， 直接到刚才的网站上找喜欢的下载使用吧。</p>
-<p><img src="../01-HTML5/images/fontt1.png" /></p>
-<p><img src="../01-HTML5/images/fontt2.png" /></p>
+<p><img src="media/fontt1.png" /></p>
+<p><img src="media/fontt2.png" /></p>
 <h4 id="-html">字体引入到HTML</h4>
 <p>最后一步，是最重要的一步了， 就是字体文件已经有了，我们需要引入到我们页面中。</p>
 <ol>
 <li><p>首先把 以下4个文件放入到 fonts文件夹里面。 通俗的做法</p>
-<p><img src="../01-HTML5/images/1498032122244.png" alt="1498032122244"></p>
+<p><img src="media/1498032122244.png" alt="1498032122244"></p>
 <h3 id="-fontclass-">第一步：引入项目下面生成的fontclass代码：</h3>
 <pre><code class="lang-html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/CSS&quot; href=&quot;./iconfont.CSS&quot;&gt;
 </code></pre>
@@ -1965,10 +1965,10 @@ middle 图片的中线和文字的中线对齐
 </ol>
 <h2 id="-">滑动门</h2>
 <p>先来体会下现实中的滑动门,或者你可以叫做推拉门：</p>
-<p><img src="../01-HTML5/images/h.gif" /></p>
+<p><img src="media/h.gif" /></p>
 <h3 id="-">滑动门出现的背景</h3>
 <p>制作网页时，为了美观，常常需要为网页元素设置特殊形状的背景，比如微信导航栏，有凸起和凹下去的感觉，最大的问题是里面的字数不一样多，咋办？</p>
-<p><img src="../01-HTML5/images/wxx.jpg" /></p>
+<p><img src="media/wxx.jpg" /></p>
 <p>为了使各种特殊形状的背景能够自适应元素中文本内容的多少，出现了CSS滑动门技术。它从新的角度构建页面，使各种特殊形状的背景能够自由拉伸滑动，以适应元素内部的文本内容，可用性更强。 最常见于各种导航栏的滑动门。</p>
 <h3 id="-">核心技术</h3>
 <p>核心技术就是利用CSS精灵（主要是背景位置）和盒子padding撑开宽度, 以便能适应不同字数的导航栏。</p>
@@ -1991,7 +1991,7 @@ middle 图片的中线和文字的中线对齐
 <p>侧轴：与主轴垂直的轴称作侧轴，默认是垂直方向的</p>
 <p>方向：默认主轴从左向右，侧轴默认从上到下</p>
 <p>主轴和侧轴并不是固定不变的，通过flex-direction可以互换。</p>
-<p><img src="C:/Users/Administrator/Desktop/%E7%AC%94%E8%AE%B0/css3/../01-HTML5/images/1498441839910.png" alt="1498441839910"></p>
+<p><img src="C:/Users/Administrator/Desktop/%E7%AC%94%E8%AE%B0/css3/media/1498441839910.png" alt="1498441839910"></p>
 <p>Flex布局的语法规范经过几年发生了很大的变化，也给Flexbox的使用带来一定的局限性，因为语法规范版本众多，浏览器支持不一致，致使Flexbox布局使用不多</p>
 <p><strong>2、各属性详解<em>**</em></strong></p>
 <p>a、flex-direction调整主轴方向（默认为水平方向）</p>
@@ -2061,8 +2061,8 @@ background-image: radial-gradient(200px at center center, yellow 50%, green 50%)
 <h2 id="-css3-">过渡(CSS3)</h2>
 <p>过渡（transition)是CSS3中具有颠覆性的特征之一，我们可以在不使用 Flash 动画或 JavaScript 的情况下，当元素从一种样式变换为另一种样式时为元素添加效果。</p>
 <p>帧动画：通过一帧一帧的画面按照固定顺序和速度播放。如电影胶片</p>
-<p><img src="../01-HTML5/images/1498445034712.png" alt="1498445034712"></p>
-<p><img src="../01-HTML5/images/zhen.gif" /></p>
+<p><img src="media/1498445034712.png" alt="1498445034712"></p>
+<p><img src="media/zhen.gif" /></p>
 <p>在CSS3里使用transition可以实现补间动画（过渡效果），并且当前元素只要有“属性”发生变化时即存在两种状态(我们用A和B代指），就可以实现平滑的过渡，为了方便演示采用hover切换两种状态，但是并不仅仅局限于hover状态来实现过渡。</p>
 <p>注意：添加到A状态会执行两次，添加给B执行一次效果</p>
 <p>语法格式:</p>
@@ -2104,7 +2104,7 @@ background-image: radial-gradient(200px at center center, yellow 50%, green 50%)
 </tbody>
 </table>
 <p>运动曲线示意图：</p>
-<p><img src="../01-HTML5/images/1498445454760.png" alt="1498445454760"></p>
+<p><img src="media/1498445454760.png" alt="1498445454760"></p>
 <pre><code class="lang-css">//A状态
 img {
   width:80px; height: 80px; border:8px solid #ccc; border-radius: 50%;
@@ -2119,7 +2119,7 @@ img:hover {
 <p>转换是CSS3中具有颠覆性的特征之一，可以实现元素的位移、旋转、变形、缩放，甚至支持矩阵方式，配合过渡和即将学习的动画知识，可以取代大量之前只能靠Flash才可以实现的效果。</p>
 <p>变形转换 transform  </p>
 <h3 id="-translate-x-y-">移动至 translate(x, y)</h3>
-<p><img src="../01-HTML5/images/1498443715586.png" alt="1498443715586"></p>
+<p><img src="media/1498443715586.png" alt="1498443715586"></p>
 <pre><code class="lang-css">translate(50px,50px);
 </code></pre>
 <p>使用translate方法来将文字或图像在水平方向和垂直方向上分别垂直移动50像素。</p>
@@ -2139,7 +2139,7 @@ img:hover {
 </code></pre>
 <p> 让定位的盒子水平居中</p>
 <h3 id="-scale-x-y-">缩放 scale(x, y)</h3>
-<p><img src="../01-HTML5/images/1498444645795.png" alt="1498444645795"></p>
+<p><img src="media/1498444645795.png" alt="1498444645795"></p>
 <pre><code class="lang-css">transform:scale(0.8,1);
 </code></pre>
 <p>可以对元素进行水平和垂直方向的缩放。该语句使用scale方法使该元素在水平方向上缩小了20%，垂直方向上不缩放。</p>
@@ -2150,7 +2150,7 @@ scaleY(y)元素仅垂直方向缩放（Y轴缩放）
 <h3 id="-rotate-deg-">旋转 rotate(deg)</h3>
 <p>可以对元素进行旋转，正值为顺时针，负值为逆时针；</p>
 <p>//默认是Z轴旋转</p>
-<p><img src="../01-HTML5/images/1498443651293.png" alt="1498443651293"></p>
+<p><img src="media/1498443651293.png" alt="1498443651293"></p>
 <pre><code class="lang-css">transform:rotate(45deg);
 </code></pre>
 <ol>
@@ -2198,7 +2198,7 @@ scaleY(y)元素仅垂直方向缩放（Y轴缩放）
 }
 </code></pre>
 <h3 id="-skew-deg-deg-">倾斜 skew(deg, deg)</h3>
-<p><img src="../01-HTML5/images/1498443827389.png" alt="1498443827389"></p>
+<p><img src="media/1498443827389.png" alt="1498443827389"></p>
 <pre><code class="lang-css">transform:skew(30deg,0deg);
 </code></pre>
 <p>该实例通过skew方法把元素水平方向上倾斜30度，处置方向保持不变。</p>
@@ -2206,7 +2206,7 @@ scaleY(y)元素仅垂直方向缩放（Y轴缩放）
 <p>可以使元素按一定的角度进行倾斜，可为负值，第二个参数不写默认为0。</p>
 <h3 id="-transform-origin">变形原点transform-origin</h3>
 <p>transform-origin可以调整元素转换的原点</p>
-<p><img src="../01-HTML5/images/1498443912530.png" alt="1498443912530"></p>
+<p><img src="media/1498443912530.png" alt="1498443912530"></p>
 <pre><code class="lang-css">div{
      transform-origin: left top;
 } 
@@ -2225,9 +2225,9 @@ scaleY(y)元素仅垂直方向缩放（Y轴缩放）
 <h2 id="3d-">3D变形</h2>
 <p>左手坐标系</p>
 <p>伸出左手，让拇指和食指成“L”形，大拇指向右，食指向上，中指指向前方。这样我们就建立了一个左手坐标系，拇指、食指和中指分别代表X、Y、Z轴的正方向。如下图</p>
-<p><img src="../01-HTML5/images/1498445587576.png" alt="1498445587576"></p>
+<p><img src="media/1498445587576.png" alt="1498445587576"></p>
 <p>CSS3中的3D坐标系与上述的3D坐标系是有一定区别的，相当于其绕着X轴旋转了180度，如下图</p>
-<p><img src="../01-HTML5/images/1498459001951.png" alt="1498459001951"></p>
+<p><img src="media/1498459001951.png" alt="1498459001951"></p>
 <h3 id="-perspective-">透视距(perspective)</h3>
 <p>电脑显示屏是一个2D平面，图像之所以具有立体感（3D效果），其实只是一种视觉呈现，通过透视可以实现此目的。</p>
 <p>透视可以将一个2D平面，在转换的过程当中，呈现3D效果。</p>
@@ -2239,10 +2239,10 @@ scaleY(y)元素仅垂直方向缩放（Y轴缩放）
 </ol>
 <p>取值：取值越大，近大远小的效果越弱；取值越小，近大远小的效果越强。一般取值为900px;</p>
 <p>理解透视距离原理：</p>
-<p><img src="../01-HTML5/images/1498446715314.png" alt="1498446715314"></p>
+<p><img src="media/1498446715314.png" alt="1498446715314"></p>
 <h3 id="rotatex-">rotateX()</h3>
 <p> 就是沿着 x 立体旋转.</p>
-<p><img src="C:/Users/Administrator/Desktop/%E7%AC%94%E8%AE%B0/css3/../01-HTML5/images/1498445756802.png" alt="1498445756802"></p>
+<p><img src="C:/Users/Administrator/Desktop/%E7%AC%94%E8%AE%B0/css3/media/1498445756802.png" alt="1498445756802"></p>
 <pre><code class="lang-css">img {
   transition:all 0.5s ease 0s;
 }
@@ -2253,7 +2253,7 @@ img:hove {
 </code></pre>
 <h3 id="rotatey-">rotateY()</h3>
 <p>沿着y轴进行旋转</p>
-<p><img src="C:/Users/Administrator/Desktop/%E7%AC%94%E8%AE%B0/css3/../01-HTML5/images/1498446043198.png" alt="1498446043198"></p>
+<p><img src="C:/Users/Administrator/Desktop/%E7%AC%94%E8%AE%B0/css3/media/1498446043198.png" alt="1498446043198"></p>
 <pre><code class="lang-css">img {
   transition:all 0.5s ease 0s;
 }
@@ -2277,11 +2277,11 @@ img:hover {
 </code></pre>
 <h3 id="translatex-x-">translateX(x)</h3>
 <p>仅水平方向移动**（X轴移动）</p>
-<p><img src="../01-HTML5/images/1498459697576.png" alt="1498459697576"></p>
+<p><img src="media/1498459697576.png" alt="1498459697576"></p>
 <p>主要目的实现移动效果</p>
 <h3 id="translatey-y-">translateY(y)</h3>
 <p>仅垂直方向移动（Y轴移动）</p>
-<p><img src="../01-HTML5/images/1498459770252.png" alt="1498459770252"></p>
+<p><img src="media/1498459770252.png" alt="1498459770252"></p>
 <h3 id="translatez-z-">translateZ(z)</h3>
 <p>transformZ的直观表现形式就是大小变化，实质是XY平面相对于视点的远近变化（说远近就一定会说到离什么参照物远或近，在这里参照物就是perspective属性）。比如设置了perspective为200px;那么transformZ的值越接近200，就是离的越近，看上去也就越大，超过200就看不到了，因为相当于跑到后脑勺去了，我相信你正常情况下，是看不到自己的后脑勺的。</p>
 <p>效果：从前到后的效果</p>
@@ -2300,7 +2300,7 @@ img:hover {
 <p>语法格式：</p>
 <pre><code class="lang-css">animation:动画名称 动画时间 运动曲线  何时开始  播放次数  是否反方向;
 </code></pre>
-<p><img src="../01-HTML5/images/1498461096243.png" alt="1498461096243"></p>
+<p><img src="media/1498461096243.png" alt="1498461096243"></p>
 <p>关于几个值，除了名字，动画时间，延时有严格顺序要求其它随意r</p>
 <pre><code class="lang-css">@keyframes 动画名称 {
   from{ 开始位置 }  0%
