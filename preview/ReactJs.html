@@ -1,0 +1,1459 @@
+<html>
+  <head>
+	  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>ReactJs</title>
+		<link href="toc/style/github-bf51422f4bb36427d391e4b75a1daa083c2d840e.css" media="all" rel="stylesheet" type="text/css"/>
+		<link href="toc/style/github2-d731afd4f624c99a4b19ad69f3083cd6d02b81d5.css" media="all" rel="stylesheet" type="text/css"/>
+		<link href="toc/css/zTreeStyle/zTreeStyle.css" media="all" rel="stylesheet" type="text/css"/>
+	  <style>
+		pre {
+		    counter-reset: line-numbering;
+		    border: solid 1px #d9d9d9;
+		    border-radius: 0;
+		    background: #fff;
+		    padding: 0;
+		    line-height: 23px;
+		    margin-bottom: 30px;
+		    white-space: pre;
+		    overflow-x: auto;
+		    word-break: inherit;
+		    word-wrap: inherit;
+		}
+
+		pre a::before {
+		  content: counter(line-numbering);
+		  counter-increment: line-numbering;
+		  padding-right: 1em; /* space after numbers */
+		  width: 25px;
+		  text-align: right;
+		  opacity: 0.7;
+		  display: inline-block;
+		  color: #aaa;
+		  background: #eee;
+		  margin-right: 16px;
+		  padding: 2px 10px;
+		  font-size: 13px;
+		  -webkit-touch-callout: none;
+		  -webkit-user-select: none;
+		  -khtml-user-select: none;
+		  -moz-user-select: none;
+		  -ms-user-select: none;
+		  user-select: none;
+		}
+
+		pre a:first-of-type::before {
+		  padding-top: 10px;
+		}
+
+		pre a:last-of-type::before {
+		  padding-bottom: 10px;
+		}
+
+		pre a:only-of-type::before {
+		  padding: 10px;
+		}
+
+		.highlight { background-color: #ffffcc } /* RIGHT */
+		</style>
+  </head>
+  <body>
+	  <div>
+				<div style='width:25%;'>
+						<ul id="tree" class="ztree" style='width:100%'>
+
+						</ul>
+				</div>
+        <div id='readme' style='width:70%;margin-left:20%;'>
+          	<article class='markdown-body'>
+            	<h1 id="react-">React 基础</h1>
+<h2 id="-react">什么是 React</h2>
+<p><img src="C:\Users\Administrator\Desktop\笔记\12.React.js\images\React.jpg" alt=""></p>
+<p>React 是一个用于构建用户界面的 JavaScript</p>
+<p>用户界面：HTML页面（前端） </p>
+<p>React 主要用来写HTML页面，或构建Web应用</p>
+<p>如果从 MVC 的角度来看，React 仅仅是视图层（V），也就是只负责视图的渲染，而并非提供了 完整的 M 和 C 的功能。 </p>
+<p>React 起源于 Facebook 的内部项目，后又用来架设 Instagram 的网站，并于 2013 年 5 月开源</p>
+<h2 id="react-">React 的特点</h2>
+<ul>
+<li>声明式 </li>
+</ul>
+<ul>
+<li>基于组件 </li>
+<li>学习一次，随处使用</li>
+</ul>
+<p>1、声明式</p>
+<p>你只需要描述 UI（HTML）看起来是什么样，就跟写HTML一样 </p>
+<p>React 负责渲染 UI，并在数据变化时更新 UI  </p>
+<pre><code class="lang-html">const jsx = &lt;div className=&quot;app&quot;&gt; 
+  &lt;h1&gt;Hello React! 动态变化数据：{count}&lt;/h1&gt; &lt;/div&gt; 
+</code></pre>
+<p>2、基于组件</p>
+<p>组件是 React <strong>最重要</strong>的内容 </p>
+<ul>
+<li>组件表示页面中的部分内容 </li>
+<li>组合、复用多个组件，可以实现完整的页面功能</li>
+</ul>
+<p><img src="images\React1.png" alt=""></p>
+<p>3、学习一次，随处使用</p>
+<p>使用 React 可以开发 Web 应用 </p>
+<ul>
+<li>使用 React 可以开发移动端原生应用（react-native） </li>
+<li>使用 React 可以开发 VR（虚拟现实）应用（react 360）</li>
+</ul>
+<p><img src="images\React2.png" alt=""></p>
+<h1 id="react-">React 的基本使用</h1>
+<h2 id="react-">React 的安装</h2>
+<p>安装命令：</p>
+<pre><code class="lang-bash">#安装两个包 React 和 React-DOM
+npm i react react-dom 
+</code></pre>
+<ul>
+<li>react 包是核心，提供创建元素、组件等功能 </li>
+<li>react-dom 包提供 DOM 相关功能等 </li>
+</ul>
+<h2 id="react-">React 的使用</h2>
+<p>1、引入 react 和 react-dom 两个 js 文件</p>
+<pre><code class="lang-html">&lt;script src=&quot;./node_modules/react/umd/react.development.js&quot;&gt;&lt;/script&gt; 
+&lt;script src=&quot;./node_modules/react-dom/umd/react-dom.development.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<p>2、创建 React 元素 </p>
+<pre><code class="lang-html">&lt;div id=&quot;root&quot;&gt;&lt;/div&gt; 
+&lt;script&gt;
+    // （标签名 便签属性  标签中包含的内容 
+    //第三个参数以后都是子节点，也可以创建其它标签元素
+  const title = React.createElement(&#39;h1&#39;, null, &#39;Hello React&#39;) 
+&lt;/script&gt;
+</code></pre>
+<p>3、渲染 React 元素到页面中</p>
+<pre><code class="lang-html">&lt;script&gt;  
+  //渲染对象 （对象名 渲染到根标签
+  ReactDOM.render(title, document.getElementById(&#39;root&#39;)) 
+&lt;/script&gt; 
+</code></pre>
+<p>注意：使用页面预览需要在服务器端打开</p>
+<h2 id="-">方法说明</h2>
+<p>React.createElement() 说明（知道） </p>
+<pre><code class="lang-js">// 返回值：React元素 
+// 第一个参数：要创建的React元素名称 
+// 第二个参数：该React元素的属性 
+// 第三个及其以后的参数：该React元素的子节点 
+const el = React.createElement(&#39;h1&#39;, { title: &#39;标题&#39; }, &#39;Hello React&#39;) 
+</code></pre>
+<p>注意：特殊属性名称要根据报错提示使用，例如：class写成className</p>
+<p>ReactDOM.render() 说明 </p>
+<pre><code class="lang-js">// 第一个参数：要渲染的React元素 
+// 第二个参数：DOM对象，用于指定渲染到页面中的位置
+ReactDOM.render(el, document.getElementById(&#39;root&#39;)) 
+</code></pre>
+<h1 id="react-">React 脚手架的使用</h1>
+<h2 id="react-">React 脚手架意义</h2>
+<p>1.脚手架是开发 现代Web 应用的必备。 </p>
+<p>2.充分利用 Webpack、Babel、ESLint 等工具辅助项目开发。 </p>
+<p>3.零配置，无需手动配置繁琐的工具即可使用。 </p>
+<p>4.关注业务，而不是工具配置。 </p>
+<h2 id="-react-">使用 React 脚手架初始化项目</h2>
+<ol>
+<li><p>初始化项目，命令：</p>
+<pre><code> npx create-react-app my-app
+</code></pre><p> <img src="images\React3.png" alt=""></p>
+</li>
+<li><p>启动项目，在项目根目录执行命令：</p>
+<pre><code class="lang-bash"> npm start
+</code></pre>
+<p> <img src="images\React5.png" alt=""></p>
+</li>
+</ol>
+<p><img src="images\React6.png" alt=""></p>
+<h2 id="npx-">npx 命令介绍</h2>
+<p>npm v5.2.0 引入的一条命令 </p>
+<ul>
+<li>目的：提升包内提供的命令行工具的使用体验 </li>
+<li>原来：先安装脚手架包，再使用这个包中提供的命令 </li>
+<li>现在：无需安装脚手架包，就可以直接使用这个包提供的命令</li>
+</ul>
+<p><strong>补充说明</strong></p>
+<p>1.推荐使用：<code>npx create-react-app my-app</code></p>
+<p>2.npm init react-app my-app </p>
+<p>3.yarn create react-app my-app </p>
+<p>yarn 是 Facebook 发布的包管理器，可以看做是 npm 的替代品，功能与 npm 相同 </p>
+<ul>
+<li>yarn 具有快速、可靠和安全的特点 </li>
+<li>初始化新项目：yarn init </li>
+<li>安装包： yarn add 包名称 </li>
+<li>安装项目依赖项： yarn </li>
+<li>其他命令，请参考yarn文档 </li>
+</ul>
+<h2 id="-react">在脚手架中使用 React</h2>
+<ol>
+<li>导入 react 和 react-dom 两个包。 </li>
+</ol>
+<pre><code class="lang-js">import React from &#39;react&#39; 
+import ReactDOM from &#39;react-dom&#39; 
+</code></pre>
+<ol start="2">
+<li><p>调用 React.createElement() 方法创建 react 元素。 </p>
+</li>
+<li><p>调用 ReactDOM.render() 方法渲染 react 元素到页面中。 </p>
+</li>
+</ol>
+<h1 id="jsx-">JSX 的基本使用</h1>
+<h2 id="createelement-">createElement() 的问题</h2>
+<p>1.繁琐不简洁。 </p>
+<p>2.不直观，无法一眼看出所描述的结构。 </p>
+<p>3.不优雅，用户体验不爽。 </p>
+<p><img src="images\Reat7.png" alt=""></p>
+<h2 id="jsx-">JSX 简介</h2>
+<p>JSX 是 JavaScript XML 的简写，表示在 JavaScript 代码中写 XML（HTML） 格式的代码。 </p>
+<p>优势：声明式语法更加直观、与HTML结构相同，降低了学习成本、提升开发效率 </p>
+<p><strong>JSX 是 React 的核心内容。</strong> </p>
+<h3 id="-">使用步骤</h3>
+<ol>
+<li><p>使用 JSX 语法创建 react 元素 </p>
+<pre><code class="lang-js"> // 使用 JSX 语法，创建 react 元素： 
+ const title = &lt;h1&gt;Hello JSX&lt;/h1&gt; 
+</code></pre>
+</li>
+<li><p>使用 ReactDOM.render() 方法渲染 react 元素到页面中 </p>
+<pre><code class="lang-js"> // 渲染创建好的React元素 
+ ReactDOM.render(title, root) 
+</code></pre>
+</li>
+</ol>
+<h3 id="-">思考</h3>
+<p><strong>为什么脚手架中可以使用 JSX 语法？</strong> </p>
+<ol>
+<li><p>JSX 不是标准的 ECMAScript 语法，它是 ECMAScript 的语法扩展。 </p>
+</li>
+<li><p>需要使用 babel 编译处理后，才能在浏览器环境中使用。 </p>
+</li>
+<li><p>create-react-app 脚手架中已经默认有该配置，无需手动配置。 </p>
+</li>
+<li><p>编译 JSX 语法的包为：@babel/preset-react 。 </p>
+</li>
+</ol>
+<h3 id="-">注意点</h3>
+<p>1.React元素的属性名使用驼峰命名法 </p>
+<p>2.特殊属性名：class -&gt; className、for -&gt; htmlFor、tabindex -&gt; tabIndex 。 </p>
+<p>3.没有子节点的React元素可以用 /&gt; 结束 。 </p>
+<p>4.推荐：使用小括号包裹 JSX ，从而避免 JS 中的自动插入分号陷阱。 </p>
+<pre><code class="lang-js">// 使用小括号包裹
+JSX const dv = ( 
+  &lt;div&gt;Helo JSX&lt;/div&gt; ) 
+</code></pre>
+<h2 id="-js-">嵌入 JS 表达式</h2>
+<ul>
+<li><p>数据存储在JS中 </p>
+</li>
+<li><p>语法：<strong>{ JavaScript表达式 }</strong>   </p>
+<p>  表达式：所有有返回值的代码都是表达式</p>
+</li>
+<li><p>注意：语法中是<strong>单大括号</strong>，不是双大括号！ </p>
+</li>
+</ul>
+<pre><code class="lang-js">const name = &#39;Jack&#39; const dv = ( 
+  &lt;div&gt;你好，我叫：？？？&lt;/div&gt; ) 
+</code></pre>
+<pre><code class="lang-js">const name = &#39;Jack&#39; const dv = ( 
+  &lt;div&gt;你好，我叫：{name}&lt;/div&gt; ) 
+</code></pre>
+<p><strong>注意点</strong></p>
+<p><strong>单大括号</strong>中可以使用任意的 JavaScript 表达式 </p>
+<p>JSX 自身也是 JS 表达式 </p>
+<p>注意：JS 中的对象是一个例外，一般只会出现在 style 属性中 ,不能在{}中出现语句（比如：if/for 等） </p>
+<pre><code class="lang-js">const h1 = &lt;h1&gt;我是JSX&lt;/h1&gt; 
+const dv = ( 
+  &lt;div&gt;嵌入表达式：{h1}&lt;/div&gt; ) 
+</code></pre>
+<h2 id="jsx-">JSX 的条件渲染</h2>
+<ul>
+<li><p>场景：loading效果 </p>
+</li>
+<li><p>条件渲染：根据条件渲染特定的 JSX 结构 </p>
+</li>
+<li><p>可以使用if/else或三元运算符或逻辑与运算符来实现 </p>
+<p>  条件运算符</p>
+</li>
+</ul>
+<pre><code class="lang-js">const loadData = () =&gt; { 
+  if (isLoading) { 
+    return &lt;div&gt;数据加载中，请稍后...&lt;/div&gt; 
+  } 
+  return ( 
+    &lt;div&gt;数据加载完成，此处显示加载后的数据&lt;/div&gt; 
+  ) 
+} 
+</code></pre>
+<p>​    三元运算符</p>
+<pre><code class="lang-js">let fn = ()=&gt; {
+    return true ？ &lt;div&gt;1&lt;/div&gt; : &lt;div&gt;没有数据&lt;/div&gt;
+}
+</code></pre>
+<p>​    与或运算符</p>
+<pre><code class="lang-js">//用于控制是否渲染
+let fn = ()=&gt; {
+    return true &amp;&amp; &lt;div&gt;1&lt;/div&gt;
+}
+</code></pre>
+<h2 id="jsx-">JSX 的列表渲染</h2>
+<p>如果要渲染一组数据，应该使用数组的 <code>map()</code> 方法 </p>
+<pre><code class="lang-js">const songs = [ 
+  {id: 1, name: &#39;痴心绝对&#39;}, 
+  {id: 2, name: &#39;像我这样的人&#39;}, 
+  {id: 3, name: &#39;南山南&#39;}
+] 
+</code></pre>
+<pre><code class="lang-js">const list = ( 
+  &lt;ul&gt; 
+    // { } 是JavaScript表达式   
+    { songs.map(item =&gt; &lt;li&gt;{item.name}&lt;/li&gt;) } 
+  &lt;/ul&gt; 
+) 
+</code></pre>
+<p>如果要渲染一组数据，应该使用数组的 <strong>map()</strong> 方法 </p>
+<p>注意：渲染列表时应该添加 key 属性，key 属性的值要保证唯一 </p>
+<ul>
+<li>原则：map() 遍历谁，就给谁添加 key 属性 </li>
+<li>注意：尽量避免使用索引号作为 key </li>
+</ul>
+<pre><code class="lang-js">const songs = [ 
+  {id: 1, name: &#39;痴心绝对&#39;}, 
+  {id: 2, name: &#39;像我这样的人&#39;}, 
+  {id: 3, name: &#39;南山南&#39;}, ] 
+</code></pre>
+<pre><code class="lang-js">const list = ( 
+  &lt;ul&gt; 
+    {songs.map(item =&gt; &lt;li key={item.id}&gt;{item.name}&lt;/li&gt;)} 
+  &lt;/ul&gt; ) 
+</code></pre>
+<h2 id="jsx-">JSX 的样式处理</h2>
+<ol>
+<li><p>行内样式 —— style </p>
+<pre><code class="lang-js"> &lt;h1 style={{ color: &#39;red&#39;, backgroundColor: &#39;skyblue&#39; }}&gt; 
+   JSX的样式处理 &lt;/h1&gt; 
+</code></pre>
+</li>
+<li><p>类名 —— className（推荐）</p>
+<pre><code class="lang-js"> &lt;h1 className=&quot;title&quot;&gt; 
+ JSX的样式处理 &lt;/h1&gt; 
+</code></pre>
+</li>
+</ol>
+<h2 id="-">总结</h2>
+<p><strong>JSX</strong> </p>
+<p>1.JSX 是React 的核心内容。 </p>
+<p>2.JSX 表示在JS代码中写HTML结构，是React声明式的体现。 </p>
+<p>3.使用 JSX 配合嵌入的 JS 表达式、条件渲染、列表渲染，可以描述任意 UI 结构。 </p>
+<p>4.推荐使用 className 的方式给JSX添加样式。 </p>
+<p>5.React 完全利用 JS 语言自身的能力来编写UI，而不是造轮子增强 HTML 功 能。 </p>
+<h1 id="react-">React组件基础</h1>
+<h2 id="react-">React 组件介绍</h2>
+<ul>
+<li>组件是 React 的一等公民，使用 React 就是在用组件</li>
+<li>组件表示页面中的部分功能</li>
+<li>组合多个组件实现完整的页面功能</li>
+<li>特点：可复用、独立、可组合</li>
+</ul>
+<p><img src="images\React1.png" alt=""></p>
+<h2 id="react-">React 组件的两种创建方式</h2>
+<ol>
+<li>使用函数创建组件</li>
+<li>使用类创建组件</li>
+</ol>
+<h3 id="-">使用函数创建组件</h3>
+<ul>
+<li>函数组件：使用 JS 的函数（或箭头函数）创建的组件</li>
+<li>约定1：函数名称必须以大写字母开头</li>
+<li>约定2：函数组件必须有返回值，表示该组件的结构</li>
+<li>如果返回值为 null，表示不渲染任何内容</li>
+</ul>
+<pre><code class="lang-js">function Hello() {
+    return (
+       &lt;div&gt;这是我的第一个函数组件！&lt;/div&gt;
+    )
+}
+</code></pre>
+<ul>
+<li>渲染函数组件：用函数名作为组件标签名</li>
+<li>组件标签可以是单标签也可以是双标签</li>
+</ul>
+<pre><code class="lang-js">function Hello() {
+    return (
+      &lt;div&gt;这是我的第一个函数组件！&lt;/div&gt;
+    )
+}
+ReactDOM.render(&lt;Hello /&gt;, root)
+</code></pre>
+<p>使用JS中的函数创建的组件叫做：函数组件</p>
+<ul>
+<li>函数组件必须有返回值</li>
+<li>组件名称必须以大写字母开头， React 据此区分 组件 和 普通的</li>
+<li>React 元素</li>
+<li>使用函数名作为组件标签名</li>
+</ul>
+<pre><code class="lang-js">function Hello() {
+    return (
+       &lt;div&gt;这是我的第一个函数组件！&lt;/div&gt;
+    )
+}
+ReactDOM.render(&lt;Hello /&gt;, root)
+</code></pre>
+<h3 id="-">使用类创建组件</h3>
+<p> 类组件：使用 ES6 的 class 创建的组件
+ 约定1：类名称也必须以大写字母开头
+ 约定2：类组件应该继承 React.Component 父类，从而可以使用父类中提供的方法或属性
+ 约定3：类组件必须提供 render() 方法
+ 约定4：render() 方法必须有返回值，表示该组件的结构</p>
+<pre><code class="lang-js">class Hello extends React.Component {
+    render() {
+        return &lt;div&gt;Hello Class Component!&lt;/div&gt;
+    }
+}
+ReactDOM.render(&lt;Hello /&gt;, root)
+</code></pre>
+<h3 id="-js-">抽离为独立 JS 文件</h3>
+<p>思考：项目中的组件多了之后，该如何组织这些组件呢？</p>
+<p>选择一：将所有组件放在同一个JS文件中</p>
+<p>选择二：将每个组件放到单独的JS文件中</p>
+<p>组件作为一个独立的个体，一般都会放到一个单独的 JS 文件中</p>
+<ol>
+<li>创建Hello.js</li>
+<li>在 Hello.js 中导入React</li>
+<li>创建组件（函数 或 类）</li>
+<li>在 Hello.js 中导出该组件</li>
+<li>在 index.js 中导入 Hello 组件</li>
+<li>渲染组件</li>
+</ol>
+<pre><code class="lang-js">// Hello.js
+import React from &#39;react&#39;
+class Hello extends React.Component {
+    render() {
+        return &lt;div&gt;Hello Class Component!&lt;/div&gt;
+    }
+}
+// 导出Hello组件
+export default Hello
+</code></pre>
+<pre><code class="lang-js">// index.js
+import Hello from &#39;./Hello&#39;
+// 渲染导入的Hello组件
+ReactDOM.render(&lt;Hello /&gt;, root)
+</code></pre>
+<h2 id="react-">React 事件处理</h2>
+<ol>
+<li>事件绑定</li>
+<li>事件对象</li>
+</ol>
+<h3 id="-">事件绑定</h3>
+<p>React 事件绑定语法与 DOM 事件语法相似</p>
+<p>语法：on+事件名称={事件处理程序}，比如：onClick={() =&gt; {}}</p>
+<p>注意：React 事件采用驼峰命名法，比如：onMouseEnter、onFocus</p>
+<p>在函数组件中绑定事件：</p>
+<pre><code class="lang-js">class App extends React.Component {
+    handleClick() {
+        console.log(&#39;单击事件触发了&#39;)
+    }
+    render() {
+        return (
+            &lt;button onClick={this.handleClick}&gt;&lt;/button&gt;
+        )
+    }
+}
+function App() {
+    function handleClick() {
+        console.log(&#39;单击事件触发了&#39;)
+    }
+    return (
+        &lt;button onClick={handleClick}&gt;点我&lt;/button&gt;
+    )
+}
+</code></pre>
+<h3 id="-">事件对象</h3>
+<p>可以通过事件处理程序的参数获取到事件对象</p>
+<p>React 中的事件对象叫做：合成事件（对象）</p>
+<p>合成事件：兼容所有浏览器，无需担心跨浏览器兼容性问题</p>
+<pre><code class="lang-js">function handleClick(e) {
+    e.preventDefault()
+    console.log(&#39;事件对象&#39;, e)
+}
+&lt;a onClick={handleClick}&gt;点我，不会跳转页面&lt;/a&gt;
+</code></pre>
+<p>带有参数如何获取事件对象</p>
+<pre><code class="lang-js">function handleClick(msg,e) {
+    e.preventDefault()
+    console.log(&#39;事件对象&#39;, e)
+    console.log(&#39;数据&#39;, msg)
+}
+&lt;a onClick={ (e) =&gt; {
+    handleClick(&#39;实参&#39;,e)
+}}&gt;点我，不会跳转页面&lt;/a&gt;
+</code></pre>
+<h2 id="-">有状态组件和无状态组件</h2>
+<p>函数组件又叫做无状态组件，类组件又叫做有状态组件</p>
+<p>状态（state）即数据</p>
+<p>函数组件没有自己的状态，只负责数据展示（静）</p>
+<p>类组件有自己的状态，负责更新 UI，让页面“动” 起来</p>
+<p>比如计数器案例中，点击按钮让数值加 1 。0 和 1 就是不同时刻的状态，而由 0 变为 1 就表示状态发生了变化。状态变化后，UI 也要相应的更新。React 中想要实现该功能，就要使用有状态组件来完成。</p>
+<p><img src="images\React9.png" alt=""></p>
+<h2 id="-state-setstate">组件中的 state 和 setState</h2>
+<ol>
+<li><p>state的基本使用 </p>
+</li>
+<li><p>setState()修改状态</p>
+</li>
+</ol>
+<h3 id="state-">state的基本使用</h3>
+<p>状态（state）即数据，是组件内部的私有数据，只能在组件内部使用 </p>
+<p>state 的值是对象，表示一个组件中可以有多个数据 </p>
+<pre><code class="lang-js">class Hello extends React.Component { 
+  constructor() { 
+    super() 
+    // 初始化state 
+    this.state = { 
+      count: 0 
+    } 
+  } 
+  render() { 
+    return ( 
+      &lt;div&gt;有状态组件&lt;/div&gt; 
+    ) 
+  } } 
+</code></pre>
+<pre><code class="lang-js">class Hello extends React.Component { 
+  // 简化语法 
+  state= { 
+    count: 0 
+  } 
+  render() { 
+    return ( 
+      &lt;div&gt;有状态组件&lt;/div&gt; 
+    ) 
+  } 
+} 
+</code></pre>
+<p>获取状态：this.state</p>
+<pre><code class="lang-js">class Hello extends React.Component { 
+  // 简化语法 
+  state= { 
+    count: 0 
+  } 
+  render() { 
+    return ( 
+      &lt;div&gt;有状态组件，{this.state.count}&lt;/div&gt; 
+    ) 
+  } } 
+</code></pre>
+<p>状态即数据 </p>
+<p>状态是私有的，只能在组件内部使用 </p>
+<p>通过 this.state 来获取状态 </p>
+<pre><code class="lang-js">class Hello extends React.Component { 
+  // 简化语法 
+  state= { 
+    count: 0 
+  } 
+  render() { 
+    return ( 
+      &lt;div&gt;有状态组件，{this.state.count}&lt;/div&gt; 
+    ) 
+  }
+ } 
+</code></pre>
+<h3 id="setstate-">setState()修改状态</h3>
+<p>状态是可变的 </p>
+<p>语法：this.setState({ 要修改的数据 }) </p>
+<p>注意：不要直接修改 state 中的值，这是错误的！！！ </p>
+<p>setState() 作用：1. 修改 state 2. 更新UI </p>
+<p>思想：数据驱动视图 </p>
+<p><img src="images\React8.png" alt=""></p>
+<h2 id="-jsx-"><strong>从 JSX 中抽离事件处理程序</strong></h2>
+<p>JSX 中掺杂过多 JS 逻辑代码，会显得非常混乱</p>
+<p>推荐：将逻辑抽离到单独的方法中，保证 JSX 结构清晰</p>
+<p><img src="images\React10.png" alt=""></p>
+<p>原因：事件处理程序中 this 的值为 undefined </p>
+<p>希望：this 指向组件实例（render方法中的this即为组件实例）</p>
+<h2 id="-this-">事件绑定 this 指向</h2>
+<p><strong>1.  箭头函数</strong> </p>
+<p><strong>2.  Function.prototype.bind()</strong> </p>
+<p><strong>3.  class 的实例方法</strong> </p>
+<h3 id="-">箭头函数</h3>
+<p>利用箭头函数自身不绑定this的特点 </p>
+<p>render() 方法中的 this 为组件实例，可以获取到 setState() </p>
+<pre><code class="lang-js">class Hello extends React.Component { 
+  onIncrement() { 
+    this.setState({ … }) 
+} 
+  render() { 
+    // 箭头函数中的this指向外部环境，此处为：render()方法 
+    return ( 
+      &lt;button onClick={() =&gt; this.onIncrement()}&gt;&lt;/button&gt; 
+    ) 
+  }
+}
+</code></pre>
+<h3 id="function-prototype-bind-"><strong>Function.prototype.bind()</strong></h3>
+<p>利用ES5中的bind方法，将事件处理程序中的this与组件实例绑定到一起 </p>
+<pre><code class="lang-js">class Hello extends React.Component { 
+  constructor() { 
+    super() 
+    this.onIncrement = this.onIncrement.bind(this) 
+  } 
+  // ...省略 onIncrement 
+  render() { 
+    return ( 
+      &lt;button onClick={this.onIncrement}&gt;&lt;/button&gt; 
+    ) 
+  } 
+} 
+</code></pre>
+<h3 id="class-">class 的实例方法</h3>
+<p>利用箭头函数形式的class实例方法 ，<strong>是直接将方法直接存储在实例</strong></p>
+<p>注意：该语法是实验性语法，但是，由于babel的存在可以直接使用 </p>
+<pre><code class="lang-js">class Hello extends React.Component { 
+  onIncrement = () =&gt; { 
+    this.setState({ … }) 
+  } 
+  render() { 
+    return ( 
+      &lt;button onClick={this.onIncrement}&gt;&lt;/button&gt; 
+    ) 
+  }
+ } 
+</code></pre>
+<h2 id="-"><strong>总结</strong></h2>
+<p>1.推荐：使用class的实例方法 </p>
+<p>2.箭头函数 </p>
+<p>3.bind </p>
+<pre><code class="lang-js">//推荐使用的方法
+class Hello extends React.Component { 
+  onIncrement = () =&gt; { 
+    this.setState({ … }) 
+  } 
+  render() { 
+    return ( 
+      &lt;button onClick={this.onIncrement}&gt;&lt;/button&gt; 
+    ) 
+  }
+ } 
+</code></pre>
+<h1 id="-">表单处理</h1>
+<p><strong>1. 受控组件</strong> </p>
+<p><strong>2. 非受控组件（DOM方式）</strong></p>
+<h2 id="-">受控组件</h2>
+<p>HTML 中的表单元素是可输入的，也就是有自己的可变状态 </p>
+<p>而，React 中可变状态通常保存在 state 中，并且只能通过 setState() 方法来修改</p>
+<p><img src="images\React11.png" alt=""></p>
+<p>HTML 中的表单元素是可输入的，也就是有自己的可变状态 </p>
+<p>而，React 中可变状态通常保存在 state 中，并且只能通过 setState() 方法来修改 </p>
+<p>React将 state 与表单元素值value绑定到一起，由 state 的值来控制表单元素的值 </p>
+<p>受控组件：其值受到 React 控制的表单元素 </p>
+<p><img src="images\React12.png" alt=""></p>
+<pre><code class="lang-html">&lt;input type=&quot;text&quot; value={this.state.txt} /&gt; 
+</code></pre>
+<p><strong>步骤：</strong> </p>
+<ol>
+<li>在 state 中添加一个状态，作为表单元素的value值（控制表单元素值的来源） </li>
+<li>给表单元素绑定 change 事件，将 表单元素的值 设置为 state 的值（控制表单元素值的变化）</li>
+</ol>
+<pre><code class="lang-js">state = { txt: &#39;&#39; } 
+</code></pre>
+<pre><code class="lang-html">&lt;input type=&quot;text&quot; value={this.state.txt}
+    onChange={e =&gt; this.setState({ txt: e.target.value })}
+/&gt; 
+</code></pre>
+<p>示例：</p>
+<ol>
+<li><p>文本框、文本域、下拉框 </p>
+</li>
+<li><p>复选框 </p>
+</li>
+</ol>
+<p><strong>示例总结：</strong></p>
+<ol>
+<li><p>文本框、文本域、下拉框 操作value属性 </p>
+</li>
+<li><p>复选框 操作checked属性 </p>
+</li>
+</ol>
+<p><strong>多表单元素优化：</strong> </p>
+<p>问题：每个表单元素都有一个单独的事件处理程序处理太繁琐 </p>
+<p>优化：使用一个事件处理程序同时处理多个表单元素 </p>
+<p><strong>多表单元素优化步骤：</strong> </p>
+<p>1.给表单元素添加name属性，名称与 state 相同 </p>
+<p>2.根据表单元素类型获取对应值 </p>
+<p>3.在 change 事件处理程序中通过 [name] 来修改对应的state </p>
+<pre><code class="lang-html">&lt;input  
+  type=&quot;text&quot; 
+  name=&quot;txt&quot; 
+  value={this.state.txt}  
+  onChange={this.handleForm} /&gt; 
+</code></pre>
+<pre><code class="lang-js">// 根据表单元素类型获取值 
+const value = target.type === &#39;checkbox&#39;  
+    ? target.checked  
+    : target.value 
+
+// 根据name设置对应state this.setState({ 
+  [name]: value }) 
+</code></pre>
+<h2 id="-">非受控组件</h2>
+<h3 id="ref-dom-">ref获取 DOM 或组件</h3>
+<p>说明：借助于 ref，使用原生 DOM 方式来获取表单元素值 </p>
+<p>ref 的作用：获取 DOM 或组件 </p>
+<p><strong>使用步骤：</strong> </p>
+<ol>
+<li>调用 React.createRef() 方法创建一个 ref 对象 ，该对象不可复用</li>
+</ol>
+<pre><code class="lang-js">//标准形式
+class App extends React.Component{
+    constructor() { 
+      super() 
+      this.txtRef = React.createRef() 
+    } 
+}
+//简写形式
+class App extends React.Component{
+    txtRef = React.createRef()
+}
+</code></pre>
+<ol start="2">
+<li>将创建好的 ref 对象添加到文本框中 </li>
+</ol>
+<pre><code class="lang-html">&lt;input type=&quot;text&quot; ref={this.txtRef} /&gt; 
+</code></pre>
+<ol start="3">
+<li>通过 ref 对象获取到文本框的值 </li>
+</ol>
+<pre><code class="lang-js">Console.log(this.txtRef.current.value) 
+</code></pre>
+<h1 id="-">组件通讯</h1>
+<h2 id="-">组件通讯简介</h2>
+<blockquote>
+<p>组件是独立且封闭的单元，默认情况下，只能使用组件自己的数据。在组件化过程中，我们将一个完整的功能
+拆分成多个组件，以更好的完成整个应用的功能。而在这个过程中，多个组件之间不可避免的要共享某些数据
+。为了实现这些功能，就需要打破组件的独立封闭性，让其与外界沟通。这个过程就是组件通讯。</p>
+</blockquote>
+<h2 id="-props">组件的 props</h2>
+<p>组件是封闭的，要接收外部数据应该通过 props 来实现
+props的作用：接收传递给组件的数据
+传递数据：给组件标签添加属性
+接收数据：函数组件通过参数props接收数据，类组件通过 this.props 接收数据</p>
+<pre><code class="lang-html">&lt;Hello name=&quot;jack&quot; age={19} /&gt; 
+</code></pre>
+<pre><code class="lang-js">function Hello(props) {
+    console.log(props)
+    return (
+        &lt;div&gt;接收到数据：{props.name}&lt;/div&gt;
+    )
+}
+// --------------------------------------------------
+class Hello extends React.Component {
+    render() {
+        return (
+            &lt;div&gt;接收到的数据：{this.props.age}&lt;/div&gt;
+        )
+    }
+}
+</code></pre>
+<p><strong>特点</strong></p>
+<ol>
+<li>可以给组件传递任意类型的数据</li>
+<li>props 是只读的对象，只能读取属性的值，无法修改对象</li>
+<li>注意：使用类组件时，如果写了构造函数，应该将 props 传递给 super()，否则，无法在构造函数中获取到 props！</li>
+</ol>
+<pre><code class="lang-js">class Hello extends React.Component {
+    constructor(props) {
+        // 推荐将props传递给父类构造函数
+        super(props)
+    }
+    render() {
+        return &lt;div&gt;接收到的数据：{this.props.age}&lt;/div&gt;
+    }
+}
+</code></pre>
+<h2 id="-">组件通讯的三种方式</h2>
+<p>组件之间的通讯分为 3 种：</p>
+<ol>
+<li>父组件 -&gt; 子组件</li>
+<li>子组件 -&gt; 父组件</li>
+<li>兄弟组件</li>
+</ol>
+<h3 id="-">父组件传递数据给子组件</h3>
+<ol>
+<li>父组件提供要传递的state数据</li>
+<li>给子组件标签添加属性，值为 state 中的数据</li>
+<li>子组件中通过 props 接收父组件中传递的数据</li>
+</ol>
+<pre><code class="lang-js">class Parent extends React.Component {
+    state = { lastName: &#39;王&#39; }
+    render() {
+        return (
+            &lt;div&gt;
+                传递数据给子组件：&lt;Child name={this.state.lastName} /&gt;
+            &lt;/div&gt;
+        )
+    }
+}
+</code></pre>
+<pre><code class="lang-js">function Child(props) {
+    return &lt;div&gt;子组件接收到数据：{props.name}&lt;/div&gt;
+}
+</code></pre>
+<h3 id="-">子组件传递数据给父组件</h3>
+<p>思路：利用回调函数，父组件提供回调，子组件调用，将要传递的数据作为回调函数的参数。</p>
+<ol>
+<li>父组件提供一个回调函数（用于接收数据）</li>
+<li>将该函数作为属性的值，传递给子组件</li>
+<li>子组件通过 props 调用回调函数</li>
+<li>将子组件的数据作为参数传递给回调函数</li>
+</ol>
+<pre><code class="lang-js">class Parent extends React.Component {
+    getChildMsg = (msg) =&gt; {
+        console.log(&#39;接收到子组件数据&#39;, msg)
+    }
+    render() {
+        return (
+            &lt;div&gt;
+                子组件：&lt;Child getMsg={this.getChildMsg} /&gt;
+            &lt;/div&gt;
+        )
+    }
+}
+</code></pre>
+<pre><code class="lang-js">class Child extends React.Component {
+    state = { childMsg: &#39;React&#39; }
+    handleClick = () =&gt; {
+        this.props.getMsg(this.state.childMsg)
+    }
+    return (
+        &lt;button onClick={this.handleClick}&gt;点我，给父组件传递数据&lt;/button&gt;
+    )
+}
+</code></pre>
+<h3 id="-">兄弟组件</h3>
+<p>将共享状态提升到最近的公共父组件中，由公共父组件管理这个状态
+ 思想：状态提升
+公共父组件职责：1. 提供共享状态 2. 提供操作共享状态的方法
+要通讯的子组件只需通过 props 接收状态或操作状态的方法</p>
+<p><img src="images\React-proppng.png" alt=""></p>
+<h2 id="context">Context</h2>
+<p>思考：App 组件要传递数据给 Child 组件，该如何处理？
+处理方式：使用 props 一层层组件往下传递（繁琐）</p>
+<p>思考：App 组件要传递数据给 Child 组件，该如何处理？</p>
+<p>更好的姿势：使用 Context</p>
+<p>作用：跨组件传递数据（比如：主题、语言等）</p>
+<p><img src="images\content.png" alt=""></p>
+<h3 id="-">使用步骤：</h3>
+<ol>
+<li><p>调用 React. createContext() 创建 Provider（提供数据） 和 Consumer（消费数据） 两个组件。</p>
+<pre><code class="lang-js"> const { Provider, Consumer } = React.createContext()
+</code></pre>
+</li>
+<li><p>使用 Provider 组件作为父节点。</p>
+<pre><code class="lang-jsx"> &lt;Provider&gt;
+     &lt;div className=&quot;App&quot;&gt;
+         &lt;Child1 /&gt;
+     &lt;/div&gt;
+ &lt;/Provider&gt;
+</code></pre>
+</li>
+<li><p>设置 value 属性，表示要传递的数据。</p>
+<pre><code class="lang-jsx"> &lt;Provider value=&quot;pink&quot;&gt;
+</code></pre>
+</li>
+<li><p>调用 Consumer 组件接收数据</p>
+<pre><code class="lang-jsx">&lt;Consumer&gt;
+    {data =&gt; &lt;span&gt;data参数表示接收到的数据 -- {data}&lt;/span&gt;}
+&lt;/Consumer&gt;
+</code></pre>
+</li>
+</ol>
+<h3 id="-">总结</h3>
+<ol>
+<li>如果两个组件是远方亲戚（比如，嵌套多层）可以使用Context实现组件通讯</li>
+<li>Context提供了两个组件：Provider 和 Consumer</li>
+<li>Provider组件：用来提供数据</li>
+<li>Consumer组件：用来消费数据</li>
+</ol>
+<h2 id="props-">props 深入</h2>
+<h3 id="children-">children 属性</h3>
+<p> children 属性：表示组件标签的子节点。当组件标签有子节点时，props 就会有该属性
+ children 属性与普通的props一样，值可以是任意值（文本、React元素、组件，甚至是函数）</p>
+<pre><code class="lang-jsx">function Hello(props) {
+    return (
+        &lt;div&gt;
+            组件的子节点：{props.children}
+        &lt;/div&gt;
+    )
+}
+&lt;Hello&gt;我是子节点&lt;/Hello&gt;
+</code></pre>
+<h3 id="props-">props 校验</h3>
+<p>对于组件来说，props 是外来的，无法保证组件使用者传入什么格式的数据
+如果传入的数据格式不对，可能会导致组件内部报错
+关键问题：组件的使用者不知道明确的错误原因</p>
+<pre><code class="lang-jsx">// 小明创建的组件App
+function App(props) {
+    const arr = props.colors
+    const lis = arr.map((item, index) =&gt; &lt;li key={index}&gt;{item.name}&lt;/li&gt;)
+    return (
+        &lt;ul&gt;{lis}&lt;/ul&gt;
+    )
+}
+// 小红使用组件App
+&lt;App colors={19} /&gt;
+</code></pre>
+<p>props 校验：允许在创建组件的时候，就指定 props 的类型、格式等
+作用：捕获使用组件时因为props导致的错误，给出明确的错误提示，增加组件的健壮性</p>
+<pre><code class="lang-js">App.propTypes = {
+    colors: PropTypes.array
+}
+</code></pre>
+<p><img src="images\warning1.png" alt=""></p>
+<h4 id="-">使用步骤</h4>
+<ol>
+<li>安装包 prop-types      <code>yarn add prop-types / npm i props-types</code></li>
+<li>导入 prop-types 包</li>
+<li>使用组件名.propTypes = {} 来给组件的props添加校验规则</li>
+<li>校验规则通过 PropTypes 对象来指定</li>
+</ol>
+<pre><code class="lang-jsx">import PropTypes from &#39;prop-types&#39;
+    function App(props) {
+        return (
+            &lt;h1&gt;Hi, {props.colors}&lt;/h1&gt;
+        )
+    }
+    App.propTypes = {
+    // 约定colors属性为array类型
+    // 如果类型不对，则报出明确错误，便于分析错误原因
+    colors: PropTypes.array
+}
+</code></pre>
+<h4 id="-">约束规则</h4>
+<ol>
+<li>常见类型：array、bool、func、number、object、string</li>
+<li>React元素类型：element</li>
+<li>必填项：isRequired</li>
+<li>特定结构的对象：shape({ })</li>
+</ol>
+<pre><code class="lang-jsx">// 常见类型
+optionalFunc: PropTypes.func,
+// 必选
+requiredFunc: PropTypes.func.isRequired,
+// 特定结构的对象
+optionalObjectWithShape: PropTypes.shape({
+    color: PropTypes.string,
+    fontSize: PropTypes.number
+})
+</code></pre>
+<h3 id="props-">props 的默认值</h3>
+<p>场景：分页组件 -&gt;每页显示条数
+作用：给 props 设置默认值，在未传入 props 时生效</p>
+<pre><code class="lang-jsx">function App(props) {
+    return (
+        &lt;div&gt;
+            此处展示props的默认值：{props.pageSize}
+        &lt;/div&gt;
+    )
+}
+// 设置默认值
+App.defaultProps = {
+    pageSize: 10
+}
+// 不传入pageSize属性
+&lt;App /&gt;
+</code></pre>
+<h1 id="-">组件的生命周期</h1>
+<h2 id="-">组件的生命周期概述</h2>
+<p>意义：组件的生命周期有助于理解组件的运行方式、完成更复杂的组件功能、分析组件错误原因等
+组件的生命周期：组件从被创建到挂载到页面中运行，再到组件不用时卸载的过程
+生命周期的每个阶段总是伴随着一些方法调用，这些方法就是生命周期的钩子函数。
+钩子函数的作用：为开发人员在不同阶段操作组件提供了时机。
+只有 类组件 才有生命周期。</p>
+<h2 id="-">生命周期的三个阶段</h2>
+<ol>
+<li>每个阶段的执行时机</li>
+<li>每个阶段钩子函数的执行顺序</li>
+<li>每个阶段钩子函数的作用</li>
+</ol>
+<p><img src="images\liuc.png"  /></p>
+<h3 id="-">创建时（挂载阶段）</h3>
+<p> 执行时机：组件创建时（页面加载时）
+ 执行顺序<img src="images\start.png" alt=""></p>
+<h3 id="-">更新时（更新阶段）</h3>
+<p>执行时机：1. setState() 2. forceUpdate() 3. 组件接收到新的props
+说明：以上三者任意一种变化，组件就会重新渲染
+执行顺序：<img src="images\update.png" alt=""></p>
+<p>注意： forceUpdate() 是强制更新数据的方法</p>
+<h3 id="-">卸载时（卸载阶段）</h3>
+<p>执行时机：组件从页面中消失</p>
+<p>在此期间会清楚用DOM注册的一些事件</p>
+<p><img src="images\finish.png" alt=""></p>
+<h2 id="-">钩子函数</h2>
+<p>创建时（挂载阶段）</p>
+<ul>
+<li>constructor()   初始化state，给事件处理程序绑定this</li>
+<li>render()            渲染UI，<strong>该阶段不能调用setState()</strong></li>
+<li>componentDidMount()组件挂载完成，发送请求，操作DOM</li>
+</ul>
+<p>更新时（更新阶段)</p>
+<ul>
+<li>render()</li>
+<li>componentDidUpdate()  组件更新后执行，发送请求，操作DOM，<strong>这里的setState()必须要有结束条件</strong></li>
+</ul>
+<p>卸载时（卸载阶段）</p>
+<ul>
+<li>componentWillUnmount()  组件销毁之后执行</li>
+</ul>
+<h2 id="-">完整版生命周期钩子函数<img src="C:\Users\Administrator\Desktop\笔记\12.React.js\images\version.png" alt=""></h2>
+<h1 id="render-props-">render-props和高阶组件</h1>
+<h2 id="react-">React组件复用概述</h2>
+<p>思考：如果两个组件中的部分功能相似或相同，该如何处理？
+处理方式：复用相似的功能（联想函数封装）
+复用什么？1. state 2. 操作state的方法 （组件状态逻辑 ）
+ 两种方式：1. render props模式 2. 高阶组件（HOC）
+注意：这两种方式不是新的API，而是利用React自身特点的编码技巧，演化而成的固定模式（写法）</p>
+<h2 id="render-props-">render props 模式</h2>
+<p><strong>思路分析</strong></p>
+<p> 思路：将要复用的state和操作state的方法封装到一个组件中
+ 问题1：如何拿到该组件中复用的state？
+ 在使用组件时，添加一个值为函数的prop，通过 函数参数 来获取（需要组件内部实现）</p>
+<p>问题2：如何渲染任意的UI？
+ 使用该函数的返回值作为要渲染的UI内容（需要组件内部实现）</p>
+<pre><code class="lang-jsx">&lt;Mouse /&gt;
+</code></pre>
+<pre><code class="lang-jsx">&lt;Mouse render={(mouse) =&gt; {}}/&gt;
+</code></pre>
+<pre><code class="lang-jsx">&lt;Mouse render={(mouse) =&gt; (
+    &lt;p&gt;鼠标当前位置 {mouse.x}，{mouse.y}&lt;/p&gt;
+)}/&gt;
+</code></pre>
+<h3 id="-">使用步骤</h3>
+<ol>
+<li>创建Mouse组件，在组件中提供复用的状态逻辑代码（1. 状态 2. 操作状态的方法）</li>
+<li>将要复用的状态作为 props.render(state) 方法的参数，暴露到组件外部</li>
+<li>使用 props.render() 的返回值作为要渲染的内容</li>
+</ol>
+<pre><code class="lang-js">class Mouse extends React.Component {
+    // … 省略state和操作state的方法
+    render() {
+        return this.props.render(this.state)
+    }
+}
+</code></pre>
+<pre><code class="lang-jsx">&lt;Mouse render={(mouse) =&gt; &lt;p&gt;鼠标当前位置 {mouse.x}，{mouse.y}&lt;/p&gt;}/&gt;
+</code></pre>
+<h3 id="-mouse-">演示Mouse组件的复用</h3>
+<p> Mouse组件负责：封装复用的状态逻辑代码（1. 状态 2. 操作状态的方法）
+ 状态：鼠标坐标（x, y）
+ 操作状态的方法：鼠标移动事件
+ 传入的render prop负责：使用复用的状态来渲染UI结构</p>
+<pre><code class="lang-jsx">class Mouse extends React.Component {
+    // … 省略state和操作state的方法
+    render() {
+        return this.props.render(this.state)
+    }
+}
+</code></pre>
+<pre><code class="lang-jsx">&lt;Mouse render={(mouse) =&gt; &lt;p&gt;鼠标当前位置 {mouse.x}，{mouse.y}&lt;/p&gt;}/&gt;
+</code></pre>
+<h3 id="children-render-">children代替render属性</h3>
+<p>注意：并不是该模式叫 render props 就必须使用名为render的prop，实际上可以使用任意名称的prop
+把prop是一个函数并且告诉组件要渲染什么内容的技术叫做：render props模式
+推荐：使用 children 代替 render 属性</p>
+<pre><code class="lang-jsx">&lt;Mouse&gt;
+    {({x, y}) =&gt; &lt;p&gt;鼠标的位置是 {x}，{y}&lt;/p&gt; }
+&lt;/Mouse&gt;
+// 组件内部：
+this.props.children(this.state)
+</code></pre>
+<pre><code class="lang-jsx">// Context 中的用法：
+&lt;Consumer&gt;
+    {data =&gt; &lt;span&gt;data参数表示接收到的数据 -- {data}&lt;/span&gt;}
+&lt;/Consumer&gt;
+</code></pre>
+<p><strong>代码优化</strong></p>
+<ol>
+<li>推荐：给 render props 模式添加 props校验</li>
+<li>应该在组件卸载时解除 mousemove 事件绑定</li>
+</ol>
+<pre><code class="lang-jsx">Mouse.propTypes = {
+    chidlren: PropTypes.func.isRequired
+}
+</code></pre>
+<pre><code class="lang-js">componentWillUnmount() {
+    window.removeEventListener(&#39;mousemove&#39;, this.handleMouseMove)
+}
+</code></pre>
+<h2 id="-">高阶组件</h2>
+<h3 id="-">概述</h3>
+<p>目的：实现状态逻辑复用
+采用 包装（装饰）模式 ，比如说：手机壳
+手机：获取保护功能
+手机壳 ：提供保护功能
+高阶组件就相当于手机壳，通过包装组件，增强组件功能</p>
+<p><img src="images\high.png" alt=""></p>
+<h3 id="-">思路分析</h3>
+<p> 高阶组件（HOC，Higher-Order Component）是一个函数，接收要包装的组件，返回增强后的组件
+高阶组件内部创建一个类组件，在这个类组件中提供复用的状态逻辑代码，通过prop将复用的状态传递给
+被包装组件 WrappedComponen</p>
+<pre><code class="lang-jsx">const EnhancedComponent = withHOC(WrappedComponent)
+</code></pre>
+<pre><code class="lang-jsx">// 高阶组件内部创建的类组件：
+class Mouse extends React.Component {
+    render() {
+        return &lt;WrappedComponent {...this.state} /&gt;
+    }
+}
+</code></pre>
+<h3 id="-">使用步骤</h3>
+<ol>
+<li><p>创建一个函数，名称约定以 with 开头</p>
+<pre><code class="lang-jsx"> function withMouse() {}
+</code></pre>
+</li>
+<li><p>指定函数参数，参数应该以大写字母开头（作为要渲染的组件）</p>
+<pre><code class="lang-jsx"> function withMouse(WrappedComponent) {}
+</code></pre>
+</li>
+<li><p>在函数内部创建一个类组件，提供复用的状态逻辑代码，并返回</p>
+</li>
+<li>在该组件中，渲染参数组件，同时将状态通过prop传递给参数组件</li>
+</ol>
+<pre><code class="lang-jsx">function withMouse(WrappedComponent) {
+    class Mouse extends React.Component {}
+    return Mouse
+}
+</code></pre>
+<pre><code class="lang-jsx">// Mouse组件的render方法中：
+return &lt;WrappedComponent {...this.state} /&gt;
+</code></pre>
+<ol start="5">
+<li><p>调用该高阶组件，传入要增强的组件，通过返回值拿到增强后的组件，并将其渲染到页面中</p>
+<pre><code class="lang-jsx"> // 创建组件，Position为需要包装的组件
+ const MousePosition = withMouse(Position)
+
+ // 渲染组件，渲染包装之后的组件，在没有包装前的组件中里面是有this.props.X接收数据
+ &lt;MousePosition /&gt;
+</code></pre>
+</li>
+</ol>
+<h3 id="-displayname">设置displayName</h3>
+<p>使用高阶组件存在的问题：得到的两个组件名称相同
+原因：默认情况下，React使用组件名称作为 displayName
+解决方式：为 高阶组件 设置 displayName 便于调试时区分不同的组件
+displayName的作用：用于设置调试信息（React Developer Tools信息）
+设置方式：</p>
+<pre><code class="lang-jsx">// 在高阶组件包装函数返回值 return Mouse 前，编写下如下代码
+Mouse.displayName = `WithMouse${getDisplayName(WrappedComponent)}`
+
+function getDisplayName(WrappedComponent) {
+    return WrappedComponent.displayName || WrappedComponent.name || &#39;Component&#39;
+}
+</code></pre>
+<h3 id="-props">传递props</h3>
+<p>问题：props丢失
+原因：高阶组件没有往下传递props
+解决方式：在包装组件里需要再传递一次，渲染 WrappedComponent 时，将 state 和 this.props 一起传递给组件
+传递方式：</p>
+<pre><code class="lang-jsx">&lt;WrappedComponent {...this.state} {...this.props} /&gt;
+</code></pre>
+<h1 id="react-">React 原理揭秘</h1>
+<h2 id="setstate-">setState() 的说明</h2>
+<h3 id="-">更新数据</h3>
+<p>setState() 是异步更新数据的
+注意：使用该语法时，后面的 setState() 不要依赖于前面的 setState()
+可以多次调用 setState() ，只会触发一次重新渲染</p>
+<pre><code class="lang-jsx">this.state = { count: 1 }
+this.setState({
+    count: this.state.count + 1
+})
+console.log(this.state.count) // 1
+</code></pre>
+<h3 id="-">推荐语法</h3>
+<p>推荐：需要依据上一次执行的操作来实现，使用 setState((state, props) =&gt; {}) 语法
+参数state：表示最新的state
+参数props：表示最新的props</p>
+<pre><code class="lang-jsx">this.setState((state, props) =&gt; {
+return {
+    count: state.count + 1
+}
+})
+console.log(this.state.count) // 1
+</code></pre>
+<h3 id="-">第二个参数</h3>
+<p>场景：在状态更新（页面完成重新渲染）后立即执行某个操作
+语法： setState(updater[, callback])</p>
+<pre><code class="lang-jsx">this.setState(
+    (state, props) =&gt; {},
+    () =&gt; {console.log(&#39;这个回调函数会在状态更新后立即执行&#39;)}
+)
+</code></pre>
+<pre><code class="lang-jsx">this.setState(
+    (state, props) =&gt; {},
+    () =&gt; {
+        document.title = &#39;更新state后的标题：&#39; +             this.state.count
+    }
+)
+</code></pre>
+<h2 id="jsx-">JSX 语法的转化过程</h2>
+<p>JSX 仅仅是 createElement() 方法的语法糖（简化语法）
+JSX 语法被 @babel/preset-react 插件编译为 createElement() 方法
+React 元素：是一个对象，用来描述你希望在屏幕上看到的内容</p>
+<p><img src="images\JSXlg.png" alt=""></p>
+<h2 id="-">组件更新机制</h2>
+<p>setState() 的两个作用： 1. 修改 state 2. 更新组件（UI）
+过程：父组件重新渲染时，也会重新渲染子组件。但只会渲染当前组件子树（当前组件及其所有子组件）</p>
+<p><img src="images\setstate.png" alt=""></p>
+<h2 id="-">组件性能优化</h2>
+<h3 id="-state">减轻 state</h3>
+<p>减轻 state：只存储跟组件渲染相关的数据（比如：count / 列表数据 / loading 等）
+注意：不用做渲染的数据不要放在 state 中，比如定时器 id等
+对于这种需要在多个方法中用到的数据，应该放在 this 中</p>
+<pre><code class="lang-jsx">class Hello extends Component {
+    componentDidMount() {
+    // timerId存储到this中，而不是state中
+    this.timerId = setInterval(() =&gt; {}, 2000)
+}
+componentWillUnmount() {
+    clearInterval(this.timerId)
+}
+render() { … }
+}
+</code></pre>
+<h3 id="-">避免不必要的重新渲染</h3>
+<p>组件更新机制：父组件更新会引起子组件也被更新，这种思路很清晰
+问题：子组件没有任何变化时也会重新渲染
+如何避免不必要的重新渲染呢？
+解决方式：使用钩子函数 shouldComponentUpdate(nextProps, nextState)
+作用：通过返回值决定该组件是否重新渲染，返回 true 表示重新渲染，false 表示不重新渲染
+触发时机：更新阶段的钩子函数，组件重新渲染前执行 （shouldComponentUpdate -&gt; render）</p>
+<pre><code class="lang-js">class Hello extends Component {
+    shouldComponentUpdate(nextProps, nextState) {
+    // 根据条件，决定是否重新渲染组件
+    return false
+}
+render() {…}
+}
+</code></pre>
+<h3 id="-">纯组件</h3>
+<p>纯组件：PureComponent 与 React.Component 功能相似
+区别：PureComponent 内部自动实现了 shouldComponentUpdate 钩子，不需要手动比较
+原理：纯组件内部通过分别 对比 前后两次 props 和 state 的值，来决定是否重新渲染组件</p>
+<pre><code class="lang-jsx">class Hello extends React.PureComponent {
+    render() {
+        return (
+            &lt;div&gt;纯组件&lt;/div&gt;
+        )
+    }
+}
+</code></pre>
+<h4 id="-">纯组件的浅拷贝问题</h4>
+<p><strong>简单数据类型</strong></p>
+<p>说明：纯组件内部的对比是 shallow compare（浅层对比）
+对于值类型来说：比较两个值是否相同（直接赋值即可，没有坑）</p>
+<pre><code class="lang-js">let number = 0
+let newNumber = number
+newNumber = 2
+console.log(number === newNumber) // false
+</code></pre>
+<pre><code class="lang-js">state = { number: 0 }
+    setState({
+        number: Math.floor(Math.random() * 3)
+    })
+// PureComponent内部对比：
+最新的state.number === 上一次的state.number // false，重新渲染组件
+</code></pre>
+<p><strong>复杂数据类型</strong></p>
+<p>说明：纯组件内部的对比是 shallow compare（浅层对比）
+对于引用类型来说：只比较对象的引用（地址）是否相同
+注意：state 或 props 中属性值为引用类型时，应该创建新数据，不要直接修改原数据！（示例）</p>
+<pre><code class="lang-js">// 正确！创建新数据
+const newObj = {...state.obj, number: 2}
+setState({ obj: newObj })
+// 正确！创建新数据
+// 不要用数组的push / unshift 等直接修改当前数组的的方法
+// 而应该用 concat 或 slice 等这些返回新数组的方法
+this.setState({
+    list: [...this.state.list, {新数据}]
+})
+</code></pre>
+<h2 id="-dom-diff-">虚拟 DOM 和 Diff 算法</h2>
+<p>React 更新视图的思想是：只要 state 变化就重新渲染视图
+特点：思路非常清晰
+问题：组件中只有一个 DOM 元素需要更新时，也得把整个组件的内容重新渲染到页面中？
+理想状态：部分更新，只更新变化的地方。
+问题：React 是如何做到部分更新的？
+不是
+虚拟 DOM 配合 Diff 算法</p>
+<p>虚拟 DOM：本质上就是一个 JS 对象，用来描述你希望在屏幕上看到的内容（UI）。</p>
+<p><img src="images\DOMyuDiff.png" alt=""></p>
+<h3 id="-">执行过程</h3>
+<ol>
+<li>初次渲染时，React 会根据初始state（Model），创建一个虚拟 DOM 对象（树）。</li>
+<li>根据虚拟 DOM 生成真正的 DOM，渲染到页面中。</li>
+<li>当数据变化后（setState()），重新根据新的数据，创建新的虚拟DOM对象（树）。</li>
+<li>与上一次得到的虚拟 DOM 对象，使用 Diff 算法 对比（找不同），得到需要更新的内容。</li>
+<li>最终，React 只将变化的内容更新（patch）到 DOM 中，重新渲染到页面。</li>
+</ol>
+<p><img src="images\DOMyuDiff1.png" alt=""></p>
+<h3 id="-">代码演示</h3>
+<p>组件 render() 调用后，根据 状态 和 JSX结构 生成虚拟DOM对象
+示例中，只更新 p 元素的文本节点内容</p>
+<pre><code class="lang-js">{
+    type: &#39;div&#39;,
+    props: {
+        children: [
+            { type: &#39;h1&#39;, props: {children: &#39;随机数&#39;} },
+            { type: &#39;p&#39;, props: {children: 0} }
+        ]
+    }
+}
+</code></pre>
+<pre><code class="lang-jsx">// ...省略其他结构
+{ type: &#39;p&#39;, props: {children: 2} }
+</code></pre>
+<h1 id="react-">React 路由基础</h1>
+<h2 id="react-">React路由介绍</h2>
+<p>现代的前端应用大多都是 SPA（单页应用程序），也就是只有一个 HTML 页面的应用程序。因为它的用户体
+验更好、对服务器的压力更小，所以更受欢迎。为了有效的使用单个页面来管理原来多页面的功能，前端路由
+应运而生。</p>
+<ul>
+<li>前端路由的功能：让用户从一个视图（页面）导航到另一个视图（页面）</li>
+<li>前端路由是一套映射规则，在React中，是 URL路径 与 组件 的对应关系</li>
+<li>使用React路由简单来说，就是配置 路径和组件（配对）</li>
+</ul>
+<h2 id="-">路由的基本使用</h2>
+<h3 id="-">使用步骤</h3>
+<ol>
+<li><p>安装：<code>yarn add react-router-dom</code></p>
+</li>
+<li><p>导入路由的三个核心组件：Router / Route / Link</p>
+<pre><code class="lang-js"> import { BrowserRouter as Router, Route, Link } from &#39;react-router-dom&#39;
+</code></pre>
+</li>
+<li><p>使用 Router 组件包裹整个应用（重要）</p>
+<pre><code class="lang-jsx"> &lt;Router&gt;
+     &lt;div className=&quot;App&quot;&gt;
+         // … 省略页面内容
+     &lt;/div&gt;
+ &lt;/Router&gt;
+</code></pre>
+</li>
+<li><p>使用 Link 组件作为导航菜单（路由入口）</p>
+<pre><code class="lang-jsx"> &lt;Link to=&quot;/first&quot;&gt;页面一&lt;/Link&gt;
+</code></pre>
+</li>
+<li><p>使用 Route 组件配置路由规则和要展示的组件（路由出口）</p>
+<pre><code class="lang-jsx"> const First = () =&gt; &lt;p&gt;页面一的页面内容&lt;/p&gt;
+ &lt;Router&gt;
+     &lt;div className=&quot;App&quot;&gt;
+         &lt;Link to=&quot;/first&quot;&gt;页面一&lt;/Link&gt;
+         &lt;Route path=&quot;/first&quot; component={First}&gt;&lt;/Route&gt;
+     &lt;/div&gt;
+ &lt;/Router&gt;
+</code></pre>
+</li>
+</ol>
+<h3 id="-">常用组件说明</h3>
+<ul>
+<li>Router 组件：包裹整个应用，一个 React 应用只需要使用一次</li>
+<li>两种常用 Router：HashRouter 和 BrowserRouter</li>
+<li>HashRouter：使用 URL 的哈希值实现（localhost:3000/#/first）</li>
+<li>（推荐）BrowserRouter：使用 H5 的 history API 实现（localhost:3000/first）</li>
+</ul>
+<p>Link 组件：用于指定导航链接（a 标签）</p>
+<pre><code class="lang-jsx">// to属性：浏览器地址栏中的pathname（location.pathname）
+&lt;Link to=&quot;/first&quot;&gt;页面一&lt;/Link&gt;
+</code></pre>
+<p>Route 组件：指定路由展示组件相关信息</p>
+<pre><code class="lang-jsx">// path属性：路由规则
+// component属性：展示的组件
+// Route组件写在哪，渲染出来的组件就展示在哪
+&lt;Route path=&quot;/first&quot; component={First}&gt;&lt;/Route&gt;
+</code></pre>
+<h2 id="-">路由的执行过程</h2>
+<ol>
+<li>点击 Link 组件（a标签），修改了浏览器地址栏中的 url 。</li>
+<li>React 路由监听到地址栏 url 的变化。</li>
+<li>React 路由内部遍历所有 Route 组件，使用路由规则（ path ）与 pathname 进行匹配。</li>
+<li>当路由规则（path）能够匹配地址栏中的 pathname 时，就展示该 Route 组件的内容。</li>
+</ol>
+<p><img src="images\router-link.png" alt=""></p>
+<h2 id="-">编程式导航</h2>
+<p>场景：点击登录按钮，登录成功后，通过代码跳转到后台首页，如何实现？</p>
+<p>编程式导航：通过 JS 代码来实现页面跳转</p>
+<p>history 是 React 路由提供的，用于获取浏览器历史记录的相关信息</p>
+<p>push(path)：跳转到某个页面，参数 path 表示要跳转的路径</p>
+<p>go(n)： 前进或后退到某个页面，参数 n 表示前进或后退页面数量（比如：-1 表示后退到上一页）</p>
+<pre><code class="lang-js">class Login extends Component {
+    handleLogin = () =&gt; {
+    // ...
+    this.props.history.push(&#39;/home&#39;)
+    }
+    render() {...省略其他代码}
+}
+</code></pre>
+<h2 id="-">默认路由</h2>
+<p>问题：现在的路由都是点击导航菜单后展示的，如何在进入页面的时候就展示呢？</p>
+<p>默认路由：表示进入页面时就会匹配的路由</p>
+<p>默认路由path为：/</p>
+<pre><code class="lang-jsx">&lt;Route path=&quot;/&quot; component={Home} /&gt;
+</code></pre>
+<h2 id="-">匹配模式</h2>
+<h3 id="-">模糊匹配模式</h3>
+<p>问题：当 Link组件的 to 属性值为 “/login”时，为什么 默认路由 也被匹配成功？</p>
+<p>默认情况下，React 路由是模糊匹配模式</p>
+<p>模糊匹配规则：只要 pathname 以 path 开头就会匹配成功</p>
+<pre><code class="lang-jsx">&lt;Link to=&quot;/login&quot;&gt;登录页面&lt;/Link&gt;
+&lt;Route path=&quot;/&quot; component={Home} /&gt; 匹配成功
+</code></pre>
+<pre><code class="lang-js">// path 代表Route组件的path属性
+// pathname 代表Link组件的to属性（也就是 location.pathname）
+</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">path</th>
+<th style="text-align:left">能够匹配的pathname</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">/</td>
+<td style="text-align:left">所有 pathname</td>
+</tr>
+<tr>
+<td style="text-align:center">/first</td>
+<td style="text-align:left">/first 或 /first/a 或 /first/a/b/…</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">精确匹配</h3>
+<p>问题：默认路由任何情况下都会展示，如何避免这种问题？</p>
+<p>给 Route 组件添加 exact 属性，让其变为精确匹配模式</p>
+<p>精确匹配：只有当 path 和 pathname 完全匹配时才会展示该路由</p>
+<pre><code class="lang-jsx">// 此时，该组件只能匹配 pathname=“/” 这一种情况
+&lt;Route exact path=&quot;/&quot; component=... /&gt;
+</code></pre>
+<p>推荐：给默认路由添加 exact 属性。</p>
+
+          	</article>
+        </div>
+		</div>
+  </body>
+</html>
+<script type="text/javascript" src="toc/js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="toc/js/jquery.ztree.all-3.5.min.js"></script>
+<script type="text/javascript" src="toc/js/ztree_toc.js"></script>
+<script type="text/javascript" src="toc_conf.js"></script>
+
+<SCRIPT type="text/javascript" >
+<!--
+$(document).ready(function(){
+    var css_conf = eval(markdown_panel_style);
+    $('#readme').css(css_conf)
+    
+    var conf = eval(jquery_ztree_toc_opts);
+		$('#tree').ztree_toc(conf);
+});
+//-->
+</SCRIPT>
