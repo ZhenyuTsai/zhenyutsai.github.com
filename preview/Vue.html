@@ -1130,15 +1130,7 @@ this.$emit(&#39;getData&#39;, this.car);
 <ul>
 <li>父组件给子组件外部注册事件</li>
 </ul>
-<pre><code class="lang-js">&lt;son @fn=&#39;getData&#39;&gt;&lt;/son&gt;
-methods: {
-    //1. 父组件中定义了一个方法，用于获取数据
-    getData () {
-        console.log(&quot;父组件中提供的方法&quot;);
-        this.$emit(&#39;getData&#39;, this.car);
-    }
-}
-</code></pre>
+<pre><code class="lang-js">&lt;son @fn=&#39;getData&#39;&gt;&lt;/son&gt;</code></pre>
 <ul>
 <li>父组件内部获取值</li>
 </ul>
