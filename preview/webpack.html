@@ -1,0 +1,617 @@
+<html>
+  <head>
+	  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Webpack</title>
+		<link href="toc/style/github-bf51422f4bb36427d391e4b75a1daa083c2d840e.css" media="all" rel="stylesheet" type="text/css"/>
+		<link href="toc/style/github2-d731afd4f624c99a4b19ad69f3083cd6d02b81d5.css" media="all" rel="stylesheet" type="text/css"/>
+    <link href="toc/css/zTreeStyle/zTreeStyle.css" media="all" rel="stylesheet" type="text/css"/>
+    <link rel="shortcut icon" href="favicon.ico" />
+    <script src="../js/review.js"></script>
+	  <style>
+		pre {
+		    counter-reset: line-numbering;
+		    border: solid 1px #d9d9d9;
+		    border-radius: 0;
+		    background: #fff;
+		    padding: 0;
+		    line-height: 23px;
+		    margin-bottom: 30px;
+		    white-space: pre;
+		    overflow-x: auto;
+		    word-break: inherit;
+		    word-wrap: inherit;
+		}
+
+		pre a::before {
+		  content: counter(line-numbering);
+		  counter-increment: line-numbering;
+		  padding-right: 1em; /* space after numbers */
+		  width: 25px;
+		  text-align: right;
+		  opacity: 0.7;
+		  display: inline-block;
+		  color: #aaa;
+		  background: #eee;
+		  margin-right: 16px;
+		  padding: 2px 10px;
+		  font-size: 13px;
+		  -webkit-touch-callout: none;
+		  -webkit-user-select: none;
+		  -khtml-user-select: none;
+		  -moz-user-select: none;
+		  -ms-user-select: none;
+		  user-select: none;
+		}
+
+		pre a:first-of-type::before {
+		  padding-top: 10px;
+		}
+
+		pre a:last-of-type::before {
+		  padding-bottom: 10px;
+		}
+
+		pre a:only-of-type::before {
+		  padding: 10px;
+		}
+
+		.highlight { background-color: #ffffcc } /* RIGHT */
+		</style>
+  </head>
+  <body>
+	  <div>
+				<div style='width:25%;'>
+						<ul id="tree" class="ztree" style='width:100%'>
+
+						</ul>
+				</div>
+        <div id='readme' style='width:70%;margin-left:20%;'>
+          	<article class='markdown-body'>
+            	<h1 id="webpack-">webpack概述</h1>
+<blockquote>
+<p><em>webpack</em> 是一个现代 JavaScript 应用程序的<em>静态模块打包器(module bundler</em> )</p>
+</blockquote>
+<p><a href="https://www.webpackjs.com/">webpack中文网</a></p>
+<p><a href="https://webpack.js.org/">webpack官网</a></p>
+<h2 id="webpack-">webpack做了什么</h2>
+<ul>
+<li>语法转换<ul>
+<li>less/sass转换成css</li>
+<li>ES6转换成ES5</li>
+<li>typescript转换成js</li>
+</ul>
+</li>
+<li>html/css/js代码的压缩与合并（打包）</li>
+<li>webpack可以在开发期间提供一个开发环境<ul>
+<li>自动开启浏览器</li>
+<li>自动监视文件变化</li>
+<li>自动刷新浏览器</li>
+</ul>
+</li>
+<li>项目一般都需要经过webpack打包之后才上线。</li>
+</ul>
+<h2 id="webpack-">webpack模块说明</h2>
+<p>webpack会把所有的资源都当成模块</p>
+<ul>
+<li>css</li>
+<li>js</li>
+<li>图片</li>
+<li>字体图标</li>
+</ul>
+<p>webpack给前端开发提供了模块化的开发环境</p>
+<p>1、node中的模块化语法，（commonjs规范）</p>
+<p>require(...)    module.exports=....</p>
+<p>2、浏览器中模块化语法</p>
+<p>seajs  国内，淘宝出的，（CMD规范）</p>
+<p>requirejs 国外的（AMD规格）</p>
+<p>...慢慢被淘汰了</p>
+<p>3、es6中的模块化语法（模块化语法规范）</p>
+<p>import export</p>
+<p>目前，浏览器还是node，都不支持es6的语法，利用webpack可以转换为node语法</p>
+<ul>
+<li>对于js文件，webpack中支持AMD、CMD、commonJS、ES6模块化等语法</li>
+<li>有了webpack，我们可以在前端代码中使用任意的模块化语法</li>
+<li>可以在浏览器中使用nodejs的模块化语法<code>const $ = require(&#39;jquery&#39;)</code></li>
+</ul>
+<h2 id="webpack-">webpack使用步骤</h2>
+<ul>
+<li>建目录</li>
+</ul>
+<pre><code class="lang-bash">./dist 打包后的文件目录
+./src 自己的项目源码
+</code></pre>
+<ul>
+<li>项目初始化</li>
+</ul>
+<pre><code class="lang-bash">yarn init -y
+</code></pre>
+<ul>
+<li><p>安装依赖</p>
+<p>  --save 早起npm安装包时 如果不加--save，不会记录到package.json中，从npm5版本开始已经默认自动记录可以省略</p>
+<p>  --save-dev 会将包名记录到 devDependencies 中</p>
+<p>  dependencies :项目依赖，代码中依赖的包，实际上线需要使用</p>
+<p>  devDependencies：开发依赖，只在开发阶段需要使用的包，项目上线不需要使用</p>
+</li>
+</ul>
+<pre><code class="lang-bash">yarn add webpack webpack-cli -D  
+</code></pre>
+<ul>
+<li><p>配置package.json中的 scripts脚本</p>
+<p>  在package.json中可以配置 scripts脚本，配置命令如下，使用命令运行比如：npm run xxx</p>
+<p>  特殊命令：start stop 可以省略 run</p>
+<p>  npm run start =&gt; npm start</p>
+<p>  npm run stop =&gt;npm stop</p>
+<p>  yarn中所有命令都可以省略 run</p>
+</li>
+</ul>
+<pre><code class="lang-js">  &quot;scripts&quot;: {
+     //命令名称      //需要打包的文件路径    //打包后的文件路径   //压缩模式
+    &quot;build&quot;: &quot;webpack ./src/index.js  -o ./dist/bundle.js  --mode=production&quot;
+  },
+</code></pre>
+<p>使用配置文件的情况下</p>
+<pre><code class="lang-js">&quot;scripts&quot;: {
+     //命令名称
+    &quot;build&quot;: &quot;webpack&quot;
+  },
+</code></pre>
+<ul>
+<li>使用命令</li>
+</ul>
+<pre><code class="lang-bash">yarn build  # 就可以使用webpack进行打包了
+</code></pre>
+<h2 id="-webpack-config-js">配置文件-webpack.config.js</h2>
+<blockquote>
+<p>如果所有的参数都拼接到webpack-dev-server的后面，非常的麻烦，因此可以提供webpack.config.js来进行配置</p>
+</blockquote>
+<ul>
+<li>在项目的根目录下面新建<code>webpack.config.js</code>文件</li>
+</ul>
+<pre><code class="lang-js">const path = require(&#39;path&#39;)
+// 这是一个nodejs文件
+module.exports = {
+  // 设置入口文件,从哪个文件开始打包
+  entry: path.join(__dirname, &#39;src/index.js&#39;),
+  // 设置出口，配置打包到哪里去
+  output: {
+    // 设置打包输出目录
+    path: path.join(__dirname, &#39;dist&#39;),
+    // 输出文件的文件名
+    filename: &#39;bundle.js&#39;
+  },
+    //配置模式，建议先配置为不压缩
+    mode: &#39;development&#39;
+}
+</code></pre>
+<ul>
+<li>执行命令</li>
+</ul>
+<pre><code>webpack  // webpack会自动读取当前目录下的配置文件
+</code></pre><ul>
+<li>模式的配置</li>
+</ul>
+<pre><code class="lang-js">// 设置打包的模式
+//&#39;production&#39; 压缩版本
+//&#39;development&#39;  开发版本
+mode: &#39;production&#39;
+</code></pre>
+<h2 id="-">压缩多个文件内容</h2>
+<p>在入口文件中添加需要压缩的文件，require(路径....)</p>
+<p>压缩会把添加的文件一并压缩</p>
+<h1 id="webpack-">webpack-插件</h1>
+<blockquote>
+<p>webpack 有着丰富的插件接口(rich plugin interface)。webpack 自身的多数功能都使用这个插件接口。这个插件接口使 webpack 变得<strong>极其灵活</strong>。 </p>
+</blockquote>
+<h3 id="html-webpack-plugin-">html-webpack-plugin插件</h3>
+<p>我们需要将index.html模板文件打包到dist文件夹中，使用插件html-webpack-plugin完成</p>
+<ul>
+<li>安装</li>
+</ul>
+<pre><code class="lang-bash">npm install html-webpack-plugin --save-dev
+yarn add  html-webpack-plugin -D
+</code></pre>
+<ul>
+<li><code>webpack.config.js</code>导入</li>
+</ul>
+<pre><code class="lang-json">var HtmlWebpackPlugin = require(&#39;html-webpack-plugin&#39;);
+</code></pre>
+<ul>
+<li>使用</li>
+</ul>
+<pre><code class="lang-json">module.exports = {
+    //配置插件
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: path.join(__dirname, &#39;src&#39;, &#39;index.html&#39;)
+        })
+    ],
+}
+</code></pre>
+<h1 id="webpack-loaders">webpack-loaders</h1>
+<blockquote>
+<p>webpack 可以使用 <a href="https://www.webpackjs.com/concepts/loaders">loader</a> 来预处理文件。这允许你打包除 JavaScript 之外的任何静态资源。你可以使用 Node.js 来很简单地编写自己的 loader。 </p>
+</blockquote>
+<h2 id="css-loader-css-">css-loader处理css文件</h2>
+<ul>
+<li>安装</li>
+</ul>
+<pre><code class="lang-bash">//npm安装方式
+npm install --save-dev style-loader css-loader
+//yarn安装方式
+yarn add style-loader css-loader -D 
+</code></pre>
+<ul>
+<li>配置</li>
+</ul>
+<pre><code class="lang-js">//在webpack.config.js下面添加  
+module: {
+    // loader的规则
+    rules: [
+      {
+        // 正则表达式，用于匹配所有的css文件
+        test: /\.css$/,
+        // 使用什么样的loader进行解析
+          //css-loader可以让webpack可以解析css文件
+          //style-loader 可以让css，以动态形式显示在页面
+        use: [ &quot;style-loader&quot;, &quot;css-loader&quot;]
+      }
+    ]
+  },
+</code></pre>
+<h2 id="less-loader-less-">less-loader处理less文件</h2>
+<ul>
+<li>安装</li>
+</ul>
+<pre><code class="lang-bash">npm install --save-dev less-loader less
+
+yarn add less-loader less -D
+</code></pre>
+<ul>
+<li>配置</li>
+</ul>
+<pre><code class="lang-js">{
+    // 匹配所有的less文件
+    test: /\.less$/,
+        use: [ &quot;style-loader&quot;, &quot;css-loader&quot;, &quot;less-loader&quot;]
+}
+</code></pre>
+<h2 id="file-loader-">file-loader处理图片文件</h2>
+<blockquote>
+<p>file-loader会以单独文件的形式打包到dist目录中</p>
+</blockquote>
+<ul>
+<li>安装</li>
+</ul>
+<pre><code class="lang-bash">npm install --save-dev file-loader
+</code></pre>
+<ul>
+<li>配置</li>
+</ul>
+<pre><code class="lang-js">{
+    // 配置图片加载
+    test: /\.(png|jpg|gif|jpeg)$/,
+    use: &quot;file-loader&quot;
+}
+</code></pre>
+<h2 id="url-loader-">url-loader处理图片文件</h2>
+<blockquote>
+<p>url-loader与file-loader一样，也可以处理图片，但是url-loader可以以base64编码的方式处理图片</p>
+<p>实际，将图片转换成base64，需要成本，会让文件增大30%大小的体积，开发过程中，只会将小图片转换成base64，大图片依旧是单独的文件</p>
+</blockquote>
+<ul>
+<li>安装</li>
+</ul>
+<pre><code class="lang-bash">npm install --save-dev url-loader
+yarn add -D url-loader
+</code></pre>
+<ul>
+<li>配置</li>
+</ul>
+<pre><code class="lang-js">{
+    // 配置图片加载
+    test: /\.(png|jpg|gif)$/,
+        use: [
+            {
+                loader: &#39;url-loader&#39;,
+                options:{
+                    //限制大小 8k=8*1024 超过8k使用file-loader处理
+                    limit:8*1024
+                }
+            }
+        ]
+}
+</code></pre>
+<ul>
+<li>base64的优点</li>
+</ul>
+<pre><code class="lang-js">1. 精灵图的作用：减小网络请求
+2. base64:减少网络请求  通过京东查看base64编码的图片
+</code></pre>
+<ul>
+<li>设置limit参数</li>
+</ul>
+<pre><code class="lang-js">{
+    // 配置图片加载
+    test: /\.(png|jpg|gif)$/,
+        use: [
+            {
+                loader: &#39;url-loader&#39;,
+                options: {
+                    // 限定文件大小，注意：如果文件超出了大小，会自动调用file-loader，所以安装url-loader通过都要安装file-loader
+                    limit: 8192
+                }
+            }
+        ]
+}
+</code></pre>
+<h2 id="url-loader-">url-loader处理字体图标文件</h2>
+<blockquote>
+<p>处理字体图标文件与处理图标一模一样</p>
+</blockquote>
+<ul>
+<li>配置</li>
+</ul>
+<pre><code class="lang-json">{
+    // 配置字体图标加载
+    test: /\.(woff|woff2|eot|ttf|otf|svg)$/,
+        use: [
+            {
+                loader: &#39;url-loader&#39;,
+                options: {
+                    // 限定文件大小
+                    limit: 819200
+                }
+            }
+        ]
+}
+
+</code></pre>
+<h2 id="babel-es-">babel处理高版本的ES语法</h2>
+<h3 id="-">介绍</h3>
+<p>Babel 是一个 JavaScript 编译器。</p>
+<p>今天就开始使用下一代 JavaScript 语法吧！</p>
+<p><a href="http://babeljs.io/">官网</a></p>
+<p><a href="https://www.babeljs.cn/">中文网</a></p>
+<p>babel可以把最新版本的语法编译成浏览器能够兼容的代码（ES5）</p>
+<h3 id="-">使用</h3>
+<ul>
+<li>安装</li>
+</ul>
+<pre><code class="lang-bash">npm install -D babel-loader @babel/core @babel/preset-env
+yarn add -D babel-loader @babel/core @babel/preset-env
+</code></pre>
+<ul>
+<li>配置</li>
+</ul>
+<pre><code class="lang-js">{
+    test: /\.js$/,
+    //配置排除项
+    exclude: /(node_modules)/,
+    use: {
+        loader: &#39;babel-loader&#39;
+    }
+}
+</code></pre>
+<h1 id="webpack-dev-server-">webpack-dev-server的使用</h1>
+<p>在开发期间，会用到webpack的一个辅助包：<code>webpack-dev-server</code>,(自动刷新，打包)</p>
+<p><code>webpack-dev-server</code>的作用</p>
+<ul>
+<li>自动开启http服务</li>
+<li>自动打开浏览器</li>
+<li><p>自动监视文件的变化</p>
+</li>
+<li><p>引入，每次修改代码，都需要重新打包</p>
+</li>
+</ul>
+<h2 id="-">基本使用</h2>
+<ul>
+<li>安装</li>
+</ul>
+<pre><code class="lang-bash">npm install --save-dev webpack-dev-server
+yarn add -D webpack-dev-server
+</code></pre>
+<ul>
+<li>webpack.config.js中的scripts命令设置</li>
+</ul>
+<p><img src="C:\Users\Administrator\Desktop\笔记\11.Vue.js\images\webpack-dev-server.png" alt=""></p>
+<ul>
+<li>配置</li>
+</ul>
+<pre><code class="lang-js">  // webpack-dev-server提供了一个简单的服务器，并且能够实时重新加载
+//在webpack.config.js中与plugins并列设置
+  devServer: {
+    //端口号
+     port: 9999,
+     //自动打开浏览器
+     open: true,
+     //热更新，差异化更新，更新效率高
+     hot: true
+  }
+</code></pre>
+<h2 id="-">热更新的说明</h2>
+<ul>
+<li>开启</li>
+</ul>
+<pre><code class="lang-bash">hot: true
+</code></pre>
+<ul>
+<li>配置</li>
+</ul>
+<pre><code class="lang-js">var webpack = require(&quot;webpack&quot;);
+
+plugins: [
+    new HtmlWebpackPlugin({
+        template: path.join(__dirname,&quot;src&quot;, &#39;index.html&#39;)
+    }),
+    new webpack.HotModuleReplacementPlugin()
+],
+</code></pre>
+<ul>
+<li>热更新与dev-server模式不会在生产环境下用，生产环境还是需要<code>npm run build</code></li>
+</ul>
+<h1 id="es6-">ES6模块化</h1>
+<p>在之前的 javascript 中一直是没有模块系统的，前辈们为了解决这些问题，提出了各种规范, 最主要的有CommonJS和AMD两种。前者用于服务器，后者用于浏览器。而 ES6 中提供了简单的模块系统，完全可以取代现有的CommonJS和AMD规范，成为浏览器和服务器通用的模块解决方案。 </p>
+<h2 id="-">基本使用</h2>
+<blockquote>
+<p>一个模块就是一个独立的文件。该文件内部的所有变量，外部无法获取。如果你希望外部能够读取模块内部的某个 变量，就必须使用export关键字输出该变量。下面是一个JS文件，里面使用export命令输出变量。 </p>
+</blockquote>
+<p>es6 中新增了两个命令 <code>export</code> 和 <code>import</code> , <code>export</code> 命令用于规定模块的对外接口(导出)，<code>import</code> 命令用于输入其他模块提供的功能(导入) </p>
+<p><strong>精确导出导入</strong></p>
+<pre><code class="lang-js">//精确导出
+// a.js
+export const name = &#39;hucc&#39;
+export const age = 18
+export const desc = &#39;很帅&#39;
+</code></pre>
+<p>使用export命令定义了模块的对外接口以后，其他JS文件就可以通过import命令加载这个模块（文件） </p>
+<pre><code class="lang-js">//精确导入
+//main.js
+import {name, age, desc} from &#39;./a.js&#39;
+console.log(&#39;从模块内部导出的内容:&#39;, name, age, desc)
+</code></pre>
+<h2 id="export-">export(导出)详解</h2>
+<p>上面介绍了模块化最基础的用法，export 不止可以导出函数，还可以导出对象，数组，字符串等等</p>
+<pre><code class="lang-js">//a.js
+export const name = &#39;hucc&#39;
+export const arr = [1, 2, 3]
+export const obj = {
+  name: &#39;zs&#39;,
+  age: 18
+}
+</code></pre>
+<p> export的写法，除了像上面这样，还有另外一种。 </p>
+<pre><code class="lang-js">//a.js
+const name = &#39;hucc&#39;
+const arr = [1, 2, 3]
+const obj = {
+  name: &#39;zs&#39;,
+  age: 18
+}
+
+//    优点：上面代码在export命令后面，使用大括号指定所要输出的一组变量。它与前一种写法是等价的，但是应该优先考虑使用这种写法。因为这样就可以在脚本尾部，一眼看清楚输出了哪些变量。
+//原样
+export {
+    name:name,
+    arr:arr,
+    obj:obj
+}
+//简写
+export {name, arr, obj}
+</code></pre>
+<p><code>export default</code> 指定默认输出, import 无需知道变量名就可以直接使用</p>
+<pre><code class="lang-js">//a.js
+export default function fn () {
+  console.log(&#39;哈哈&#39;)
+}
+
+//main.js
+//在导入时，可以随意的使用变量名来接收
+import a from &#39;./a&#39;
+a()
+</code></pre>
+<pre><code class="lang-js">//export default 导出一个对象
+export default {aa, bb}
+//在导入时，可以随意的使用变量名来接收
+import a from &#39;./a&#39;
+//注意此时的变量a
+a={
+   aa,
+   bb 
+}
+</code></pre>
+<p><strong>注意：export default是非常用的语法，用的很多, 以一些常用的模块为例</strong></p>
+<pre><code class="lang-js">import $ from &#39;jQuery&#39;   // 加载jQuery 库
+import _ from &#39;lodash&#39;   // 加载 lodash
+import moment from &#39;moment&#39; // 加载 moment
+</code></pre>
+<h2 id="import-">import(导入) 详解</h2>
+<p><code>import</code> 为加载模块的命令，基础使用方式和之前一样 </p>
+<pre><code class="lang-js">//main.js
+import {name, arr, user} from &#39;./a&#39;
+
+//如果是export default导出的内容
+import a from &#39;./a&#39;
+</code></pre>
+<h2 id="-">兼容性说明</h2>
+<p>上面介绍了，es6 中模块的使用方式，但是现在es6的模块化，无论在浏览器端还是 node.js 上都没有得到很好的支持，所以需要，一些转码的工具（babel）。使我们可以用es6的方式来编码，最后输出es5的代码。 </p>
+<h1 id="-">开发项目常用配置</h1>
+<h2 id="devserver-open-">devServer.open(热启动)</h2>
+<p> 当<code>open</code>启用时，开发服务器将打开浏览器。 </p>
+<pre><code>open: true
+</code></pre><p> 通过CLI使用 </p>
+<pre><code>webpack-dev-server --open
+</code></pre><p> 如果未提供浏览器（如上所示），则将使用默认浏览器。要指定其他浏览器，只需传递其名称： </p>
+<pre><code>webpack-dev-server --open &#39;Google Chrome&#39;
+</code></pre><h2 id="devserver-port-">devServer.port(端口号)</h2>
+<p> 指定要监听请求的端口号： </p>
+<pre><code>port: 8080
+</code></pre><p> 通过CLI使用 ：</p>
+<pre><code>webpack-dev-server --port 8080
+</code></pre><h2 id="devserver-proxy-">devServer.proxy(反向代理)</h2>
+<p>如果你有单独的后端开发服务器 API，并且希望在同域名下发送 API 请求 ，那么代理某些 URL 会很有用。</p>
+<p>dev-server 使用了非常强大的 <a href="https://github.com/chimurai/http-proxy-middleware">http-proxy-middleware</a> 包。更多高级用法，请查阅其<a href="https://github.com/chimurai/http-proxy-middleware#options">文档</a>。</p>
+<p>在 <code>localhost:3000</code> 上有后端服务的话，你可以这样启用代理：</p>
+<pre><code class="lang-js">proxy: {
+  &quot;/api&quot;: &quot;http://localhost:3000&quot;
+}
+</code></pre>
+<p> 请求到 <code>/api/users</code> 现在会被代理到请求 <code>http://localhost:3000/api/users</code>。 </p>
+<p> 如果你不想始终传递 <code>/api</code> ，则需要重写路径： </p>
+<pre><code class="lang-js">proxy: {
+  &quot;/api&quot;: {
+    target: &quot;http://localhost:3000&quot;,
+    pathRewrite: {&quot;^/api&quot; : &quot;&quot;}
+  }
+}
+</code></pre>
+<p> 默认情况下，不接受运行在 HTTPS 上，且使用了无效证书的后端服务器。如果你想要接受，修改配置如下： </p>
+<pre><code class="lang-js">proxy: {
+  &quot;/api&quot;: {
+    target: &quot;https://other-server.example.com&quot;,
+    secure: false
+  }
+}
+</code></pre>
+<p>有时你不想代理所有的请求。可以基于一个函数的返回值绕过代理。</p>
+<p>在函数中你可以访问请求体、响应体和代理选项。必须返回 <code>false</code> 或路径，来跳过代理请求。</p>
+<p>例如：对于浏览器请求，你想要提供一个 HTML 页面，但是对于 API 请求则保持代理。你可以这样做：</p>
+<pre><code class="lang-js">proxy: {
+  &quot;/api&quot;: {
+    target: &quot;http://localhost:3000&quot;,
+    bypass: function(req, res, proxyOptions) {
+      if (req.headers.accept.indexOf(&quot;html&quot;) !== -1) {
+        console.log(&quot;Skipping proxy for browser request.&quot;);
+        return &quot;/index.html&quot;;
+      }
+    }
+  }
+}
+</code></pre>
+<p> 如果要代理到同一目标的多个特定路径，则可以使用一个或多个具有<code>context</code>属性的对象的数组： </p>
+<pre><code class="lang-js">proxy: [{
+  context: [&quot;/auth&quot;, &quot;/api&quot;],
+  target: &quot;http://localhost:3000&quot;,
+}]
+</code></pre>
+
+          	</article>
+        </div>
+		</div>
+  </body>
+</html>
+<script type="text/javascript" src="toc/js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="toc/js/jquery.ztree.all-3.5.min.js"></script>
+<script type="text/javascript" src="toc/js/ztree_toc.js"></script>
+<script type="text/javascript" src="toc_conf.js"></script>
+
+<SCRIPT type="text/javascript" >
+<!--
+$(document).ready(function(){
+    var css_conf = eval(markdown_panel_style);
+    $('#readme').css(css_conf)
+    
+    var conf = eval(jquery_ztree_toc_opts);
+		$('#tree').ztree_toc(conf);
+});
+//-->
+</SCRIPT>
